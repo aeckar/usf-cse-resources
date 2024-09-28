@@ -166,7 +166,7 @@
 - The form of an expression is *canonical* when it is in simplest form and every term contains all variables
     - Each product, when simplified, is a term
 - *Karnaugh maps* (K-maps) can be used to simplify expressions intuitively
-    - Products can be formed from groups of bits of size $2^n, n \in \Z$
+    - Products can be formed from groups of bits of size $2^n, n \in Z$
     - It might be helpful to create a truth table first and then convert it to a K-map
 - By using identities, K-maps, or truth tables, Boolean expressions can be converted to their simplest form
     - Each row in a truth table corresponds to a term
