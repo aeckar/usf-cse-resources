@@ -129,6 +129,8 @@
 - The above properties are not taught as laws and therefore should not be used to justify operations on the exam
 - When applying DeMorgan's Law, ensure that order of operations is preserved
 - "Mutual exclusion" is another form of the Absorption Law
+- The Consensus Theorem can be proven using the other laws
+    - "y has no effect on the final truth value given x + z, so xz implies xy + y'z"
 - *Boolean functions* accept Boolean variables (conditions) and produce a new condition
     - Rely on the Boolean expressions they are defined as
 - *Truth tables* present every possible combination of Boolean variables (x, y, z, ...)
