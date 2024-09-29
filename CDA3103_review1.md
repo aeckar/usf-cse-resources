@@ -123,10 +123,12 @@
 | Name              | Property                  |
 |-------------------|---------------------------|
 | Mutual Exclusion  | x + x'y = x + y           |
-| Consensus         | xy + y'z + xz = xy + y'z  |
+| Consensus Theorem | xy + y'z + xz = xy + y'z  |
 | Definition of XOR | x $\oplus$ y = x'y + xy'  |
 
-- Mutual exclusion is another form of the Absorption Law
+- The above properties are not taught as laws and therefore should not be used to justify operations on the exam
+- When applying DeMorgan's Law, ensure that order of operations is preserved
+- "Mutual exclusion" is another form of the Absorption Law
 - *Boolean functions* accept Boolean variables (conditions) and produce a new condition
     - Rely on the Boolean expressions they are defined as
 - *Truth tables* present every possible combination of Boolean variables (x, y, z, ...)
