@@ -1,6 +1,110 @@
 # CDA 3103 Computer Organization & Architecture - Exam 1 Review
 
-### 1. Positional Number Systems
+<ins>Textbook</ins>: *Essentials of Computer Organization and Architecture (6th ed.)* by Linda Null & Julia Lobur
+
+### 1. Introduction to Computing
+
+- The modern *computer*:
+    - Electronic
+    - Digital (works on binary data)
+    - General purpose
+    - Automatically follows lists of instructions to solve a problem
+- These lists of instructions are *algorithms*
+    - Implemented using computers to create *programs*
+- Simplest component of a computer is integrated circuit (IC)
+    - Evolved from vacuum tube, to transistor, to IC, to very large IC, to ultra-large IC
+- Computer architecture: the concepts and principles that define a computer
+    - <ins>Ex</ins>: circuit design, control signals, memory types
+- Computer organization: the physical implementation of architecture specifications
+    - <ins>Ex</ins>: instruction sets, data types, I/O mechanisms
+- No clear distinction between matters related to either architecture or organization
+
+>**Example:**
+>The fact that a multiply instruction is available is a computer architecture issue.
+>How that multiply is implemented is a computer organization issue.
+
+- *Computer level hierarchy* illustrates
+
+#### Computer Level Hierarchy
+| Level | Description   |
+|-------|---------------|
+| 6     | 
+| 5     | 
+| 4     | 
+| 3     | 
+| 2     | 
+| 1     | 
+| 0     | 
+
+#### Basic Laws and Principles
+| Name                                              | Meaning                                                                               |
+|---------------------------------------------------|---------------------------------------------------------------------------------------|
+| Principle of Equivalence of Software and Hardware | *"Any task done by software can be done by hardware, and vice-versa"*                 |
+| Moore's Law                                       | *"The density of transistors (modern, silicon chips) doubles every year (18 months)"* |
+| Rock's Law                                        | *"The cost of capital to build semiconductors doubles every 4 years"*                 |
+
+- The continuation of Moore's Law depends on the discontinuation of Rock's Law, and vice-versa
+- 
+
+### 2. Measurements of Speed and Size
+
+#### SI Unit Prefixes 
+| Prefix    | Symbol    | Value         |
+|-----------|-----------|---------------|
+| femto-    | f         | $10^{-15}$    |
+| pico-     | p         | $10^{-12}$    |
+| nano-     | n         | $10^{-9}$     |
+| micro-    | $\mu$     | $10^{-6}$     |
+| milli-    | m         | $10^{-3}$     |
+| kilo-     | k         | $10^3$        | 
+| mega-     | M         | $10^6$        |
+| giga-     | G         | $10^9$        |
+| tera-     | T         | $10^12$       |
+| peta-     | P         | $10^15$       |
+
+#### Measures of Data Volume (in Bytes)
+| Decimal       |               |               | Binary        |               |               |               |  
+|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
+| **Prefix**    | **Notation**  | **Amount**    | **Prefix**    | **Notation**  | **Amount**    | **% Larger**  |
+| kilo-         | KB            | $10^3$        | kibi-         | KiB           | $2^10$        | 2%            |
+| mega-         | MB            | $10^6$        | mibi-         | MiB           | $2^20$        | 5%            |
+| giga-         | GB            | $10^9$        | gibi-         | GiB           | $2^30$        | 7%            |
+| tera-         | TB            | $10^12$       | tebi-         | TiB           | $2^40$        | 10%           |
+| peta-         | PB            | $10^15$       | pebi-         | PiB           | $2^50$        | 13%           |
+
+#### Common Units of Measurement in Computing
+| Measure           | Description                                           | Unit  | Notation  | Typically |
+|-------------------|-------------------------------------------------------|-----------|
+| Processor speed   | How quickly a computer can process data/instructions  | Hertz  | Hz      |   GHz |
+|
+|
+|
+
+- A *byte* is smallest addressable unit of memory
+    - Almost always 8 bits
+    - To represent volume in bits, use lowercase *b*
+
+
+- Clock cycles per second measured in Hertz (Hz, $s^{-1}$)
+- 
+
+
+
+- There exist larger measures of data volume and SI unit prefixes, but they will not be on the exam
+
+
+### 3. Basic Computer Architecture
+
+- Von Neumann Model describes a basic form of computer architecture, consisting of:
+    1. Processor
+        - <ins>Ex</ins>: CPU
+    2. Memory (for data & programs)
+        - <ins>Ex</ins>: RAM
+    3. Data Input & Output (I/O)
+        - <ins>Ex</ins>: Keyboard,
+- 
+
+### 4. Positional Number Systems
 
 | Number System | Base (Radix)  | Digits    | Bits per digit            | Literal Form      | C literal |
 |---------------|---------------|-----------|---------------------------|-------------------|-----------|
@@ -24,7 +128,7 @@
 >
 >$16^2 + (4 \bullet 16) + 7 + \frac{10}{16} = 327.625_{10} \checkmark$
 
-### 2. Binary Representation of Numbers
+### 5. Binary Representation of Numbers
 
 - *Binary* is the representation of numbers in base-2
     - Also represent closed and open or on and off, respectively
@@ -90,7 +194,7 @@
 >```
 >$11011011_2 = -(00100100_2) = -36_{10} \checkmark$
 
-### 3. Boolean Algebra
+### 6. Boolean Algebra
 
 - In computers, bits `1` and `0` are stand-ins for *true* and *false*, respectively
 - *Elementary operations* are product, sum, and complement
@@ -150,7 +254,7 @@
 >| 1 | 1 | 0 | 0 |
 >| 1 | 1 | 1 | 1 |
 
-### 4. Simplifying Boolean Expressions
+### 7. Simplifying Boolean Expressions
 
 - *Sum-of-Product* (SOP) is form $wx + yz$
     - A.k.a. *"1-dominant"*; if any term is `1`, the expression equals `1`
