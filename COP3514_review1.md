@@ -1,5 +1,7 @@
 # COP 3514 Program Design - Exam 1 Review
 
+<ins>Textbook</ins>: *C Programming: A Modern Introduction (2nd ed.)* by K. N. King
+
 ### Preliminary - Accessing the Student Cluster
 
 #### Windows Setup
