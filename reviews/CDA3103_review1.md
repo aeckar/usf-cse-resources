@@ -13,8 +13,8 @@
 | kilo-     | k         | $10^3$        | 
 | mega-     | M         | $10^6$        |
 | giga-     | G         | $10^9$        |
-| tera-     | T         | $10^12$       |
-| peta-     | P         | $10^15$       |
+| tera-     | T         | $10^{12}$     |
+| peta-     | P         | $10^{15}$     |
 
 ### 1. Introduction to Computer Organization and Architecture
 
