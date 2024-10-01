@@ -75,11 +75,11 @@
 | Decimal       |               |               | Binary        |               |               |               |  
 |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
 | **Prefix**    | **Notation**  | **Amount**    | **Prefix**    | **Notation**  | **Amount**    | **% Larger**  |
-| kilo-         | KB            | $10^3$        | kibi-         | KiB           | $2^10$        | 2%            |
-| mega-         | MB            | $10^6$        | mibi-         | MiB           | $2^20$        | 5%            |
-| giga-         | GB            | $10^9$        | gibi-         | GiB           | $2^30$        | 7%            |
-| tera-         | TB            | $10^12$       | tebi-         | TiB           | $2^40$        | 10%           |
-| peta-         | PB            | $10^15$       | pebi-         | PiB           | $2^50$        | 13%           |
+| kilo-         | KB            | $10^3$        | kibi-         | KiB           | $2^{10}$        | 2%            |
+| mega-         | MB            | $10^6$        | mibi-         | MiB           | $2^{20}$        | 5%            |
+| giga-         | GB            | $10^9$        | gibi-         | GiB           | $2^{30}$        | 7%            |
+| tera-         | TB            | $10^12$       | tebi-         | TiB           | $2^{40}$        | 10%           |
+| peta-         | PB            | $10^15$       | pebi-         | PiB           | $2^{50}$        | 13%           |
 
 - There exist larger measures of data volume and SI unit prefixes, but they will not be on the exam
 - A *clock cycle* is the basic unit of time in a CPU
