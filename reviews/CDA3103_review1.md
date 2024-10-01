@@ -2,7 +2,21 @@
 
 <ins>Textbook</ins>: *Essentials of Computer Organization and Architecture (6th ed.)* by Linda Null & Julia Lobur
 
-### 1. Introduction to Computing
+#### SI Unit Prefixes 
+| Prefix    | Symbol    | Value         |
+|-----------|-----------|---------------|
+| femto-    | f         | $10^{-15}$    |
+| pico-     | p         | $10^{-12}$    |
+| nano-     | n         | $10^{-9}$     |
+| micro-    | $\mu$     | $10^{-6}$     |
+| milli-    | m         | $10^{-3}$     |
+| kilo-     | k         | $10^3$        | 
+| mega-     | M         | $10^6$        |
+| giga-     | G         | $10^9$        |
+| tera-     | T         | $10^12$       |
+| peta-     | P         | $10^15$       |
+
+### 1. Introduction to Computer Organization and Architecture
 
 - The modern *computer*:
     - Electronic
@@ -13,6 +27,15 @@
     - Implemented using computers to create *programs*
 - Simplest component of a computer is integrated circuit (IC)
     - Evolved from vacuum tube, to transistor, to IC, to very large IC, to ultra-large IC
+
+#### Basic Laws and Principles
+| Name                                              | Meaning                                                                               |
+|---------------------------------------------------|---------------------------------------------------------------------------------------|
+| Principle of Equivalence of Software and Hardware | *"Any task done by software can be done by hardware, and vice-versa"*                 |
+| Moore's Law                                       | *"The density of transistors (modern, silicon chips) doubles every year (18 months)"* |
+| Rock's Law                                        | *"The cost of capital to build semiconductors doubles every 4 years"*                 |
+
+- The continuation of Moore's Law depends on the discontinuation of Rock's Law, and vice-versa
 - Computer architecture: the concepts and principles that define a computer
     - <ins>Ex</ins>: circuit design, control signals, memory types
 - Computer organization: the physical implementation of architecture specifications
@@ -23,8 +46,8 @@
 >The fact that a multiply instruction is available is a computer architecture issue.
 >How that multiply is implemented is a computer organization issue.
 
-- *Computer level hierarchy* illustrates
-    - This class mainly deals with levels 4-0
+- *Computer Level Hierarchy* organizes different levels of computer abstraction
+    - Organization & architecture deals with levels 4-0
 
 #### Computer Level Hierarchy
 | Level | Name                  | Description                               | Example               |
@@ -46,37 +69,7 @@
     - Both microcoding and hardwiring produce microprograms
 - Control units ensure proper decoding/execution of instructions
 - Instruction Set Architecture (ISA) is set of instructions specific to architecture of machine
-    - <ins>Ex</ins>: x86, ARM, RISC-V
-
-// TODO
-- Clock speed - instructions
-- 
-
-#### Basic Laws and Principles
-| Name                                              | Meaning                                                                               |
-|---------------------------------------------------|---------------------------------------------------------------------------------------|
-| Principle of Equivalence of Software and Hardware | *"Any task done by software can be done by hardware, and vice-versa"*                 |
-| Moore's Law                                       | *"The density of transistors (modern, silicon chips) doubles every year (18 months)"* |
-| Rock's Law                                        | *"The cost of capital to build semiconductors doubles every 4 years"*                 |
-
-- The continuation of Moore's Law depends on the discontinuation of Rock's Law, and vice-versa
-- 
-
-### 2. Units of Measurement
-
-#### SI Unit Prefixes 
-| Prefix    | Symbol    | Value         |
-|-----------|-----------|---------------|
-| femto-    | f         | $10^{-15}$    |
-| pico-     | p         | $10^{-12}$    |
-| nano-     | n         | $10^{-9}$     |
-| micro-    | $\mu$     | $10^{-6}$     |
-| milli-    | m         | $10^{-3}$     |
-| kilo-     | k         | $10^3$        | 
-| mega-     | M         | $10^6$        |
-| giga-     | G         | $10^9$        |
-| tera-     | T         | $10^12$       |
-| peta-     | P         | $10^15$       |
+    - <ins>Ex</ins>: x86, ARM, RISC-V 
 
 #### Measures of Data Volume (in Bytes)
 | Decimal       |               |               | Binary        |               |               |               |  
@@ -89,31 +82,70 @@
 | peta-         | PB            | $10^15$       | pebi-         | PiB           | $2^50$        | 13%           |
 
 - There exist larger measures of data volume and SI unit prefixes, but they will not be on the exam
+- A *clock cycle* is the basic unit of time in a CPU
+    - Synchronized to a clock signal
 
 #### Common Units of Measurement in Computing
-| Measure           | Description                                           | Unit  | Notation  | Typically |
-|-------------------|-------------------------------------------------------|-----------|
-| Processor speed   | How quickly a computer can process data/instructions  | Hertz  | Hz      |   GHz |
-|
-|
-|
+| Measure                   | Description                                       | Unit              | Notation  | Typically         |
+|---------------------------|---------------------------------------------------|-------------------|-----------|-------------------|
+| Clock frequency           | Number of cycles per second                       | Hertz  ($s^{-1}$) | Hz        | GHz               |
+| Clock speed               | Time taken to complete one cycle                  | second            | s         | ns                |
+| Instructions per cycle    | Average number of instructions executed per cycle |                   |           | 0.5-3             |
+| Time                      |                                                   | second            | s         | ms, $\mu$s        |
+| Length                    |                                                   | meter             | m         | mm, $\mu$m, nm    |
 
+- Processor speed typically measured using clock frequency
 - A *byte* is smallest addressable unit of memory
     - Almost always 8 bits
     - To represent volume in bits, use lowercase *b*
 
-### 3. Basic Computer Architecture
+### 2. Von Neumann Architecture
 
-- Von Neumann Model describes a basic form of computer architecture, consisting of:
+- *Von Neumann Architecture* is basic form of computer architecture, consists of:
     1. Processor
         - <ins>Ex</ins>: CPU
-    2. Memory (for data & programs)
+    2. Memory
         - <ins>Ex</ins>: RAM
     3. Data Input & Output (I/O)
-        - <ins>Ex</ins>: Keyboard,
-- 
+        - <ins>Ex</ins>: Data buses, user input devices
+- The processor performs the calculations
+- Memory holds data and programs for access by processor
+    - Different from storage, which provides long-term storage (typically HDD or SSD)
+- I/O mechanism handles valuable user input
 
-### 4. Positional Number Systems
+><p style="text-align:center">   <!-- `style` attribute not supported by GFM -->
+>    <img src="../images/von_neumann_model.png" alt="Von Neumann Architecture" width=600>
+></p>
+>
+>- The *program counter* specifies the address of the next instruction
+>- *Instruction set cycle* performed by **control unit**
+>    - **Fetch** the instruction from memory at the program counter
+>    - **Decode** the instruction to know what operation to perform on what operands
+>    - **Execute** the specified operation and move the program counter
+>- Operands, results stored in **registers** of CPU
+>    - Small, incredibly fast storage
+>- **Arithmetic logic unit** (ALU) performs the actual operations
+
+- *Von Neumann bottleneck* is single path connecting processor and memory
+    - Limits data transfer speed
+- *Parallel processing* involves the application of multiple processors at once
+- Modern computers are not strictly von Neumann-based
+    - More performant, capability for parallel processing
+    - Circumvents von Neumann bottleneck
+- Computers can contain multiple cores or multiple processors
+    - Multi-core processors share memory (L2 cache), making them slower than multiple processors
+    - Multiple cores do not share L1 cache
+- *Linker* links binary executables to library routines
+    - Libraries compiled to `.dll` (Windows), `.so` (Linux), and `.dylib` (MacOS) files
+- *Loader* loads executables from storage into memory
+    - Increases performance, since storage must be read sequentially
+- System bus used to synchronize operations between processors and processor components
+    - **Data bus:** Moves data between registers, memory, and I/O mechanism
+    - **Address bus:** Sends address of data being accessed by data bus from CPU to memory
+    - **Control bus:** Moves control signals between CPU, memory, and I/O mechanism
+- Control signals specify how data transfer will take place
+
+### 3. Positional Number Systems
 
 | Number System | Base (Radix)  | Digits    | Bits per digit            | Literal Form      | C literal |
 |---------------|---------------|-----------|---------------------------|-------------------|-----------|
@@ -137,13 +169,14 @@
 >
 >$16^2 + (4 \bullet 16) + 7 + \frac{10}{16} = 327.625_{10} \checkmark$
 
-### 5. Binary Representation of Numbers
+### 4. Binary Representation of Numbers
 
 - *Binary* is the representation of numbers in base-2
     - Also represent closed and open or on and off, respectively
     - Binary digits, a.k.a. *"bits"*
 - *Most-significant bit* (MSB) is leftmost bit
 - *Least-significant bit* (LSB) is rightmost bit
+- Sign-extension involves filling leftmost bits with previous MSB
 - Computers represent binary in three ways:
 
 | Name           | Representation of Negatives  |
@@ -203,18 +236,7 @@
 >```
 >$11011011_2 = -(00100100_2) = -36_{10} \checkmark$
 
-### 6. Character Encodings
-
-// TODO
-
-- BCD
-- ASCII
-- EBCDIC
-    - 8 bit extended ver of bcd
-    - Zone/parity/chart
-- 
-
-### 7. Boolean Algebra
+### 5. Boolean Algebra
 
 - In computers, bits `1` and `0` are stand-ins for *true* and *false*, respectively
 - *Elementary operations* are product, sum, and complement
@@ -274,7 +296,7 @@
 >| 1 | 1 | 0 | 0 |
 >| 1 | 1 | 1 | 1 |
 
-### 7. Simplifying Boolean Expressions
+### 6. Simplifying Boolean Expressions
 
 - *Sum-of-Product* (SOP) is form $wx + yz$
     - A.k.a. *"1-dominant"*; if any term is `1`, the expression equals `1`
@@ -344,11 +366,3 @@
 >Minterms are $\sum{m}(1,2,3)$ (from 01, 10, 11), or x'y + xy' + xy
 >
 >Maxterms are $\prod{M}(0)$ (from 00), or x + y
-
-### 8. Logic Gates
-// TODO
-- Extended Von Neumann Architectre
-- Data buses, 3 diff kinds
-- Instruction set cycle 
-- Basics of Logic gates
-- 
