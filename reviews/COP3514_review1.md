@@ -117,7 +117,43 @@ Operators
 
 ### 4. Control flow
 
-- Pro
+- Use `if`-statements to perform a procedure if a conditon is true
+    - Condition implicitly converted to `bool`
+    - Action may be a *nested scope* (enclosed in curly brackets)
+
+```c
+if ( <condition> ) <action> ;
+```
+
+- `else` can be appended to `if`-statements to perform some other procedure given that the previous condition is false
+    - Procedures may be other `if`-statements
+```c
+if <...> else <alternative> ;
+if <...> else if <...> else if <...> ; // if-else chain
+```
+
+- `while`-loops repeat some procedure for how many times some condition is true
+- `do-while`-loops are the same, but always perform the procedure at least once
+  - Condition is checked at end of procedure instead of beginning 
+
+```c
+while ( <condition> ) <action> ;
+do <action> while ( <condition> );
+```
+
+- `for`-loops extend on `while`-loops by adding
+    - Condition, init, and iterate are all
+    - If condition is not given, defaults to `true`
+
+```c
+for ( <init?> ; <condition?> ; <iterate?>) <action> ;
+
+<init?>                            // Equal to
+while ( <condition? | true> ) {
+    <action> ;
+    <iterate?> ;
+};
+```
 
 ### 5. Functions
 
