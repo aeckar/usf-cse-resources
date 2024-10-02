@@ -1,17 +1,25 @@
 {
-    "cSpell.userWords": [
+    "cSpell.words": [
         "Barebones",
+        "biconditional",
         "CPOS",
         "CSOP",
+        "dylib",
         "Eckardt",
+        "EDBDIC",
         "femto",
         "gibi",
         "giga",
+        "hardwiring",
+        "infty",
         "Karnaugh",
         "kibi",
+        "Lobur",
         "Malloy",
         "maxterms",
         "mibi",
+        "microcoding",
+        "microprograms",
         "milli",
         "minterm",
         "minterms",
@@ -27,14 +35,6 @@
         "tebi",
         "tera",
         "USF's",
-        "vimtutor",
-        "Lobur"
-    ],
-    "cSpell.words": [
-        "dylib",
-        "EDBDIC",
-        "hardwiring",
-        "microcoding",
-        "microprograms"
+        "vimtutor"
     ]
 }
