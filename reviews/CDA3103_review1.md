@@ -110,7 +110,7 @@
 - I/O mechanism handles valuable user input
 
 ><p style="text-align:center">   <!-- `style` attribute not supported by GFM -->
->    <img src="../images/von_neumann_model.png" alt="Von Neumann Architecture" width=600>
+>    <img src="../images/CDA3103_Von_neumann.png" alt="Von Neumann Architecture" width=600>
 ></p>
 >
 >- The *program counter* specifies the address of the next instruction

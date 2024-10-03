@@ -19,11 +19,11 @@
 ## 1. Character Encodings
 
 <p style="text-align:center">
-    <img src="../images/ASCII_table.png" alt="ASCII Table" width=600>
+    <img src="../images/CDA3103_ASCII_table.png" alt="ASCII Table" width=600>
 </p>
 
 <p style="text-align:center">
-    <img src="../images/EDBDIC_table.png" alt="EDBDIC Table" width=600>
+    <img src="../images/CDA3013_EDBDIC_table.png" alt="EDBDIC Table" width=600>
 </p>
 
 - Since BCD uses 4 bits and not the usual 8, the way BCD is typically stored as packed-BCD pack w/ 0s at the beginning
