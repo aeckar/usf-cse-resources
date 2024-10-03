@@ -66,19 +66,23 @@
 | p $\rightarrow$ q     | $\implies$            | conditional   | *if p, then q*, *p implies q* | Always true, unless p is true and q is false      | ~p $\lor$ q                                       |
 | p $\leftrightarrow$ q | $\iff$                | biconditional | *p, if and only if, q*        | Both p and q are true, or both p and q are false  | (p $\rightarrow$ q) $\land$ (q $\rightarrow$ p)   |
 
+- Universal bounds defined by their identities
+    - **t** $\equiv$ p $\lor$ **t** (logical equivalent of `1`)
+    - **c** $\equiv$ p $\land$ **c** (logical equivalent of `0`)
+
 ### Logical Identities
-| Name                  | Conjunction Form          | Disjunction Form          |
-|-----------------------|---------------------------|---------------------------|
-| Identity Law          | 1x = x                    | 0 + x = x                 |
-| Null (Dominance) Law  | 0x = 0                    | 1 + x = 1                 |
-| Idempotent Law        | xx = x                    | x + x = x                 |
-| Inverse Law           | xx' = 0                   | x + x' = 1                |
-| Commutative Law       | xy = yx                   | x + y = y + x             |
-| Associative Law       | (xy)z = x(yz)             | (x + y) + z = xy + xz     |
-| Distributive Law      | x + (yz) = (x + y)(x + z) | x(y + z) = xy + xz        |
-| Absorption Law        | x(x + y) = x              | x + xy = x                |
-| DeMorgan's Law        | (xy)' = x' + y'           | (x + y)' = x'y'           |
-| Double Complement Law | x'' = x                   | <small>*same*</small>     |
+| Name                  | Conjunction Form                                              | Disjunction Form                                              |
+|-----------------------|---------------------------------------------------------------|---------------------------------------------------------------|
+| Identity Law          | **t** $\land$ x = x                                           | **c** $\lor$ x = x                                            |
+| Universal Bound Law   | **c** $\land$ x = **c**                                       | **t** $\lor$ x = **t**                                        |
+| Idempotentency        | x $\land$ x = x                                               | x $\lor$ x = x                                                |
+| Inverse Property      | x $\land$ ~x = **c**                                          | x $\lor$ ~x = **t**                                           |
+| Commutativity         | x $\land$ y = y $\land$ x                                     | x $\lor$ y = y $\lor$ x                                       |
+| Associativity         | (x $\land$ y) $\land$ z = x $\land$ (y $\land$ z)             | (x $\lor$ y) $\lor$ z = x $\lor$ (y $\lor$ z)                 |
+| Distributive Property | x $\lor$ (y $\land$ z) = (x $\lor$ y) $\land$ (x $\lor$ z)    | x $\land$ (y $\lor$ z) = (x $\land$ y) $\lor$ (x $\land$ z)   |
+| Absorption            | x $\land$ (x $\lor$ y) = x                                    | x $\lor$ (x $\land$ y) = x                                    |
+| DeMorgan's Law        | ~(x $\land$ y) = ~x $\lor$ ~y                                 | ~(x $\lor$ y) = ~x $\land$ ~y                                 |
+| Double Negative Law   | ~(~x) = x                                                     | <small>*same*</small>                                         |
 
 - A "neither-nor" relationship implies *~p $\land$ ~q*
 - Conditionals represent an "if-then" relationship
@@ -117,9 +121,6 @@
 | condition (antecedent)    | A statement variable that if true, the hypothesis must also be true                           | p $\rightarrow$ q, where p is the condition   |
 | hypothesis (consequent)   | An event that may happen if its condition is false, but must happen if its condition is true  | p $\rightarrow$ q, where q is the hypothesis  |
 
-- Universal bounds defined by their identities
-    - **t** $\equiv$ p $\lor$ **t**
-    - **c** $\equiv$ p $\land$ **c**
 - Statement forms are expressions with statement variables, typically *p* and *q*
 - A *rule of inference* is a valid, typically simple, argument form
 - *Domain* is set of all possible statement variables
@@ -158,7 +159,6 @@
     - Some element exist, and every possible element is present
     - Some element not exist, and no elements are present
     - The statement is a conditional and the hypothesis is false
-- Method of exhaustion
 
 ### Common Rules of Inference
 | Valid                 |                                                                                           | Invalid (Fallacy) |                                                           |
@@ -176,8 +176,4 @@
 
 - To show that some predicate $P(k)$ implies $P(k + 1)$ is part of *mathematical induction*
     - Method of proof
-    - 
-P(1)
-
-
-how to solve knights/knaves
+- Negating a quantifer ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
