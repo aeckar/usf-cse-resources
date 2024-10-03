@@ -177,3 +177,13 @@
 - To show that some predicate $P(k)$ implies $P(k + 1)$ is part of *mathematical induction*
     - Method of proof
 - Negating a quantifier ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
+- *:* follows existential quantifiers, and *,* for universal quantifiers
+
+- Statement is *implicitly quantified* if it is quantified but does not contain quantifying language
+    - Lack of *for all*, *for some*, *there exists*, etc. 
+Universal modus ponens
+Ax, P(x) -> Q(x)
+P(a)
+therefore Q(a)
+
+Rule of universal instantiation: if something is true for everything in a set, it is true for any particular thing in that set
