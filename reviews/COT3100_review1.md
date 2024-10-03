@@ -75,7 +75,7 @@
 |-----------------------|---------------------------------------------------------------|---------------------------------------------------------------|
 | Identity Law          | **t** $\land$ x = x                                           | **c** $\lor$ x = x                                            |
 | Universal Bound Law   | **c** $\land$ x = **c**                                       | **t** $\lor$ x = **t**                                        |
-| Idempotentency        | x $\land$ x = x                                               | x $\lor$ x = x                                                |
+| Idempotency           | x $\land$ x = x                                               | x $\lor$ x = x                                                |
 | Inverse Property      | x $\land$ ~x = **c**                                          | x $\lor$ ~x = **t**                                           |
 | Commutativity         | x $\land$ y = y $\land$ x                                     | x $\lor$ y = y $\lor$ x                                       |
 | Associativity         | (x $\land$ y) $\land$ z = x $\land$ (y $\land$ z)             | (x $\lor$ y) $\lor$ z = x $\lor$ (y $\lor$ z)                 |
@@ -176,4 +176,4 @@
 
 - To show that some predicate $P(k)$ implies $P(k + 1)$ is part of *mathematical induction*
     - Method of proof
-- Negating a quantifer ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
+- Negating a quantifier ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
