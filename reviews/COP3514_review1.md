@@ -2,9 +2,9 @@
 
 <ins>Textbook</ins>: *C Programming: A Modern Introduction (2nd ed.)* by K. N. King
 
-### Preliminary - Accessing the Student Cluster
+## Preliminary - Accessing the Student Cluster
 
-#### Windows Setup
+### Windows Setup
 
 1. Set up password-less 2FA with an authentication app
     - For Microsoft Authenticator, this involves setting up "Phone Sign-In"
@@ -19,13 +19,13 @@
 10. Type `sc.rc.usf.edu` into the field *Host Name (or IP address)* and `22` into *Port*
 11. In the terminal popup, type your NetID and password
 
-#### Sending Files to/from the Cluster on Windows
+### Sending Files to/from the Cluster on Windows
 
 1. Sign-in to the Cluster using the above directions
 2. Open a Windows command prompt (cmd.exe) with PuTTY installed
 3. Type `pscp -r <from directory> <netid>@sclogin1:<to directory>`
 
-#### Using the Cluster
+### Using the Cluster
 
 - The Student Cluster is a remote group of computers running a Unix-based operating systems
     - Enables access to a Unix-based OS at all times
@@ -48,7 +48,7 @@ clear                # Clear the screen of all previous commands
 mv <file>            # Rename a file--pass some directory afterward to move it there
 ```
 
-### 1. Introduction to C
+## 1. Introduction to C
 
 - *C* is a high-level programming language
     - Created 1972 by Dennis Ritchie to replace B
@@ -71,7 +71,7 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
     - Later became an ANSI and ISO standard
 - For each revision of the ISO standard, C*xx*, improvements are added
 
-### 1a. *The C Preprocessor*
+## 1a. *The C Preprocessor*
 
 - Scans code for preprocessor directives <u>before</u> compilation
 - `#include <filename>` inserts the entirety of a file at this line 
@@ -80,30 +80,30 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
     - Typically reserved for constants
     - Complex operations should be enclosed in parentheses to avoid operator precedence issues
 
-### 1b. *Header Files*
+## 1b. *Header Files*
 
 - Prd
 
-### 2. Program Structure
+## 2. Program Structure
 
 - Pro
 
-### 2a. *Low-Level Program Structure*
+## 2a. *Low-Level Program Structure*
 
 - Pro
 
-### 3. Variables
+## 3. Variables
 
 - Pro
 
-### 3a. *Primitive Types*
+## 3a. *Primitive Types*
 
 - Pro
 
 Operators
 
 
-### 3b. *The `bool` Type*
+## 3b. *The `bool` Type*
 
 - Not a keyword, unlike other primitives
 - Defined in the header file `stdbool.h`, it is a macro standing for the actual keyword `_Bool`
@@ -115,7 +115,7 @@ Operators
 Operators
 +
 
-### 4. Control flow
+## 4. Control flow
 
 - Use `if`-statements to perform a procedure if a conditon is true
     - Condition implicitly converted to `bool`
@@ -155,18 +155,18 @@ while ( <condition? | true> ) {
 };
 ```
 
-### 5. Functions
+## 5. Functions
 
 - Pro
 
-### 6. Arrays
+## 6. Arrays
 
 - Pro
 
-### 6a. *Arrays as Pointers*
+## 6a. *Arrays as Pointers*
 
 - Pro
 
-### 7. Pointers
+## 7. Pointers
 
 - Pro

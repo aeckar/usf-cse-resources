@@ -2,7 +2,7 @@
 
 <ins>Textbook</ins>: *Essentials of Computer Organization and Architecture (6th ed.)* by Linda Null & Julia Lobur
 
-#### SI Unit Prefixes 
+### SI Unit Prefixes
 | Prefix    | Symbol    | Value         |
 |-----------|-----------|---------------|
 | femto-    | f         | $10^{-15}$    |
@@ -16,7 +16,7 @@
 | tera-     | T         | $10^{12}$     |
 | peta-     | P         | $10^{15}$     |
 
-### 1. Introduction to Computer Organization and Architecture
+## 1. Introduction to Computer Organization and Architecture
 
 - The modern *computer*:
     - Electronic
@@ -28,7 +28,7 @@
 - Simplest component of a computer is integrated circuit (IC)
     - Evolved from vacuum tube, to transistor, to IC, to very large IC, to ultra-large IC
 
-#### Basic Laws and Principles
+### Basic Laws and Principles
 | Name                                              | Meaning                                                                               |
 |---------------------------------------------------|---------------------------------------------------------------------------------------|
 | Principle of Equivalence of Software and Hardware | *"Any task done by software can be done by hardware, and vice-versa"*                 |
@@ -49,7 +49,7 @@
 - *Computer Level Hierarchy* organizes different levels of computer abstraction
     - Organization & architecture deals with levels 4-0
 
-#### Computer Level Hierarchy
+### Computer Level Hierarchy
 | Level | Name                  | Description                               | Example               |
 |-------|-----------------------|-------------------------------------------|-----------------------|
 | 6     | User                  | Program execution, user interface         | Executing programs    |
@@ -71,7 +71,7 @@
 - Instruction Set Architecture (ISA) is set of instructions specific to architecture of machine
     - <ins>Ex</ins>: x86, ARM, RISC-V 
 
-#### Measures of Data Volume (in Bytes)
+### Measures of Data Volume (in Bytes)
 | Decimal       |               |               | Binary        |               |               |               |  
 |---------------|---------------|---------------|---------------|---------------|---------------|---------------|
 | **Prefix**    | **Notation**  | **Amount**    | **Prefix**    | **Notation**  | **Amount**    | **% Larger**  |
@@ -85,7 +85,7 @@
 - A *clock cycle* is the basic unit of time in a CPU
     - Synchronized to a clock signal
 
-#### Common Units of Measurement in Computing
+### Common Units of Measurement in Computing
 | Measure                   | Description                                       | Unit              | Notation  | Typically         |
 |---------------------------|---------------------------------------------------|-------------------|-----------|-------------------|
 | Clock frequency           | Number of cycles per second                       | Hertz  ($s^{-1}$) | Hz        | GHz               |
@@ -99,7 +99,7 @@
     - Almost always 8 bits
     - To represent volume in bits, use lowercase *b*
 
-### 2. Von Neumann Architecture
+## 2. Von Neumann Architecture
 
 - *Von Neumann Architecture* is basic form of computer architecture, consists of:
     1. Processor
@@ -145,7 +145,7 @@
     - **Control bus:** Moves control signals between CPU, memory, and I/O mechanism
 - Control signals specify how data transfer will take place
 
-### 3. Positional Number Systems
+## 3. Positional Number Systems
 
 | Number System | Base (Radix)  | Digits    | Bits per digit            | Literal Form      | C literal |
 |---------------|---------------|-----------|---------------------------|-------------------|-----------|
@@ -169,7 +169,7 @@
 >
 >$16^2 + (4 \bullet 16) + 7 + \frac{10}{16} = 327.625_{10} \checkmark$
 
-### 4. Binary Representation of Numbers
+## 4. Binary Representation of Numbers
 
 - *Binary* is the representation of numbers in base-2
     - Also represent closed and open or on and off, respectively
@@ -236,14 +236,14 @@
 >```
 >$11011011_2 = -(00100100_2) = -36_{10} \checkmark$
 
-### 5. Boolean Algebra
+## 5. Boolean Algebra
 
 - In computers, bits `1` and `0` are stand-ins for *true* and *false*, respectively
 - *Elementary operations* are product, sum, and complement
     - Combine to create Boolean (logical) expressions
 - Existence of both AND and OR forms for each identity is *Duality Principle*
 
-#### Common Boolean Operations
+### Common Boolean Operations
 | Operation         | Shorthand | Notation          | C Equivalent  | Meaning                   |
 |-------------------|-----------|-------------------|---------------|---------------------------|
 | Boolean Product   | AND       | x $\bullet$ y, xy | `x && y`      | x *and* y                 |
@@ -251,7 +251,7 @@
 | Complement        | NOT       | x', $\bar{x}$     | `~x`          | *not* x                   |
 | Exclusive OR      | XOR       | x $\oplus$ y      | `x ^ y`       | x *or* y, *but not both*  |
 
-#### Boolean Identities
+### Boolean Identities
 | Name                  | AND (CPOS) Form           | OR (CSOP) Form            |
 |-----------------------|---------------------------|---------------------------|
 | Identity Law          | 1x = x                    | 0 + x = x                 |
@@ -265,7 +265,7 @@
 | DeMorgan's Law        | (xy)' = x' + y'           | (x + y)' = x'y'           |
 | Double Complement Law | x'' = x                   | <small>*same*</small>     |
 
-#### Other Boolean Properties
+### Other Boolean Properties
 | Name              | Property                  |
 |-------------------|---------------------------|
 | Mutual Exclusion  | x + x'y = x + y           |
@@ -296,7 +296,7 @@
 >| 1 | 1 | 0 | 0 |
 >| 1 | 1 | 1 | 1 |
 
-### 6. Simplifying Boolean Expressions
+## 6. Simplifying Boolean Expressions
 
 - *Sum-of-Product* (SOP) is form $wx + yz$
     - A.k.a. *"1-dominant"*; if any term is `1`, the expression equals `1`

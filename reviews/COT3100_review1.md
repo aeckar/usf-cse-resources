@@ -2,7 +2,7 @@
 
 <ins>Textbook</ins>: *Discrete Mathematics with Applications (5th ed.)* by Susanna Epp
 
-#### Logic Symbols and their Meanings
+### Logic Symbols and their Meanings
 | Symbol        | Pronunciation         |
 |---------------|-----------------------|
 | T             | *true*                |
@@ -15,7 +15,7 @@
 | $\forall$     | *for all*             |
 | $\exists$     | *there exists a*      |
 
-### 1. Set Theory
+## 1. Set Theory
 
 - A *set* is some collection collection of elements
     - Can contain other sets
@@ -34,7 +34,7 @@
 - Denoting a set with duplicate entries is legal
     - Can be reduced to the same notation with unique elements
 
-#### Common Sets of Numbers
+### Common Sets of Numbers
 | Symbol    | Elements              | Examples                                                  |
 |-----------|-----------------------|-----------------------------------------------------------|
 | C         | complex numbers       | 2 + 7i                                                    |
@@ -49,7 +49,7 @@
     - **Set builder notation:** $\{ var \space type? | condition \}$
         - **Ex:** $\{ x \in \Z | x \lt 7 \} = \{ \ldots ,4,5,6 \}$
 
-### 2. Statements, Forms, and Deductive Reasoning
+## 2. Statements, Forms, and Deductive Reasoning
 
 - A *statement* (proposition) is something that can be given a truth value
     - Can be given variable values, typically denoted *p* and *q*
@@ -59,14 +59,14 @@
 >
 >"This sentence is true" is not a statement by this logic.
 
-#### Types of statements
+### Types of statements
 | Type          | Claim                                     | Example                                                   |
 |---------------|-------------------------------------------|-----------------------------------------------------------|
 | universal     | property is true for every element        | *Every person in this class is a USF student*             |
 | existential   | property is true for at least one element | *Some person in this class is not a USF student*          |
 | conditional   | consequent is true if antecedent is true  | *If a person is in this class, they are a USF student*    |
 
-#### Statement Vocabulary
+### Statement Vocabulary
 | Term                      | Definition                                                                                    | Example                                       |
 |---------------------------|-----------------------------------------------------------------------------------------------|-----------------------------------------------|
 | tautology                 | A statement that is always true regardless of statement variables                             | p $\lor$ ~p                                   |
@@ -77,7 +77,7 @@
 - Two statements are *logically equivalent* ($\equiv$) if they always produce same truth value, given same inputs
 - Neither-or implies conjunction of complements
 
-#### Logical Operators
+### Logical Operators
 | Notation              | Alternate Notation    | Name          | Pronunciations                | Condition for Truth                               | Common Equivalences                               |
 |-----------------------|-----------------------|---------------|-------------------------------|---------------------------------------------------|---------------------------------------------------|
 | ~p                    | $\neg$                | negation      | *not p*                       | p is false                                        |                                                   |
@@ -86,7 +86,7 @@
 | p $\rightarrow$ q     | $\implies$            | conditional   | *if p, then q*, *p implies q* | Always true, unless p is true and q is false      | ~p $\lor$ q                                       |
 | p $\leftrightarrow$ q | $\iff$                | biconditional | *p, if and only if, q*        | Both p and q are true, or both p and q are false  | (p $\rightarrow$ q) $\land$ (q $\rightarrow$ p)   |
 
-#### Transformations of $p \rightarrow q$
+### Transformations of $p \rightarrow q$
 | Name              | Form                  |
 |-------------------|-----------------------|
 | Negation          | p $\land$ ~q          |
@@ -94,7 +94,7 @@
 | Converse          | q $\rightarrow$ p     |
 | Inverse           | ~p $\rightarrow$ ~q   |
 
-### 3. Inductive Reasoning
+## 3. Inductive Reasoning
 
 ######################
 
