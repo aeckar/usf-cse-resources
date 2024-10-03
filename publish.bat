@@ -1,4 +1,4 @@
-:: Adds all changes, commits them with the given message and pushes them to main
+:: Adds all changes, commits them with the given message, and pushes them to main
 @ECHO OFF
 SETLOCAL enabledelayedexpansion
 SET TASK_NAME=Publish to GitHub
