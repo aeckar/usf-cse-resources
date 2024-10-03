@@ -161,29 +161,29 @@
     - The statement is a conditional and the hypothesis is false
 
 ### Common Rules of Inference
-| Valid                 |                                                                                           | Invalid (Fallacy) |                                                           |
-|-----------------------|-------------------------------------------------------------------------------------------|-------------------|-----------------------------------------------------------|
-| **Name**              | **Form**                                                                                  | **Name**          | **Form**                                                  |
-| Modus ponens          | &emsp;p $\rightarrow$ q<br>&emsp;p<br>$\therefore$ q                                      | Converse error    | &emsp;p $\rightarrow$ q<br>&emsp;q<br>$\therefore$ p      |
-| Modus tollens         | &emsp;p $\rightarrow$ q<br>&emsp;~q<br>$\therefore$ ~p                                    | Inverse error     | &emsp;p $\rightarrow$ q<br>&emsp;~p<br>$\therefore$ ~q    |
-| Elimination           | &emsp;p $\lor$ q<br>&emsp;~q<br>$\therefore$ p                                            | False exclusion   | &emsp;p $\lor$ q<br>&emsp;p<br>$\therefore$ ~q            |
-| Generalization        | &emsp;p<br>$\therefore$ p $\lor$ q                                                        |                   | &emsp;p $\lor$ q<br>$\therefore$ p                        |
-| Specialization        | &emsp;p $\land$ q<br>$\therefore$ p                                                       |                   | &emsp;p<br>$\therefore$ p $\land$ q                       |
-| Conjunction           | &emsp;p<br>&emsp;q<br>$\therefore$ p $\land$ q                                            |                   |                                                           |
-| Transitivity          | &emsp;p $\rightarrow$ q<br>&emsp;q $\rightarrow$ r<br>$\therefore$ p $\rightarrow$ r      |                   |                                                           |
-| Division into Cases   | &emsp;p $\lor$ q<br>&emsp;p $\rightarrow$ r<br>&emsp;q $\rightarrow$ r<br>$\therefore$ r  |                   |                                                           |
-| Contradiction         | &emsp;~p $\rightarrow$ **c**<br>$\therefore$ p                                            |                   |                                                           |
+| Valid                 |                                                                                           | Invalid (Fallacy)     |                                                           |
+|-----------------------|-------------------------------------------------------------------------------------------|-----------------------|-----------------------------------------------------------|
+| **Name**              | **Form**                                                                                  | **Name**              | **Form**                                                  |
+| Modus ponens          | &emsp;p $\rightarrow$ q<br>&emsp;p<br>$\therefore$ q                                      | Converse error        | &emsp;p $\rightarrow$ q<br>&emsp;q<br>$\therefore$ p      |
+| Modus tollens         | &emsp;p $\rightarrow$ q<br>&emsp;~q<br>$\therefore$ ~p                                    | Inverse error         | &emsp;p $\rightarrow$ q<br>&emsp;~p<br>$\therefore$ ~q    |
+| Elimination           | &emsp;p $\lor$ q<br>&emsp;~q<br>$\therefore$ p                                            | False exclusion       | &emsp;p $\lor$ q<br>&emsp;p<br>$\therefore$ ~q            |
+| Generalization        | &emsp;p<br>$\therefore$ p $\lor$ q                                                        | Hasty generalization  | &emsp;p $\lor$ q<br>$\therefore$ p                        |
+| Specialization        | &emsp;p $\land$ q<br>$\therefore$ p                                                       | False dilemma         | &emsp;p<br>$\therefore$ p $\land$ q                       |
+| Conjunction           | &emsp;p<br>&emsp;q<br>$\therefore$ p $\land$ q                                            |                       |                                                           |
+| Transitivity          | &emsp;p $\rightarrow$ q<br>&emsp;q $\rightarrow$ r<br>$\therefore$ p $\rightarrow$ r      |                       |                                                           |
+| Division into Cases   | &emsp;p $\lor$ q<br>&emsp;p $\rightarrow$ r<br>&emsp;q $\rightarrow$ r<br>$\therefore$ r  |                       |                                                           |
+| Contradiction         | &emsp;~p $\rightarrow$ **c**<br>$\therefore$ p                                            |                       |                                                           |
 
 - To show that some predicate $P(k)$ implies $P(k + 1)$ is part of *mathematical induction*
     - Method of proof
 - Negating a quantifier ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
 - *:* follows existential quantifiers, and *,* for universal quantifiers
-
 - Statement is *implicitly quantified* if it is quantified but does not contain quantifying language
     - Lack of *for all*, *for some*, *there exists*, etc. 
-Universal modus ponens
+- **Rule of Universal Instantiation:** if something is true for everything in a set, it is true for any particular thing in that set
+
+<!-- TODO -->
+- Universal modus ponens
 Ax, P(x) -> Q(x)
 P(a)
 therefore Q(a)
-
-Rule of universal instantiation: if something is true for everything in a set, it is true for any particular thing in that set
