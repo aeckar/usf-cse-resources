@@ -1,16 +1,30 @@
-@echo off
+@ECHO OFF
 SETLOCAL enabledelayedexpansion
 SET TASK_NAME=Publish to GitHub
+SET LOG_PREFIX=[publish]
+SET COMMIT_MESSAGE=%1
+SET RED=[31m
+SET GREEN=[32m
+SET RESET=[0m
 
+GOTO :PUBLISH
+
+:: Adds all recent changes to git, commits them with an optional message, then pushes them to the main
+:PUBLISH
 git add .
-git commit --message="[publish] Add information"
-git push -u origin main
-
-IF %ERRORLEVEL% NEQ 0 (
-    ECHO %TASK_NAME% failed with error code %ERRORLEVEL%
+IF "%COMMIT_MESSAGE%"=="" (
+    git commit
 ) ELSE (
-    FOR /F "tokens=* USEBACKQ" %%F IN (`git config --get remote.origin.url`) DO (
-        SET URL=%%F
-    )
-    ECHO %TASK_NAME% succeeded: !URL!
+    git commit --message="[publish] %COMMIT_MESSAGE%"
+)
+git push -u origin main
+GOTO :LOG_ERROR
+
+:: Prints whether the operation was successful or not
+:LOG_ERROR
+IF %ERRORLEVEL% NEQ 0 (
+    ECHO %LOG_PREFIX% %RED%%TASK_NAME% failed with error code %ERRORLEVEL%%RESET%
+) ELSE (
+    SET URL=https://github.com/aeckar/usf-exam-reviews
+    ECHO %LOG_PREFIX% %GREEN%%TASK_NAME% succeeded:%RESET% !URL!
 )

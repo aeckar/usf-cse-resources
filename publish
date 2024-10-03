@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-git add .
-git commit --message="Add information"
-git push --upstream origin main
