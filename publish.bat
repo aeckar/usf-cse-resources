@@ -25,6 +25,6 @@ GOTO :LOG_ERROR
 IF %ERRORLEVEL% NEQ 0 (
     ECHO %LOG_PREFIX% %RED%%TASK_NAME% failed with error code %ERRORLEVEL%%RESET%
 ) ELSE (
-    SET URL=https://github.com/aeckar/usf-exam-reviews
+    SET URL=https://github.com/aeckar/usf-cse-resources
     ECHO %LOG_PREFIX% %GREEN%%TASK_NAME% succeeded:%RESET% !URL!
 )
