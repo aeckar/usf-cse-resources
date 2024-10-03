@@ -50,19 +50,15 @@
     - Organization & architecture deals with levels 4-0
 
 ### Computer Level Hierarchy
-| Level | Name                  | Description                               | Example               |
-|-------|-----------------------|-------------------------------------------|-----------------------|
-| 6     | User                  | Program execution, user interface         | Executing programs    |
-| 5     | High-Level Language   | Programming in a high-level language      | Python                |
-| 4     | Assembly Language     | Programming assembly language             | RISC-V                |
-| 3     | System Software       | Controls executing processes              | Operating System      |
-|       |                       | Protects system resources                 |                       |
-| 2     | Machine               | Instruction Set Architecture              | Executable binary     |
-|       |                       | Programs run directly on machine          |                       |
-| 1     | Control               | Control units                             |                       |
-|       |                       | Decodes, executes instructions            |                       |
-|       |                       | Moves data through system                 |                       |
-| 0     | Digital Logic         | Transistors, logic gates                  | Computer parts        |
+| Level | Name                  | Description                                                                   | Example               |
+|-------|-----------------------|-------------------------------------------------------------------------------|-----------------------|
+| 6     | User                  | Program execution, user interface                                             | Executing programs    |
+| 5     | High-Level Language   | Programming in a high-level language                                          | Python                |
+| 4     | Assembly Language     | Programming assembly language                                                 | RISC-V                |
+| 3     | System Software       | Controls executing processes<br>Protects system resources                     | Operating System      |
+| 2     | Machine               | Instruction Set Architecture<br>Programs run directly on machine              | Executable binary     |
+| 1     | Control               | Control units<br>Decodes, executes instructions<br>Moves data through system  |                       |
+| 0     | Digital Logic         | Transistors, logic gates                                                      | Computer parts        |
 
 - Microcode is code written in assembly or machine language that is bound to hardware
 - Hardwiring is physical combination of logic gates to create programs
