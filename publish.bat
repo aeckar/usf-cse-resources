@@ -1,3 +1,4 @@
+:: Adds all changes, commits them with the given message and pushes them to main
 @ECHO OFF
 SETLOCAL enabledelayedexpansion
 SET TASK_NAME=Publish to GitHub
@@ -7,21 +8,18 @@ SET RED=[31m
 SET GREEN=[32m
 SET RESET=[0m
 
-GOTO :PUBLISH
-
-:: Adds all recent changes to git, commits them with an optional message, then pushes them to the main
-:PUBLISH
 git add .
-IF "%COMMIT_MESSAGE%"=="" (
-    git commit
-) ELSE (
-    git commit --message="[publish] %COMMIT_MESSAGE%"
-)
-git push -u origin main
-GOTO :LOG_ERROR
+GOTO :GET_COMMIT_MESSAGE
 
-:: Prints whether the operation was successful or not
-:LOG_ERROR
+:GET_COMMIT_MESSAGE
+IF "%COMMIT_MESSAGE%" NEQ "" GOTO :PUBLISH
+ECHO %RED%Commit message cannot be empty%RESET%
+SET /P COMMIT_MESSAGE=Enter commit message: 
+GOTO :GET_COMMIT_MESSAGE
+
+:PUBLISH
+git commit --message="[publish] !COMMIT_MESSAGE!"
+git push -u origin main
 IF %ERRORLEVEL% NEQ 0 (
     ECHO %LOG_PREFIX% %RED%%TASK_NAME% failed with error code %ERRORLEVEL%%RESET%
 ) ELSE (
