@@ -46,13 +46,13 @@
 | R         | real numbers          | $\pi$, 16                                                 |
 | Z         | integers              | -3, 0, 24                                                 |
 | Q         | rational numbers      | 0.25, 9                                                   |
-| $^+, ^-$  | positives, negatives  | $R^+ = (0, \infty)$ is set of all positive real numbers   |
+| $^+, ^-$  | positives, negatives  | $R^+ $\equiv$ (0, \infty)$ is set of all positive real numbers   |
 
 - $C \supseteq R \supseteq W \supseteq Z$
 - Sets denoted in either
     - **Roster notation:** $\{ e_1,e_2,e_3, \ldots , e_n \}$
     - **Set builder notation:** $\{ var \space type? | condition \}$
-        - **Ex:** $\{ x \in Z | x \lt 7 \} = \{ \ldots ,4,5,6 \}$
+        - **Ex:** $\{ x \in Z | x \lt 7 \} $\equiv$ \{ \ldots ,4,5,6 \}$
 
 ## 2. Statements and Logical Operators
 
@@ -71,18 +71,18 @@
     - **c** $\equiv$ p $\land$ **c** (logical equivalent of `0`)
 
 ### Logical Identities
-| Name                  | Conjunction Form                                              | Disjunction Form                                              |
-|-----------------------|---------------------------------------------------------------|---------------------------------------------------------------|
-| Identity Law          | **t** $\land$ x = x                                           | **c** $\lor$ x = x                                            |
-| Universal Bound Law   | **c** $\land$ x = **c**                                       | **t** $\lor$ x = **t**                                        |
-| Idempotency           | x $\land$ x = x                                               | x $\lor$ x = x                                                |
-| Inverse Property      | x $\land$ ~x = **c**                                          | x $\lor$ ~x = **t**                                           |
-| Commutativity         | x $\land$ y = y $\land$ x                                     | x $\lor$ y = y $\lor$ x                                       |
-| Associativity         | (x $\land$ y) $\land$ z = x $\land$ (y $\land$ z)             | (x $\lor$ y) $\lor$ z = x $\lor$ (y $\lor$ z)                 |
-| Distributive Property | x $\lor$ (y $\land$ z) = (x $\lor$ y) $\land$ (x $\lor$ z)    | x $\land$ (y $\lor$ z) = (x $\land$ y) $\lor$ (x $\land$ z)   |
-| Absorption            | x $\land$ (x $\lor$ y) = x                                    | x $\lor$ (x $\land$ y) = x                                    |
-| DeMorgan's Law        | ~(x $\land$ y) = ~x $\lor$ ~y                                 | ~(x $\lor$ y) = ~x $\land$ ~y                                 |
-| Double Negative Law   | ~(~x) = x                                                     | <small>*same*</small>                                         |
+| Name                  | Conjunction Form                                                  | Disjunction Form                                                   |
+|-----------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
+| Identity Law          | **t** $\land$ x $\equiv$ x                                        | **c** $\lor$ x $\equiv$ x                                          |
+| Universal Bound Law   | **c** $\land$ x $\equiv$ **c**                                    | **t** $\lor$ x $\equiv$ **t**                                      |
+| Idempotency           | x $\land$ x $\equiv$ x                                            | x $\lor$ x $\equiv$ x                                              |
+| Inverse Property      | x $\land$ ~x $\equiv$ **c**                                       | x $\lor$ ~x $\equiv$ **t**                                         |
+| Commutativity         | x $\land$ y $\equiv$ y $\land$ x                                  | x $\lor$ y $\equiv$ y $\lor$ x                                     |
+| Associativity         | (x $\land$ y) $\land$ z $\equiv$ x $\land$ (y $\land$ z)          | (x $\lor$ y) $\lor$ z $\equiv$ x $\lor$ (y $\lor$ z)               |
+| Distributive Property | x $\lor$ (y $\land$ z) $\equiv$ (x $\lor$ y) $\land$ (x $\lor$ z) | x $\land$ (y $\lor$ z) $\equiv$ (x $\land$ y) $\lor$ (x $\land$ z) |
+| Absorption            | x $\land$ (x $\lor$ y) $\equiv$ x                                 | x $\lor$ (x $\land$ y) $\equiv$ x                                  |
+| DeMorgan's Law        | ~(x $\land$ y) $\equiv$ ~x $\lor$ ~y                              | ~(x $\lor$ y) $\equiv$ ~x $\land$ ~y                               |
+| Double Negative Law   | ~(~x) $\equiv$ x                                                  | <small>*same*</small>                                              |
 
 - A "neither-nor" relationship implies *~p $\land$ ~q*
 - Conditionals represent an "if-then" relationship
