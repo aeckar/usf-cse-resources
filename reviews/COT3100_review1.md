@@ -168,7 +168,7 @@
 | Modus tollens         | &emsp;p $\rightarrow$ q<br>&emsp;~q<br>$\therefore$ ~p                                    | Inverse error         | &emsp;p $\rightarrow$ q<br>&emsp;~p<br>$\therefore$ ~q    |
 | Elimination           | &emsp;p $\lor$ q<br>&emsp;~q<br>$\therefore$ p                                            | False exclusion       | &emsp;p $\lor$ q<br>&emsp;p<br>$\therefore$ ~q            |
 | Generalization        | &emsp;p<br>$\therefore$ p $\lor$ q                                                        | Hasty generalization  | &emsp;p $\lor$ q<br>$\therefore$ p                        |
-| Specialization        | &emsp;p $\land$ q<br>$\therefore$ p                                                       | False dilemma         | &emsp;p<br>$\therefore$ p $\land$ q                       |
+| Specialization        | &emsp;p $\land$ q<br>$\therefore$ p                                                       | False specialization  | &emsp;p<br>$\therefore$ p $\land$ q                       |
 | Conjunction           | &emsp;p<br>&emsp;q<br>$\therefore$ p $\land$ q                                            |                       |                                                           |
 | Transitivity          | &emsp;p $\rightarrow$ q<br>&emsp;q $\rightarrow$ r<br>$\therefore$ p $\rightarrow$ r      |                       |                                                           |
 | Division into Cases   | &emsp;p $\lor$ q<br>&emsp;p $\rightarrow$ r<br>&emsp;q $\rightarrow$ r<br>$\therefore$ r  |                       |                                                           |
