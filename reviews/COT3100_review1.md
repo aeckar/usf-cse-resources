@@ -2,6 +2,8 @@
 
 <ins>Textbook</ins>: *Discrete Mathematics with Applications (5th ed.)* by Susanna Epp
 
+<ins>Quizlet<Ins>: https://quizlet.com/952148098/cot-3100-statement-forms-laws-and-identities-flash-cards
+
 <!-- The following tEx escapes do not render in GFM: \R, \Z, \empty                         -->
 <!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
 <!-- There is no way to insert single tilde (~) in GFM tEx                                  -->

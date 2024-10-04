@@ -1,4 +1,7 @@
 {
+    "editor.wordWrap": "off",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
     "cSpell.words": [
         "Barebones",
         "biconditional",
@@ -31,6 +34,7 @@
         "pico",
         "ponens",
         "pscp",
+        "Quizlet",
         "Ritchie",
         "sclogin",
         "stdbool",
@@ -40,4 +44,5 @@
         "USF's",
         "vimtutor"
     ]
+
 }
