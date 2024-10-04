@@ -196,4 +196,8 @@
 | transitivity              | &emsp;$\forall$ x, P(x) $\rightarrow$ Q(x)<br>&emsp;$\forall$ x, Q(x) $\rightarrow$ R(x)<br>$\therefore$ $\forall$ x, P(x) $\rightarrow$ R(x) |
 | mathematical induction    | &emsp;P(1)<br>&emsp;$\forall$ k $\in Z^+$ , P(k) $\rightarrow$ P(k + 1)<br>$\therefore$ $\forall$ n $\in Z^+$ , P(n)                          |
 
+- Mathematical induction
+    - Proof of first premise is base case
+    - Proof of second premise is inductive step
+    - Antecedent P(k) is induction hypothesis 
 - Mathematical induction *will not* be on Exam 1
