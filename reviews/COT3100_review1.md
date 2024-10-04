@@ -56,9 +56,9 @@
     - **Set builder notation:** $\{ var \space type? | condition \}$
         - **Ex:** $\{ x \in Z | x \lt 7 \} $\equiv$ \{ \ldots ,4,5,6 \}$
 
-## 2. Statements and Logical Operators
+## 2. Logical Operators
 
-### Logical Operators
+### Common Logical Operators
 | Notation              | Alternate Notation    | Name          | Pronunciations                | Condition for Truth                               | Equivalent Form                                   |
 |-----------------------|-----------------------|---------------|-------------------------------|---------------------------------------------------|---------------------------------------------------|
 | ~p                    | $\neg$                | negation      | *not p*                       | p is false                                        |                                                   |
@@ -98,6 +98,10 @@
 | Contrapositive    | ~q $\rightarrow$ ~p   |
 | Converse          | q $\rightarrow$ p     |
 | Inverse           | ~p $\rightarrow$ ~q   |
+
+- The above transformations, aside from the negation, may or may not be true if the original conditional is true
+
+## 3. Statements
 
 - A *statement* (proposition) is something that can be given a truth value
     - Compound if contains connectives (*and*, *or*, etc.)
@@ -176,16 +180,20 @@
 | Division into Cases   | &emsp;p $\lor$ q<br>&emsp;p $\rightarrow$ r<br>&emsp;q $\rightarrow$ r<br>$\therefore$ r  |                       |                                                           |
 | Contradiction         | &emsp;~p $\rightarrow$ **c**<br>$\therefore$ p                                            |                       |                                                           |
 
-- To show that some predicate $P(k)$ implies $P(k + 1)$ is part of *mathematical induction*
-    - Method of proof
+## 4. Quantified Statements
+
 - Negating a quantifier ($\exists$ or $\forall$) results in the quantifier being replaced with the other, and every statement and condition being negated
 - *:* follows existential quantifiers, and *,* for universal quantifiers
 - Statement is *implicitly quantified* if it is quantified but does not contain quantifying language
     - Lack of *for all*, *for some*, *there exists*, etc. 
 - **Rule of Universal Instantiation:** if something is true for everything in a set, it is true for any particular thing in that set
 
-<!-- TODO -->
-- Universal modus ponens
-Ax, P(x) -> Q(x)
-P(a)
-therefore Q(a)
+### Universal Rules of Inference
+| Name                      | Form                                                                                                                                          |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| modus ponens              | &emsp;$\forall$ x, P(x) $\rightarrow$ Q(x)<br>&emsp;P(a)<br>$\therefore$ Q(a)                                                                 |
+| modus tollens             | &emsp;$\forall$ x, p(x) $\rightarrow$ Q(x)<br>&emsp;~Q(a)<br>$\therefore$ ~P(a)                                                               |
+| transitivity              | &emsp;$\forall$ x, P(x) $\rightarrow$ Q(x)<br>&emsp;$\forall$ x, Q(x) $\rightarrow$ R(x)<br>$\therefore$ $\forall$ x, P(x) $\rightarrow$ R(x) |
+| mathematical induction    | &emsp;P(1)<br>&emsp;$\forall$ k $\in Z^+$ , P(k) $\rightarrow$ P(k + 1)<br>$\therefore$ $\forall$ n $\in Z^+$ , P(n)                          |
+
+- Mathematical induction *will not* be on Exam 1
