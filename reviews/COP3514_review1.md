@@ -127,9 +127,37 @@ int true_value = 1;             // Any non-zero value is considered "true"
 int false_value = 0;            // 0 is always considered "false"
 int cond = cond();              // Some random conditional value
 if (cond) fun1();               // `if` statements execute a procedure if some condition is true
-if (cond) fun1() else fun2();   //  `else` can be appended to `if` statements, executing the alternative if the condition is false
+if (cond) fun1() else fun2();   // `else` can be appended to `if` statements, executing the alternative if the condition is false
 if (cond) {                     // `if` and `else` can execute compound statements
     print_msg(":CAUGHT:");
+}
+char a = 'a';
+char z = 'z';
+char chr = pick_one(a, z);
+switch (chr) {                  // `switch` statement 
+                                // A glorified `if-else` chain
+    case 'a':                   // If `chr` is 'a', control flow will move to here
+        print_msg("a");         // All statements hereafter in the `switch` statement will be executed
+        break;                  // `break` to ensure next `case` labels are not also executed
+    case 'z':
+        print_msg("z");
+        break;
+    default:                    // Control flow moved to this label if variable disagrees with all other `case` values
+        print_msg(":CAUGHT:");
+        break;
+}
+switch (chr) {
+    case 'a':                   // If `break` is not last statement before the next `case` label, executes next label
+                                // Fall-through to the next label
+    case 'z':                   // If `chr` is 'a', this label will also be executed
+        print_msg(":skull:");
+        print_msg(":CAUGHT:");
+                                // `break` is not required (but is encouraged) for last label
+}
+switch (chr) {
+    default:                    // Default label is always executed if comes before another label, and `break` is not specified beforehand
+        break;
+    case 'a':                   // Control flow will never be here
 }
 ```
 
