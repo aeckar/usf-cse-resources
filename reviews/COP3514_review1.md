@@ -176,7 +176,7 @@ while (cond) {              // `while`, `do-while`, and `for` loops can execute 
     print_msg(":CAUGHT:");  // Control flow: Check condition: if false, exit loop; else, execute statement then check condition: if false...
 }
 do fun1() while (cond);     // `do-while` executes the statement first, then checks the condition
-for (int i = 0; )
+for (int i = 0; )           // `for` loop 
 for (;;)                    // By omitting all configuration, an infinite loop is created
 ```
 
@@ -212,23 +212,22 @@ printf("%d", n);    // Prints "8"
 
 ### *Primitive Types*
 ```c
-                // Description      | Minimum Size (Bits)
-                // -----------------+---------------------
-char c;         // ASCII character  | 8
-short s;        // small integer    | 16
-int i;          // integer          | 16
-long l;         // large integer    | 32
-long long ll;   // huge integer     | 64
-float f;        //
-double d;       //
-long double ld; //
+                    // Description      | Minimum Size in Memory (Bits)
+                    // -----------------+-------------------------------
+bool b              // truth value      | 8                              --> requires #include <stdbool.h>
+char c;             // ASCII character  | 8
+short s;            // small integer    | 16
+int i;              // integer          | 16
+long l;             // large integer    | 32
+long long ll;       // huge integer     | 64
+float f;            // small decimal    | n/a, typically 32
+double d;           // decimal          | no smaller than `float`, typically 64
+long double ld;     // large decimal    | no smaller than `double`
+void * p;           // untyped pointer  | n/a, architecture-specific
 
-unsigned
-signed
-
-
-
-void *          //
+unsigned int ui;    // `unsigned` modifier denotes that the integer is non-negative. Increases maximum value
+signed int si;      // `signed` modifier Should never be used, as all integers are signed by default
+```
 
 ### Input and Output (I/O)
 ```c
