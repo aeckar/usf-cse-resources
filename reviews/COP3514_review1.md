@@ -48,9 +48,9 @@ clear                # Clear the screen of all previous commands
 mv <file>            # Rename a file--pass some directory afterward to move it there
 ```
 
-## 1. Introduction to C
+## 1. Overview of C
 
-- *C* is a high-level programming language
+- *C* is a procedural, high-level programming language
     - Created 1972 by Dennis Ritchie to replace B
 - Compiles directly to assembly
     - Thereafter compiled to binary
@@ -71,6 +71,100 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
     - Later became an ANSI and ISO standard
 - For each revision of the ISO standard, C*xx*, improvements are added
 
+## 2. C Syntax
+
+### Variables
+```c
+getchar();          // All statements must be followed by a semicolon
+int n = 1;          // Variable declarations follow the form `<type> <name> <initializer?>`
+int k;              // Variables not given an initial value are given a "garbage" value
+                    // Access to garbage values is undefined and may throw an error
+k = 0;              // To avoid accessing garbage values, initialize all variables at their declaration or be extra careful
+const int i = 5;    // Variables can be made `const` so their values do not change
+```
+
+### Scopes
+```c
+{                   // Compound statements define a section of code containing multiple statements
+                    // Variables defined in its scope are "local" and can only be accessed from within it    
+    int n = 1;
+}                   // End of compound statement
+printf("%d", n);    // Compilation error: symbol "n" not found
+```
+
+### Functions
+```c
+int add(int, int);              // Function header/prototype defines name, return type, and parameters of a function
+                                // Parameter names are optional for headers/prototypes only
+                                // Unlike definitions, is a statement and therefore requires a semicolon
+                                // Headers/prototypes are required when function is used before its definition
+
+int add(int x, int y) {         // This is a function definition
+                                // Functions are named, reusable blocks of code
+                                // Follow the form `<return type> <name> ( <parameters?> ) { <statements?> }`
+                                // If no header/prototype exists, declares function at the same time
+    return x + y;               // Returns result to original call site
+}
+
+void print_msg(char *msg) {     // Empty parentheses implies there are no parameters
+                                // The type `void` denotes that the function does not return a value
+                                // Can be made explicit by use of `void print_hello(void)`
+    printf(msg);
+}                               // Functions returning nothing do not need an explicit return statement
+                                // However, if an early return is needed, do so like `return;`
+
+int main() {                    // This specific function is always first function called in any program
+    printf("%d", add(2, 3));    // Prints "5"
+    print_msg("Hello, world!"); // Values passed to a function at the call site are called "arguments" instead of parameters
+    return 0;                   // Return value of 0 implies success, non-zero return implies error
+                                // Once the main function returns, the program terminates
+}
+```
+
+### Conditional/Selection Statements
+```c
+int true_value = 1;             // Any non-zero value is considered "true"
+int false_value = 0;            // 0 is always considered "false"
+int cond = cond();              // Some random conditional value
+if (cond) fun1();               // `if` statements execute a procedure if some condition is true
+if (cond) fun1() else fun2();   //  `else` can be appended to `if` statements, executing the alternative if the condition is false
+if (cond) {                     // `if` and `else` can execute compound statements
+    print_msg(":CAUGHT:");
+}
+```
+
+### Loops
+```c
+while(cond) fun1();         // While the condition is true, the statement is executed
+                            // If the condition is true forever, the loop will repeat forever
+                            // If the condition is never true, the statement will never be executed
+while (cond) {              // `while`, `do-while`, and `for` loops can execute compound statements
+    print_msg(":CAUGHT:");  // Control flow: Check condition: if false, exit loop; else, execute statement then check condition: if false...
+}
+do fun1() while (cond);     // `do-while`
+for (int i = 0)
+```
+
+### Header Files
+```c
+
+
+```
+
+### Arrays
+```c
+
+```
+
+### Pointers
+```c
+int n = 5;
+int * n_addr = &n   // A "pointer" is a address of some value in memory
+                    // To get the memory address of a variable, use the ampersand operator
+*n_addr = 8;        // Indirection operator (*) allows changing of value at the specified address
+printf("%d", n);    // Prints "8"
+```
+
 ## 1a. *The C Preprocessor*
 
 - Scans code for preprocessor directives <u>before</u> compilation
@@ -80,40 +174,8 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
     - Typically reserved for constants
     - Complex operations should be enclosed in parentheses to avoid operator precedence issues
 
-## 1b. *Header Files*
 
-- Prd
-
-## 2. Program Structure
-
-- Pro
-
-## 2a. *Low-Level Program Structure*
-
-- Pro
-
-## 3. Variables
-
-- Pro
-
-## 3a. *Primitive Types*
-
-- Pro
-
-Operators
-
-
-## 3b. *The `bool` Type*
-
-- Not a keyword, unlike other primitives
-- Defined in the header file `stdbool.h`, it is a macro standing for the actual keyword `_Bool`
-    - This is done to preserve compatibility with code created before booleans were added
-- Prefer over using the integers `1` and `0`
-- Any non-zero value is equal to `true`, while only zero is equal to `false`
-- Casting a boolean back to a numeric type will only give `1` or `0`
-
-Operators
-+
+### *Primitive Types*
 
 ## 4. Control flow
 
@@ -154,19 +216,3 @@ while ( <condition? | true> ) {
     <iterate?> ;
 };
 ```
-
-## 5. Functions
-
-- Pro
-
-## 6. Arrays
-
-- Pro
-
-## 6a. *Arrays as Pointers*
-
-- Pro
-
-## 7. Pointers
-
-- Pro
