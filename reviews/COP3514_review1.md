@@ -77,13 +77,15 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
 ```c
 getchar();          // All statements must be followed by a semicolon
 int n = 1;          // Variable declarations follow the form `<type> <name> <initializer?>`
+                    // C is strongly-typed, so every variable must be assigned a type
 int k;              // Variables not given an initial value are given a "garbage" value
                     // Access to garbage values is undefined and may throw an error
 k = 0;              // To avoid accessing garbage values, initialize all variables at their declaration or be extra careful
 const int i = 5;    // Variables can be made `const` so their values do not change
+int my_int = 9;     // Variables follow snake_case by convention
 ```
 
-### Scopes
+### Compound Statements
 ```c
 {                   // Compound statements define a section of code containing multiple statements
                     // Variables defined in its scope are "local" and can only be accessed from within it    
@@ -94,6 +96,8 @@ printf("%d", n);    // Compilation error: symbol "n" not found
 
 ### Functions
 ```c
+int n = 5;                      // Variables defined outside of a function are "global" and can be accessed from any function
+                                // Are discouraged. For constants, use macros instead
 int add(int, int);              // Function header/prototype defines name, return type, and parameters of a function
                                 // Parameter names are optional for headers/prototypes only
                                 // Unlike definitions, is a statement and therefore requires a semicolon
@@ -107,6 +111,7 @@ int add(int x, int y) {         // This is a function definition
 }
 
 void print_msg(char *msg) {     // Empty parentheses implies there are no parameters
+                                // Functions follow snake_case by convention
                                 // The type `void` denotes that the function does not return a value
                                 // Can be made explicit by use of `void print_hello(void)`
     printf(msg);
@@ -163,25 +168,30 @@ switch (chr) {
 
 ### Loops
 ```c
-while(cond) fun1();         // While the condition is true, the statement is executed
+while (cond) fun1();        // While the condition is true, the statement is executed
                             // If the condition is true forever, the loop will repeat forever
                             // If the condition is never true, the statement will never be executed
+while (cond);               // `while` and `for`, but not `do-while` loops do not require a statement
 while (cond) {              // `while`, `do-while`, and `for` loops can execute compound statements
     print_msg(":CAUGHT:");  // Control flow: Check condition: if false, exit loop; else, execute statement then check condition: if false...
 }
-do fun1() while (cond);     // `do-while`
-for (int i = 0)
+do fun1() while (cond);     // `do-while` executes the statement first, then checks the condition
+for (int i = 0; )
+for (;;)                    // By omitting all configuration, an infinite loop is created
 ```
 
-### Header Files
+### Preprocessor Directives
 ```c
-
-
+#include <stdio.h>  // Inserts entire header (.h) file at this location
+                    // Header files provide function and `struct` declarations for those defined in other, linked binaries (see `ld`)
+#define PI 3.14     // Macros define tokens which are replaced with their definition (in this case, 3.14) at every point they are used
+                    // Follow SCREAMING_SNAKE_CASE by convention
 ```
 
 ### Arrays
 ```c
-
+int n_arr[];        // Declares `n_arr` to be an array of integers
+                    // Anarra
 ```
 
 ### Pointers
@@ -193,8 +203,6 @@ int * n_addr = &n   // A "pointer" is a address of some value in memory
 printf("%d", n);    // Prints "8"
 ```
 
-## 1a. *The C Preprocessor*
-
 - Scans code for preprocessor directives <u>before</u> compilation
 - `#include <filename>` inserts the entirety of a file at this line 
 - `#define <id> <definition>` defines an identifier whose definition is inserted <u>as-is</u> at every location it is used
@@ -202,45 +210,27 @@ printf("%d", n);    // Prints "8"
     - Typically reserved for constants
     - Complex operations should be enclosed in parentheses to avoid operator precedence issues
 
-
 ### *Primitive Types*
-
-## 4. Control flow
-
-- Use `if`-statements to perform a procedure if a conditon is true
-    - Condition implicitly converted to `bool`
-    - Action may be a *nested scope* (enclosed in curly brackets)
-
 ```c
-if ( <condition> ) <action> ;
-```
+                // Description      | Minimum Size (Bits)
+                // -----------------+---------------------
+char c;         // ASCII character  | 8
+short s;        // small integer    | 16
+int i;          // integer          | 16
+long l;         // large integer    | 32
+long long ll;   // huge integer     | 64
+float f;        //
+double d;       //
+long double ld; //
 
-- `else` can be appended to `if`-statements to perform some other procedure given that the previous condition is false
-    - Procedures may be other `if`-statements
+unsigned
+signed
+
+
+
+void *          //
+
+### Input and Output (I/O)
 ```c
-if <...> else <alternative> ;
-if <...> else if <...> else if <...> ; // if-else chain
-```
 
-- `while`-loops repeat some procedure for how many times some condition is true
-- `do-while`-loops are the same, but always perform the procedure at least once
-  - Condition is checked at end of procedure instead of beginning 
-
-```c
-while ( <condition> ) <action> ;
-do <action> while ( <condition> );
-```
-
-- `for`-loops extend on `while`-loops by adding
-    - Condition, init, and iterate are all
-    - If condition is not given, defaults to `true`
-
-```c
-for ( <init?> ; <condition?> ; <iterate?>) <action> ;
-
-<init?>                            // Equal to
-while ( <condition? | true> ) {
-    <action> ;
-    <iterate?> ;
-};
 ```
