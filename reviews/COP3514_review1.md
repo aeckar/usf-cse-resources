@@ -73,6 +73,26 @@ mv <file>            # Rename a file--pass some directory afterward to move it t
 
 ## 2. C Syntax
 
+### *Primitive Types*
+```c
+                    //  Description     | Minimum Size in Memory (Bits)
+                    // -----------------+-------------------------------
+bool b;             //  truth value     | 8                             --> requires #include <stdbool.h>
+char c;             //  ASCII character | 8
+short s;            //  small integer   | 16
+int i;              //  integer         | 16
+long l;             //  large integer   | 32
+long long ll;       //  huge integer    | 64
+float f;            //  small decimal   | n/a, typically 32
+double d;           //  decimal         | no smaller than `float`, typically 64
+long double ld;     //  large decimal   | no smaller than `double`
+void * p;           //  untyped pointer | n/a, architecture-specific
+
+unsigned int ui;    // `unsigned` modifier denotes that the integer is non-negative. Increases maximum value
+signed int si;      // `signed` modifier Should never be used, as all integers are signed by default
+bool cond = true;   // Boolean values
+```
+
 ### Variables
 ```c
 getchar();          // All statements must be followed by a semicolon
@@ -83,6 +103,15 @@ int k;              // Variables not given an initial value are given a "garbage
 k = 0;              // To avoid accessing garbage values, initialize all variables at their declaration or be extra careful
 const int i = 5;    // Variables can be made `const` so their values do not change
 int my_int = 9;     // Variables follow snake_case by convention
+```
+
+### Preprocessor Directives
+```c
+#include <stdio.h>  // Inserts entire header (.h) file at this location
+                    // Header files provide function and `struct` declarations for those defined in other, linked binaries (see `ld`)
+#define PI 3.14     // Macros define tokens which are replaced with their definition (in this case, 3.14) at every point they are used
+                    // Follow SCREAMING_SNAKE_CASE by convention
+                    // All preprocessor directives evaluated BEFORE compilation
 ```
 
 ### Compound Statements
@@ -180,18 +209,32 @@ for (int i = 0; )           // `for` loop
 for (;;)                    // By omitting all configuration, an infinite loop is created
 ```
 
-### Preprocessor Directives
-```c
-#include <stdio.h>  // Inserts entire header (.h) file at this location
-                    // Header files provide function and `struct` declarations for those defined in other, linked binaries (see `ld`)
-#define PI 3.14     // Macros define tokens which are replaced with their definition (in this case, 3.14) at every point they are used
-                    // Follow SCREAMING_SNAKE_CASE by convention
-```
+### Input and Output (I/O)
+```c 
+/*
+ For full list, see https://en.wikipedia.org/wiki/Printf#Format_specifier
 
-### Arrays
-```c
-int n_arr[];        // Declares `n_arr` to be an array of integers
-                    // Anarra
+  Type                  | Format Specifier(s)
+ -----------------------+---------------------
+  percent literal       | %%
+  int                   | %d
+  int (hexadecimal)     | %x, %X
+  int (octal)           | %o
+  unsigned int          | %u
+  double                | %f, %F
+  double (scientific)   | %e, %E
+  char * (string)       | %s
+*/
+
+#include <stdio.h>              // `stdio.h` header provides I/O functions
+
+int n = 1;
+printf("%s: %d", "Value", n);   // `printf` and similar functions ending in "f" take a variable # of arguments
+                                // Parses values and prints them to the console
+                                // Prints "Value: 1"
+scanf("%d", &n);                // Parses input from the console and stores it in the address of `n`, changing its value
+getchar();                      // Retrieves single character input from the console
+                                // Characters are not actually retrieved until input is "flushed" (ENTER is pressed)
 ```
 
 ### Pointers
@@ -203,33 +246,8 @@ int * n_addr = &n   // A "pointer" is a address of some value in memory
 printf("%d", n);    // Prints "8"
 ```
 
-- Scans code for preprocessor directives <u>before</u> compilation
-- `#include <filename>` inserts the entirety of a file at this line 
-- `#define <id> <definition>` defines an identifier whose definition is inserted <u>as-is</u> at every location it is used
-    - Macros, by convention, use *SCREAMING_SNAKE_CASE*
-    - Typically reserved for constants
-    - Complex operations should be enclosed in parentheses to avoid operator precedence issues
-
-### *Primitive Types*
+### Arrays
 ```c
-                    // Description      | Minimum Size in Memory (Bits)
-                    // -----------------+-------------------------------
-bool b              // truth value      | 8                              --> requires #include <stdbool.h>
-char c;             // ASCII character  | 8
-short s;            // small integer    | 16
-int i;              // integer          | 16
-long l;             // large integer    | 32
-long long ll;       // huge integer     | 64
-float f;            // small decimal    | n/a, typically 32
-double d;           // decimal          | no smaller than `float`, typically 64
-long double ld;     // large decimal    | no smaller than `double`
-void * p;           // untyped pointer  | n/a, architecture-specific
-
-unsigned int ui;    // `unsigned` modifier denotes that the integer is non-negative. Increases maximum value
-signed int si;      // `signed` modifier Should never be used, as all integers are signed by default
-```
-
-### Input and Output (I/O)
-```c
-
+int n_arr[];        // Declares `n_arr` to be an array of integers
+                    // Anarra
 ```
