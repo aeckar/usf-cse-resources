@@ -1,8 +1,9 @@
+from os         import path
 from click      import *
 from subprocess import run
 from subprocess import CalledProcessError
 
-SCRIPT_NAME = "publish"
+SCRIPT_NAME = path.splitext(path.basename(__file__))[0]
 TASK = "Publish to GitHub"
 REMOTE_URL = "https://github.com/aeckar/usf-cse-resources"
 
