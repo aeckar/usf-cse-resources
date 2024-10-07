@@ -195,6 +195,14 @@ switch (chr) {
 }
 ```
 
+### Operators
+```c
+
+// Operator | Precedence  | Associativity
+// ---------+-------------+----------------
+```
+
+
 ### Loops
 ```c
 while (cond) fun1();        // While the condition is true, the statement is executed
@@ -202,11 +210,15 @@ while (cond) fun1();        // While the condition is true, the statement is exe
                             // If the condition is never true, the statement will never be executed
 while (cond);               // `while` and `for`, but not `do-while` loops do not require a statement
 while (cond) {              // `while`, `do-while`, and `for` loops can execute compound statements
-    print_msg(":CAUGHT:");  // Control flow: Check condition: if false, exit loop; else, execute statement then check condition: if false...
+    print_msg(":CAUGHT:");  // Control flow: check condition: if false, exit loop; else, execute statement then check condition: if false...
 }
 do fun1() while (cond);     // `do-while` executes the statement first, then checks the condition
-for (int i = 0; )           // `for` loop 
-for (;;)                    // By omitting all configuration, an infinite loop is created
+int iterations = 16;
+for (int i = 0; i < iterations; i++) fun1();    // `for` loop configuration in the form `<setup?> ; <condition?> ; <iterator?>`
+                                                // Each part of configuration is optional
+                                                // Control flow: Execute setup, check condition: if false, exit loop;
+                                                //     else, execute statement, then execute iterator, then check condition: if false...
+for (;;)                                        // By omitting all configuration, an infinite loop is created
 ```
 
 ### Input and Output (I/O)

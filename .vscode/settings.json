@@ -40,6 +40,7 @@
         "Ritchie",
         "scanf",
         "sclogin",
+        "secho",
         "stdbool",
         "struct",
         "tebi",
@@ -48,5 +49,4 @@
         "USF's",
         "vimtutor"
     ]
-
 }
