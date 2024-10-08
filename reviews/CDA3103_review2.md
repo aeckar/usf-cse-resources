@@ -16,27 +16,16 @@
 | tera-     | T         | $10^{12}$     |
 | peta-     | P         | $10^{15}$     |
 
-## 1. Character Encodings
+## 1. Logic Gates
 
-<p style="text-align:center">
-    <img src="../images/CDA3103_ASCII_table.png" alt="ASCII Table" width=600>
-</p>
+- Boolean expressions can be represented as a diagram of *logic gates*
+    - Composed of transistors
 
-<p style="text-align:center">
-    <img src="../images/CDA3013_EDBDIC_table.png" alt="EDBDIC Table" width=600>
-</p>
 
-- Since BCD uses 4 bits and not the usual 8, the way BCD is typically stored as packed-BCD pack w/ 0s at the beginning
-
-- BCD
-- ASCII
-- EBCDIC
-    - 8 bit extended ver of bcd
-    - Zone/parity/chart
-- 
-
-## 2. Logic Gates
-// TODO
-
-- Basics of Logic gates
-- 
+### Common Logic Gates
+||||
+|-|-|
+| NOT |
+| AND |||
+| OR |
+| 

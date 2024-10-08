@@ -232,7 +232,40 @@
 >```
 >$11011011_2 = -(00100100_2) = -36_{10} \checkmark$
 
-## 5. Boolean Algebra
+## 5. Character Encodings
+
+- Memorization of encoding tables is unnecessary for exam
+- *Binary-coded decimal* (BCD) encodes characters using 4 bits
+    - Encodes digits 0-9 in their decimal form
+- Special BCD "zones" represent signedness
+    - **Unsigned:** `1111`
+    - **Positive:** `1100`
+    - **Negative:** `1101`
+
+>**Example:** Numbers larger than 9 are comprised of multiple BCD digits.
+>
+> $-13 = (1101\ 0001\ 0011)_{BCD}$
+
+- *EBCDIC* extends BCD by encoding characters using 8 bits
+    - First widely-used encoding to support letter case
+
+<p style="text-align:center">
+    <img src="../images/CDA3103_EDBDIC_table.png" alt="EDBDIC Table" width=600>
+</p>
+
+- *ASCII* is an 7-bit character encoding
+    - Most computers store as 8-bits, or a *byte*
+    - First 127 Unicode characters
+- Last, *parity bit* used to check for errors
+    - If odd parity, number of `1`s must be odd, vice-versa
+<p style="text-align:center">
+    <img src="../images/CDA3103_ASCII_table.png" alt="ASCII Table" width=600>
+</p>
+
+- *Unicode* extends ASCII to 16 bits
+    - Encodes scripts used by all world languages
+
+## 6. Boolean Algebra
 
 - In computers, bits `1` and `0` are stand-ins for *true* and *false*, respectively
 - *Elementary operations* are product, sum, and complement
@@ -292,7 +325,7 @@
 >| 1 | 1 | 0 | 0 |
 >| 1 | 1 | 1 | 1 |
 
-## 6. Simplifying Boolean Expressions
+## 7. Simplifying Boolean Expressions
 
 - *Sum-of-Product* (SOP) is form $wx + yz$
     - A.k.a. *"1-dominant"*; if any term is `1`, the expression equals `1`
