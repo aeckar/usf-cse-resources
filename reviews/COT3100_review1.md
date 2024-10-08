@@ -22,7 +22,7 @@
 | $\exists$     | *there exists a*      |
 | *iff*         | *if, and only if*     |
 
-## 1. Set Theory
+## 1. Introduction to Set Theory
 
 - A *set* is some collection collection of elements
     - Can contain other sets

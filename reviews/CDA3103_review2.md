@@ -16,11 +16,10 @@
 | tera-     | T         | $10^{12}$     |
 | peta-     | P         | $10^{15}$     |
 
-## 1. Logic Gates
+## 1. Logic Gates and Multiplexers
 
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
-
 
 ### Common Logic Gates
 ||||
@@ -29,3 +28,13 @@
 | AND |||
 | OR |
 | 
+
+## 2. Combinational Circuits
+
+- Pro
+
+## 3. Sequential Circuits
+
+- Pro
+
+***UP-TO-DATE***
