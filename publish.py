@@ -29,7 +29,7 @@ def ensure_installed(name: str):
         print(f"Module '{name}' not found. Attempting pip install...")
         pip.main(['install', name])
 
-ensure_installed("click")
+ensure_installed('click')
 
 import click
 import os

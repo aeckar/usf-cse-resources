@@ -1,8 +1,10 @@
 # COT 3100 Discrete Structures - Exam 1 Review
 
-<ins>Textbook</ins>: *Discrete Mathematics with Applications (5th ed.)* by Susanna Epp
-
-<ins>Quizlet<Ins>: https://quizlet.com/952148098/cot-3100-statement-forms-laws-and-identities-flash-cards
+<p style="text-align:center">
+    <a href="../textbooks/COT3100_textbook.pdf">textbook</a> |
+    <a href="../flashcards/COT3100_flashcards1.csv">flashcards</a> |
+    <a href="https://quizlet.com/952148098/cot-3100-statement-forms-laws-and-identities-flash-cards">quizlet</a>
+</p>
 
 <!-- The following tEx escapes do not render in GFM: \R, \Z, \empty                         -->
 <!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
@@ -14,19 +16,24 @@
 | T             | *true*                |
 | F             | *false*               |
 | $\therefore$  | *therefore*           |
+| $\cup$        | *union*               |
+| $\cap$        | *intersect*           |
 | $\in$         | *in*                  |
 | $\supseteq$   | *is a superset of*    |
 | $\subseteq$   | *is a subset of*      |
-| \|, :         | *such that*           |
+| \|, :         | *such that**          |
 | $\forall$     | *for all*             |
 | $\exists$     | *there exists a*      |
-| *iff*         | *if, and only if*     |
+
+**:* typically comes after $\exists$, and *|* typically comes after $\forall$
 
 ## 1. Introduction to Set Theory
 
 - A *set* is some collection collection of elements
     - Can contain other sets
     - Typically denoted by a capital letter
+- A *union* of two sets includes all elements in either set
+- The *intersection* of two sets includes all elements in both sets
 
 >**Example:** Sets cannot be created from ambiguous conditions.
 >
@@ -48,13 +55,13 @@
 | R         | real numbers          | $\pi$, 16                                                 |
 | Z         | integers              | -3, 0, 24                                                 |
 | Q         | rational numbers      | 0.25, 9                                                   |
-| $^+, ^-$  | positives, negatives  | $R^+ $\equiv$ (0, \infty)$ is set of all positive real numbers   |
+| $^+, ^-$  | positives, negatives  | $R^+ \equiv (0, \infty)$ is set of all positive real numbers   |
 
 - $C \supseteq R \supseteq W \supseteq Z$
 - Sets denoted in either
     - **Roster notation:** $\{ e_1,e_2,e_3, \ldots , e_n \}$
     - **Set builder notation:** $\{ var \space type? | condition \}$
-        - **Ex:** $\{ x \in Z | x \lt 7 \} $\equiv$ \{ \ldots ,4,5,6 \}$
+        - **Ex:** $\{ x \in Z | x \lt 7 \} \equiv \{ \ldots ,4,5,6 \}$
 
 ## 2. Logical Operators
 
@@ -197,7 +204,7 @@
 | mathematical induction    | &emsp;P(1)<br>&emsp;$\forall$ k $\in Z^+$ , P(k) $\rightarrow$ P(k + 1)<br>$\therefore$ $\forall$ n $\in Z^+$ , P(n)                          |
 
 - Mathematical induction
-    - Proof of first premise is base case
-    - Proof of second premise is inductive step
-    - Antecedent P(k) is induction hypothesis 
+    - **Base case:** proof of first premise
+    - **Inductive premise:** proof of second premise
+    - **Induction hypothesis:** antecedent P(k) 
 - Mathematical induction *will not* be on Exam 1
