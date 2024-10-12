@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # MIT License
 #
 # Copyright (c) 2024 Angel Eckardt
@@ -20,16 +22,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import importlib
+
 def ensure_installed(name: str):
     """If the module with the given name is not installed, installs it using `pip install`."""
     try:
-        __import__(name)
+        importlib.import_module(name)
     except ImportError:
-        import pip
+        PIP = importlib.import_module('pip')
         print(f"Module '{name}' not found. Attempting pip install...")
-        pip.main(['install', name])
+        PIP.main(['install', name])
 
-ensure_installed("click")
+ensure_installed('click')
 
 import click
 import os

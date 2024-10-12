@@ -1,5 +1,7 @@
 # COT 3100 Discrete Structures - Final Exam Review
 
-<ins>Textbook</ins>: *Discrete Mathematics with Applications (5th ed.)* by Susanna Epp
+<p style="text-align:center">
+    <a href="../textbooks/COT3100_textbook.pdf">textbook</a>
+</p>
 
 ***UP-TO-DATE***

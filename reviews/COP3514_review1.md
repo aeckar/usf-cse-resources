@@ -1,6 +1,8 @@
 # COP 3514 Program Design - Exam 1 Review
 
-<ins>Textbook</ins>: *C Programming: A Modern Introduction (2nd ed.)* by K. N. King
+<p style="text-align:center">
+    <a href="../textbooks/COP3514_textbook.pdf">textbook</a>
+</p>
 
 ## Preliminary - Accessing the Student Cluster
 
@@ -260,6 +262,27 @@ printf("%d", n);    // Prints "8"
 
 ### Arrays
 ```c
-int n_arr[];        // Declares `n_arr` to be an array of integers
-                    // Anarra
+int arr[];              // Declares `n_arr` to be an array of integers
+arr[0];                 // Arrays start at index 0
+                        // They are pointers to the first element
+                        // Accessing any element without providing a capacity on declaration, or
+                        //     providing an initializer list, or
+                        //     allocating the array dynamically is undefined
+                        // Arrays contain no size information or bounds-checking
+int arr[10];            // Declares an array capable of holding 10 integers
+int arr[] = {1,2,3};    // Declares an array capable of holding 3 integers
+                        // Each element initialized according to the initializer list
+char *s = ":CAUGHT:";   // Strings are arrays of characters
+                        // Modification of string literal arrays is undefined
+char s[] = {            // These elements can be modified
+    ':','C','A','U',
+    'G','H','T',':'
+};
+int *element0;
+{
+    int scoped_arr[10];
+    element0 = scoped_arr;
+}
+*element0;              // Runtime error: arrays not dynamically allocated cannot
+                        // be accessed once their original scope has terminated
 ```
