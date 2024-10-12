@@ -27,8 +27,10 @@
 | $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
 
 ### Common Identities
-| Name  | Identity  |
-|-------|-----------|
-|       |           |
+| Name                          | Identity  |
+|-------------------------------|-----------|
+| Definition of union           |           |
+| Definition of intersection    |           |
+| Definition of exclusion       |           |
 
 ***UP-TO-DATE***
