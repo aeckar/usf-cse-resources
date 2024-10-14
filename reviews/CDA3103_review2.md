@@ -2,6 +2,8 @@
 
 <ins>Textbook</ins>: *Essentials of Computer Organization and Architecture (6th ed.)* by Linda Null & Julia Lobur
 
+<ins>Quizlet<Ins>: https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards/
+
 ### SI Unit Prefixes 
 | Prefix    | Symbol    | Value         |
 |-----------|-----------|---------------|

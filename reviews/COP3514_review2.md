@@ -10,7 +10,19 @@
 - `g++` is a popular C++ compilers
 
 ## 2. C++ Syntax
+### Basic Syntax
 ```cpp
+
+```
+
+## 3. Low-Level Program Structure in C
+### File Input & Output (I/O)
+```c
+
+```
+
+## 4. File Handling in C
+```c
 
 ```
 
