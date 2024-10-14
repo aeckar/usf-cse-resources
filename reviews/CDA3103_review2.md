@@ -1,6 +1,8 @@
 # CDA 3103 Computer Organization & Architecture - Exam 2 Review
 
-<ins>Textbook</ins>: *Essentials of Computer Organization and Architecture (6th ed.)* by Linda Null & Julia Lobur
+<p style="text-align:center">
+    <a href="../textbooks/CDA3103_textbook.pdf">textbook</a>
+</p>
 
 <ins>Quizlet<Ins>: https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards/
 

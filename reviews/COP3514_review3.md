@@ -1,5 +1,7 @@
 # COP 3514 Program Design - Final Exam Review
 
-<ins>Textbook</ins>: *C Programming: A Modern Introduction (2nd ed.)* by K. N. King
+<p style="text-align:center">
+    <a href="../textbooks/COP3514_textbook.pdf">textbook</a>
+</p>
 
 ***UP-TO-DATE***
