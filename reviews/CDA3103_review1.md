@@ -1,7 +1,8 @@
 # CDA 3103 Computer Organization & Architecture - Exam 1 Review
 
 <p style="text-align:center">
-    <a href="../textbooks/CDA3103_textbook.pdf">textbook</a>
+    <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
+    <a href="https://quizlet.com/830254006/cda-3103-exam-1-flash-cards">quizlet</a>
 </p>
 
 ### SI Unit Prefixes

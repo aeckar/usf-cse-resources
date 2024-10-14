@@ -1,0 +1,52 @@
+Computer Architecture,concerns itself with instruction sets and formats, operation codes, data types, the number and types of registers, addressing modes, main memory access methods, and various I/O mechanisms.
+Computer Organization,encompasses all physical aspects of computer systems (circuit design, control signals, memory types.).
+Moore's Law,"The density of transistors in an integrated circuit will double every year."
+Rock's Law,"The cost of capital equipment to build semiconductors will double every four years."
+At the most basic level, a computer is a device consisting of three pieces:,processor, memory, I/O mechanism
+Processor,interprets and executes programs
+Memory,stores both data and programs
+Level 6: The User Level,- Program execution and user interface level.
+- The level with which we are most familiar.
+- Executable programs.
+Level 5: High-Level Language Level,- The level with which we interact when we write programs in languages such as C, Pascal, Lisp, and Java.
+Level 4: Assembly Language Level,- Acts upon assembly language produced from Level 5, as well as instructions programmed directly at this level.
+Level 3: System Software Level,- Controls executing processes on the system.
+- Protects system resources.
+- Assembly language instructions often pass through Level 3 without modification.
+Level 2: Machine Level,- Also known as the Instruction Set Architecture (ISA) Level.
+- Consists of instructions that are particular to the architecture of the machine.
+- Programs written in machine language need no compilers, interpreters, or assemblers.
+Level 1: Control Level,- A control unit decodes and executes instructions and moves data through the system.
+- Control units can be microprogrammed or hardwired.
+Level 0: Digital Logic Level,- This level is where we find digital circuits (the chips).
+- Digital circuits consist of gates and wires.
+- These components implement the mathematical logic of all other levels.
+The level of the computer hierarchy that is composed of gates and wires is the,Digital Logic Level
+The level of the computer hierarchy where an operating system functions is the,System Software Level
+The Von Neumann Model consists of,- a memory, containing instructions and data
+- a processing unit, for performing arithmetic and logical operations
+- a control unit, for interpreting instructions
+Von Neumann Bottleneck,describes the single processor-memory path
+A three way hardware system consists of,a central processing unit (CPU) with a control unit, an arithmetic logic unit (ALU), registers (small storage areas), a main memory system, and an I/O system
+We study computer ___________ to become familiar with how circuits and signals collaborate to create working computer systems.,organization
+The ________ is the agreed-upon interface between all the software that runs on the machine and the hardware that executes it. It allows you to talk to the machine.,Instruction Set Architecture (ISA)
+Clock speeds in today's microprocessors are measured in ________ .,GHz
+The computer component that makes sure that instructions are decoded and executed properly is the ___________.,control unit
+The task done by any software program can also be done by hardware, and tasks done by hardware can also be done in software, although slower.,true
+Von Neumann computers execute instructions sequentially.,true
+1010 is a legal decimal, binary, octal, or hexadecimal number.,true
+Every hexadecimal number corresponds to an unique binary number.,true
+Boolean simplification allows to produce a smaller or faster digital circuit.,true
+The range of decimal values that can be expressed in n bits using binary two's
+ complement is - 2^n to 2^(n-1) -1,false
+Signed-magnitude and two's complement both have two representations for zero.,false
+Overflow is indicated when the carry in to the high-order bit is not equal to the carry
+out.,true
+Kilobyte,2^10
+Megabyte,2^20
+Gigabyte,2^30
+Terabyte,2^40
+Millisecond,2^-10
+Microsecond,2^-20
+Nanosecond,2^-30
+Picosecond,2^-40

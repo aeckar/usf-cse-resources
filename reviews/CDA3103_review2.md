@@ -1,10 +1,9 @@
 # CDA 3103 Computer Organization & Architecture - Exam 2 Review
 
 <p style="text-align:center">
-    <a href="../textbooks/CDA3103_textbook.pdf">textbook</a>
+    <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
+    <a href="https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards">quizlet</a>
 </p>
-
-<ins>Quizlet<Ins>: https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards/
 
 ### SI Unit Prefixes 
 | Prefix    | Symbol    | Value         |

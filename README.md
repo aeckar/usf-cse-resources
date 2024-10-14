@@ -24,6 +24,7 @@ in the Computer Science and Computer Engineering programs.
 
 ### Contributors
 
-- Angel Eckardt: Repository Owner and Primary Editor
-- riryiskool: Information and tables for CDA 3103 review 1, section 2
+- Angel Eckardt: Repository owner and primary author/editor
+- riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
+- Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
