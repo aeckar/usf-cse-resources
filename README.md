@@ -10,7 +10,7 @@ in the Computer Science and Computer Engineering programs.
 ### Contribution Guidelines
 
 1. No uploading of prohibited content
-    - Copyrighted works
+    - Copyrighted works outside of fair use
     - Complete lecture presentations
     - Recordings or photographs
 2. Uploaded files must follow extension conventions
