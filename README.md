@@ -20,6 +20,7 @@ in the Computer Science and Computer Engineering programs.
 3. Uploaded files must follow naming conventions
     - For review sheets, `{subject}{course #}_review{n}`
     - For textbooks, `{subject}{course #}_textbook`
+    - For flashcards, `{subject}{course #}_flashcards{n}`
     - All files must be in *snake_case*
 
 ### Contributors
