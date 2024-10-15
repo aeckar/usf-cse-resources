@@ -29,3 +29,11 @@ in the Computer Science and Computer Engineering programs.
 - riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
+
+### Rendering Flashcards from CSV Format
+
+The flashcards contained in this repository are in *comma-delimited values* (`.csv`) format
+for portability. To view them correctly, follow the tutorial for your flashcards app:
+
+- **Quizlet:** https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content
+- **Anki:** https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file
