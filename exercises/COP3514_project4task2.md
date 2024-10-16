@@ -18,6 +18,7 @@ The program should assume the following:
 
 - Every number in the board is unique
 - A board can contain no more than 1000 numbers
+- If both ends are the same number, choose the tail (last) element
 
 The program should roughly follow these procedures:
 
