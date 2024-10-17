@@ -29,6 +29,7 @@ in the Computer Science and Computer Engineering programs.
 - riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
+- Agus Niccolini: Fixed typo in COP 3514 project 4, task 1
 
 ### Rendering Flashcards from CSV Format
 
