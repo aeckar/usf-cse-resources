@@ -1,4 +1,4 @@
-# COP 3514 - Project 4, Task 2
+# COP 3514 - Project 4, Task 1
 
 *Original by Jing Wang of the University of South Florida*
 
