@@ -2,7 +2,7 @@
 
 *Original by Jing Wang of the University of South Florida*
 
-### Directions
+### Plain-English Directions
 
 The purpose of this program is to determine who wins each round of a game. The players are Marjorie and John,
 with Marjorie always playing on the first round of the game.
