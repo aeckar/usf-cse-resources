@@ -297,14 +297,13 @@
 | DeMorgan's Law        | (xy)' = x' + y'           | (x + y)' = x'y'           |
 | Double Complement Law | x'' = x                   | <small>*same*</small>     |
 
-### Other Boolean Properties
-| Name              | Property                  |
-|-------------------|---------------------------|
-| Mutual Exclusion  | x + x'y = x + y           |
-| Consensus Theorem | xy + y'z + xz = xy + y'z  |
-| Definition of XOR | x $\oplus$ y = x'y + xy'  |
+### Derived Boolean Identities
+| Name              | Form                      | Property          |
+|-------------------|---------------------------|-------------------|
+| Mutual Exclusion  | x + x'y = x + y           | Absorption Law    |
+| Consensus Theorem | xy + y'z + xz = xy + y'z  | Absorption Law    |
+| Definition of XOR | x $\oplus$ y = x'y + xy'  |                   |
 
-- The above properties are not taught as laws and therefore should not be used to justify operations on the exam
 - When applying DeMorgan's Law, ensure that order of operations is preserved
 - "Mutual exclusion" is another form of the Absorption Law
 - The Consensus Theorem can be proven using the other laws

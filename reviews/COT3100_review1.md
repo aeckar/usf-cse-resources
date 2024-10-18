@@ -93,6 +93,12 @@
 | DeMorgan's Law        | ~(x $\land$ y) $\equiv$ ~x $\lor$ ~y                              | ~(x $\lor$ y) $\equiv$ ~x $\land$ ~y                               |
 | Double Negative Law   | ~(~x) $\equiv$ x                                                  | <small>*same*</small>                                              |
 
+### Derived Logical Identities
+| Name              | Form                                                                                              | Property      |
+|-------------------|---------------------------------------------------------------------------------------------------|---------------|
+| Mutual Exclusion  | x $\lor$ ~x $\land$ y = x $\lor$ y                                                                | Absorption    |
+| Consensus Theorem | (x $\land$ y) $\lor$ (~y $\land$ z) $\lor$ (x $\land$ z) = (x $\land$ y) $\lor$ (~y $\land$ z)    | Absorption    |
+
 - A "neither-nor" relationship implies *~p $\land$ ~q*
 - Conditionals represent an "if-then" relationship
     - The hypothesis has no bearing on whether the conclusion is true or not

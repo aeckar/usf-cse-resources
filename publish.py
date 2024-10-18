@@ -46,7 +46,7 @@ REMOTE_URL = "https://github.com/aeckar/usf-cse-resources"
 @click.command()
 @click.argument('message', required = False)
 def publish(message):
-    """Adds all changes, commits them with the given message, and pushes them to main."""
+    """Adds all changes, commits them with the given message, and pushes them to main alongside incoming changes."""
     try:
         subprocess.run(['git', 'add', '.'])
         while not message:
@@ -54,6 +54,7 @@ def publish(message):
             if not message.strip():
                 click.secho(f"Commit message cannot be empty.", fg = 'red')
                 message = None
+        subprocess.run(['git', 'pull'])
         subprocess.run(['git', 'commit', '--message', f"[{SCRIPT_NAME}] {message}"])
         subprocess.run(['git', 'push', '-u', 'origin', 'main'], capture_output = True, text = True)
         click.secho(f"{TASK} succeeded: {REMOTE_URL}", fg = 'green')
