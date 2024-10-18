@@ -379,11 +379,11 @@
 
 - SOP's can be represented by their minterms
     - Represented as elements in $\sum{m}(...)$
-    - Every row in truth table where *F* is `1`, as a product; for each variable, if it is `1`, complement it
+    - Every row in truth table where *F* is `1`, as a product; for each variable, if it is `0`, complement it
     - Each term added to each other
 - POS's can be represented by their maxterms
     - Represented as elements in $\prod{M}(...)$
-    - Every row in truth table where *F* is `0`, as a sum; for each variable, if it is `0`, complement it
+    - Every row in truth table where *F* is `0`, as a sum; for each variable, if it is `1`, complement it
     - Every term multiplied to each other
 - Elements of formal representations of the above represented as decimal integers
     - Converted from binary to base-10
