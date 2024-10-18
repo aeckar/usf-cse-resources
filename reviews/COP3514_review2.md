@@ -10,6 +10,7 @@
     - Created by Bjarne Stroustrup in 1985
     - Adds object-oriented programming
 - `g++` is a popular C++ compilers
+- Due to Hurricane Milton, C++ *will not* be on any exam for Fall 2024
 
 ## 2. C++ Syntax
 ### Basic Syntax

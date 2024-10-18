@@ -1,7 +1,8 @@
 # COT 3100 Discrete Structures - Exam 2 Review
 
 <p style="text-align:center">
-    <a href="../textbooks/COT3100_textbook.pdf">textbook</a>
+    <a href="../textbooks/COT3100_textbook.pdf">textbook</a> |
+    <a href="https://quizlet.com/957758773/cot-3100-set-laws-identities-flash-cards">quizlet</a>
 </p>
 
 ## 1. Set Logic

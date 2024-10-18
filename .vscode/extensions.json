@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "streetsidesoftware.code-spell-checker",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "tomoki1207.pdf",
+        "ShahilKumar.docxreader",
+        "mechatroner.rainbow-csv"
+    ]
+}
