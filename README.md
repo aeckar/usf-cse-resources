@@ -1,6 +1,12 @@
 A repository of exam review sheets and other resources compiled by students at the University of South Florida
 in the Computer Science and Computer Engineering programs.
 
+Additional resources:
+
+- [Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)
+- [Using CSV files with Anki](https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file)
+- [CDA 3103 Recitations, Spring 2024](https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94)
+
 ### How To Contribute
 
 1. [Fork this repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) using GitHub or the [`git`](https://git-scm.com/downloads/win) CLI tool
@@ -30,11 +36,3 @@ in the Computer Science and Computer Engineering programs.
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
 - Agus Niccolini: Fixed typo in COP 3514 project 4, task 1
-
-### Rendering Flashcards from CSV Format
-
-The flashcards contained in this repository are in *comma-delimited values* (`.csv`) format
-for portability. To view them correctly, follow the tutorial for your flashcards app:
-
-- **Quizlet:** https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content
-- **Anki:** https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file
