@@ -90,8 +90,8 @@
 | Clock frequency           | Number of cycles per second                       | Hertz  ($s^{-1}$) | Hz        | GHz               |
 | Clock speed               | Time taken to complete one cycle                  | second            | s         | ns                |
 | Instructions per cycle    | Average number of instructions executed per cycle |                   |           | 0.5-3             |
-| Time                      |                                                   | second            | s         | ms, $\mu$ s        |
-| Length                    |                                                   | meter             | m         | mm, $\mu$ m, nm    |
+| Time                      |                                                   | second            | s         | ms, $\mu$ s       |
+| Length                    |                                                   | meter             | m         | mm, $\mu$ m, nm   |
 
 - Processor speed typically measured using clock frequency
 - A *byte* is smallest addressable unit of memory
