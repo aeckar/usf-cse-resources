@@ -38,6 +38,48 @@
 
 ## 3. Sequential Circuits
 
-- Pro
+These are circuits that hold and use data (typically 1 bit) from their previous inputs to produce their next outputs.
+
+There are multiple types, but all of them are going to be either synchronous or asynchronous. 
+- **Synchronous circuits** respond to inputs only when the clock is in a rising state (going from 0 to 1). Most sequential circuits are synchronous.
+- **Asynchronous circuits** respond to inputs all the time (they don't have a clock).
+
+### Sequential Circuit Types
+
+#### **Set-Reset Latch**
+
+- Holds one bit of data. It is also the smallest circuit capable doing this.
+- Is asynchronous. It doesn't have a clock.
+- Can have an undefined state (its data is invalid).
+
+**Circuit:**  
+
+<img src="../images/CDA3103_sr_latch.png" alt="Set-Reset Latch" width="25%">  
+
+**Truth table:**
+| S (Set) | R (Reset) | Qt | Q(t+1) |
+|:-------:|:---------:|:-----------------:|:-------------------:|
+|   0     |     0     |         0         |          0          |
+|   0     |     0     |         1         |          1          |
+|   0     |     1     |         0         |          0          |
+|   0     |     1     |         1         |          0          |
+|   1     |     0     |         0         |          1          |
+|   1     |     0     |         1         |          1          |
+|   1     |     1     |         X         |        Invalid       |
+
+
+#### Set-Reset Flip-Flop
+
+#### D Flip-Flop
+
+#### JK Flip-Flop
+
+
+
+
+
+
+
+
 
 ***UP-TO-DATE***
