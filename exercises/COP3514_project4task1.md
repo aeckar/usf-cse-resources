@@ -7,7 +7,7 @@
 The purpose of this program is to determine who wins each round of a game. The players are Marjorie and John,
 with Marjorie always playing on the first round of the game.
 
-The game consists of a board of integers, which can be represented as an array.
+The game consists of a board of integers, which can be represented as an array of size **N**.
 For each round, one of the players picks the largest number at either end of the board.
 Once the board is empty, whoever's numbers produce the greatest sum wins.
 

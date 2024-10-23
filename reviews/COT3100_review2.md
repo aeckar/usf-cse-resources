@@ -33,5 +33,3 @@
 | Definition of union           |           |
 | Definition of intersection    |           |
 | Definition of exclusion       |           |
-
-***UP-TO-DATE***
