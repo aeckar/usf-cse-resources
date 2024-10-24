@@ -26,15 +26,21 @@
 
 ### Common Logic Gates
 ||||
-|-|-|
-| NOT |
-| AND |||
-| OR |
+|-------|---|
+| NOT   |   |
+| AND   |   ||
+| OR    |   |
 | 
 
 ## 2. Combinational Circuits
 
-- Pro
+- *Combinational circuits* comprised of:
+    - Basic boolean operations as logic gates
+    - Input(s)
+    - Output(s)
+- Output is function of input
+    - Same output given same input
+
 
 ## 3. Sequential Circuits
 

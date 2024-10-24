@@ -33,3 +33,18 @@
 | Definition of union           |           |
 | Definition of intersection    |           |
 | Definition of exclusion       |           |
+
+- The *Cartesian product* of two sets is the set of all combinations of elements from either set
+    - All elements as ordered pairs
+
+>**Example:** Perform the Cartesian product $\{1,2,3\} \times \{x,y,z\}$.
+>
+>```
+>   1     2     3
+> x (x,1) (x,2) (x,3)
+> y (y,1) (y,2) (y,3)
+> z (z,1) (z,2) (z,3)
+>```
+>
+> $= \{(x,1), (x,2), \dots, (z,3)\} \checkmark$
+

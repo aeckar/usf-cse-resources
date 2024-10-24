@@ -200,10 +200,42 @@ switch (chr) {
 ### Operators
 ```c
 
-// Operator | Precedence  | Associativity
-// ---------+-------------+----------------
-```
+//  Operator    | Precedence    | Associativity
+// -------------+---------------+-----------------
+//  ++ --       |               | 
+//  ()          |               | 
+//  []          |       1       |   Left-to-right
+//  .           |               | 
+//  ->          |               | 
+// -------------+---------------+-----------------
+//  ++ --       |               | 
+//  + -         |               | 
+//  ! ~         |               | 
+//  (type)      |       2       |   Right-to-left
+//  *           |               | 
+//  &           |               | 
+//  sizeof      |               | 
+// -------------+---------------+-----------------
+//  * / %       |       3       |
+// -------------
+//  + -
+//
+// << >>
+// < <=
+// > >=
+// == !=
 
+&&
+||
+
+=
++= -=
+*= /= %=
+<<= >>=
+
+,
+
+```
 
 ### Loops
 ```c
@@ -223,7 +255,7 @@ for (int i = 0; i < iterations; i++) fun1();    // `for` loop configuration in t
 for (;;)                                        // By omitting all configuration, an infinite loop is created
 ```
 
-### Input and Output (I/O)
+### Console Input and Output (I/O)
 ```c 
 /*
  For full list, see https://en.wikipedia.org/wiki/Printf#Format_specifier
@@ -263,13 +295,14 @@ printf("%d", n);    // Prints "8"
 ### Arrays
 ```c
 int arr[];              // Declares `n_arr` to be an array of integers
-arr[0];                 // Arrays start at index 0
+arr[0];                 // IMPORTANT: Arrays start at index 0
                         // They are pointers to the first element
                         // Accessing any element without providing a capacity on declaration, or
                         //     providing an initializer list, or
                         //     allocating the array dynamically is undefined
                         // Arrays contain no size information or bounds-checking
 int arr[10];            // Declares an array capable of holding 10 integers
+                        // IMPORTANT: At this point, array filled with garbage values
 int arr[] = {1,2,3};    // Declares an array capable of holding 3 integers
                         // Each element initialized according to the initializer list
 char *s = ":CAUGHT:";   // Strings are arrays of characters

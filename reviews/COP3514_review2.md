@@ -111,23 +111,92 @@ free(n);
 - Local variables may be stored in quick-access *registers* at the compiler's discretion
 
 ## 4. Advanced C Concepts
-### Iteration using pointers
+### Arrays 
 ```c
 int arr[] = {1,2,3};
 int arr_size = 3;
-for (int i = 0; i < arr_size; ++i) {    // Normally, to iterate through 
 
+arr = {4,5,6};  // Compilation error: Initializer list cannot be used outside of array declaration
+                // Compilation error: Array variable can never appear left of "=" operator
+for (int i = 0; i < arr_size; ++i) {    // Normally, to iterate through an array, you would use a counter variable
+    printf("%d", arr[i]);
+}
+int *cur = arr;             // IMPORTANT: Every array is a pointer to its first element
+                            // Another technique is to perform iteration using a pointer
+                            // Pointer starts by pointing to some point in the array
+                            // Iteration stops once it is pointing to some specific element in the array
+int tail = arr + (arr_size - 1);    // "Tail" element is last element
+                                    // Recall first element is at index 0
+while (cur < tail + 1) {    // Iterate over all elements, starting from first
+                            // A pointer to 1 past the last element in an array may be pointed to, but not dereferenced
+    printf("%d", *cur);     // Dereference value at current index
+    ++cur;                  // Don't forget to increment (decrement) pointer
+}
+char *str = "Meet my outside COT, I bet you won't";
+         // ['M', 'e', 'e', ..., 'n', '\'', 't', '\0']
+                            // All strings suffixed by null terminator character, '\0'
+char *scur = str;
+while (*scur != '\0') {     // Elegant string iteration
+    printf("%c", *scur);
+    ++scur;
 }
 ```
 
-### Constants
+### String Manipulation
+```c
+#include <string.h> // Contains utility functions related to strings
 
+// ...
+char *string1const1 = "What the sigma"; // If initialized as a pointer, will point to pre-allocated string literal
+                                        // Underlying array cannot be accessed, else will throw a runtime error
+char *string1const2 = "What the sigma";
+if (string1const1 == string1const2) {   // Because the array is shared, direct comparison is typically true
+    // Always run
+}
+char string1[] = "What the sigma";  // If initialized as an array, will allocate a new array on the stack
+char string2[] = "On skibidi";
+if (string1 == string1const1) {     // Comparison between string array and literals will always fail
+    // Unreachable
+}
+strcat
+strtok
+strlen
+strcpy
+strstr
+strcmp
+```
 
 ### Command-line arguments
+```bash
+./a.out "Hello, world"  # Program name, in this case "a.out", is always first argument
+```
 
+```c
+int main(int argc, char **argv) {   // Alternatively, char argv[][] or char *argv[]
+                                    // argc (argument count)
+                                    // argv (argument vector) contains arguments in array of strings
+                                    // ** type is pointer that points to another pointer, that points to a value
+                                    //     Here, it's a pointer to a pointer to the first element in the first array
+    // ...
+}
+```
 
 ### ASCII
 
+- ASCII is predecessor to Unicode
+    - ASCII encoding is first section of unicode
+- _ bits
+- 
+
+```c
+char lower = 'a';   // is actually value _
+printf("%d", (int)c);   // same value as _
+char upper = 'A';           // is same as value _
+printf("%d", lower > upper);    // false/true
+        // lowercase after uppercase
+```
 
 ### Pointer Arithmetic
-
+```c
+pointer arithmetic defined only within same array or struct
+```
