@@ -41,6 +41,7 @@
         "milli",
         "minterm",
         "minterms",
+        "NAND",
         "netid",
         "Neumann",
         "Niccolini",
@@ -67,6 +68,7 @@
         "tera",
         "tollens",
         "USF's",
-        "vimtutor"
+        "vimtutor",
+        "XNOR"
     ]
 }

@@ -25,14 +25,18 @@
     - Composed of transistors
 
 ### Common Logic Gates
-||||
-|-------|---|
-| NOT   |   |
-| AND   |   ||
-| OR    |   |
-| 
-
+| Name  | Symbol    | Requisite for Signal Output           | Boolean Equivalent        |
+|-------|-----------|---------------------------------------|---------------------------|
+| NOT   |           | Lack of signal input                  | x', $\bar{x}$             |
+| AND   |           | All input signals are present         | xy                        |
+| OR    |           | Any input signal is present           | x + y                     |
+| XOR   |           | Exactly one input signal is present   | x $\oplus$ y, (x'y + xy') |
+| NAND  |           | ||
+| NOR   |           | ||
+| XNOR  |           | ||
+<!-- ^ TODO make logic gates for NAND, NOR, XNOR to determine requisite for signal output -->
 ## 2. Combinational Circuits
+<!-- TODO MAYBE multi-input logic gate behavior -->
 
 - *Combinational circuits* comprised of:
     - Basic boolean operations as logic gates
@@ -41,9 +45,9 @@
 - Output is function of input
     - Same output given same input
 
-
 ## 3. Sequential Circuits
 
+<!-- TODO refactor -->
 These are circuits that hold and use data (typically 1 bit) from their previous inputs to produce their next outputs.
 
 There are multiple types, but all of them are going to be either synchronous or asynchronous. 
@@ -134,12 +138,17 @@ You will more commonly see this as a **block diagram**:
 
 *Click [Here](https://circuitverse.org/users/269149/projects/jk-flip-flop-5d11e97f-e706-45b7-9dd6-fba45eb3f167) for a working model of this circuit*
 
+Convert circuit to boolean expression by working backwards from last logic gate (give example with AST)
+
+
+Additional identities
 
 
 
+## 4. RISC-V Assembly
 
-
-
+- *RISC-V* is a free and open-source instruction set architecture (ISA)
+    - Specification defines
 
 
 

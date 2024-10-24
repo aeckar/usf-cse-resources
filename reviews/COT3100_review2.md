@@ -19,21 +19,6 @@
 >
 >$\{\{2\},\{1\},\{3,4,5\}\}$
 
-- By combining identities of sets, logical statements can be created
-
-| Common Identities     \\\\TODO move                                            |
-|-------------------------------------------------------------------|
-| $x \notin A \cup B \leftrightarrow x \notin A \land x \notin B$   |
-| $x \notin A \cap B \leftrightarrow x \notin A \lor x \notin B$    |
-| $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
-
-### Common Identities
-| Name                          | Identity  |
-|-------------------------------|-----------|
-| Definition of union           |           |
-| Definition of intersection    |           |
-| Definition of exclusion       |           |
-
 - The *Cartesian product* of two sets is the set of all combinations of elements from either set
     - All elements as ordered pairs
 
@@ -48,3 +33,23 @@
 >
 > $= \{(x,1), (x,2), \dots, (z,3)\} \checkmark$
 
+- Set subtraction in the form $A - B$
+    - "All elements in A that are not also an element in B"
+- By combining identities of sets, logical statements can be created
+
+| Common Identities     \\\\TODO move                                            |
+|-------------------------------------------------------------------|
+| $x \notin A \cup B \leftrightarrow x \notin A \land x \notin B$   |
+| $x \notin A \cap B \leftrightarrow x \notin A \lor x \notin B$    |
+| $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
+
+
+
+### Common Identities
+| Name                          | Identity  |
+|-------------------------------|-----------|
+| Definition of union           |           |
+| Definition of intersection    |           |
+| Definition of exclusion       |           |
+
+- 
