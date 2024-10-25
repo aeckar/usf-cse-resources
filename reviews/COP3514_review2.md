@@ -111,7 +111,7 @@ free(n);
 - Local variables may be stored in quick-access *registers* at the compiler's discretion
 
 ## 4. Advanced C Concepts
-### Array Iteration Techniques
+### Array Iteration
 ```c
 int arr[] = {1,2,3};
 int arr_size = 3;
@@ -137,7 +137,7 @@ int two_d[][8] = {"Hello", "world"};    // Two-dimensional array (variable point
 int error[][] = {3,4,5};                // Compilation error: Size of inner arrays cannot be inferred, must be made explicit
 ```
 
-### Strings
+### String Manipulation
 ```c
 #include <stdio.h>                      // Import puts()
 #include <string.h>                     // Contains utility functions related to strings
