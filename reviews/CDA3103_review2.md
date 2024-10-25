@@ -23,20 +23,20 @@
 
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
+    - All except NOT can accept any number of inputs
 
 ### Common Logic Gates
-| Name  | Symbol    | Requisite for Signal Output           | Boolean Equivalent        |
-|-------|-----------|---------------------------------------|---------------------------|
-| NOT   |           | Lack of signal input                  | x', $\bar{x}$             |
-| AND   |           | All input signals are present         | xy                        |
-| OR    |           | Any input signal is present           | x + y                     |
-| XOR   |           | Exactly one input signal is present   | x $\oplus$ y, (x'y + xy') |
-| NAND  |           | ||
-| NOR   |           | ||
-| XNOR  |           | ||
-<!-- ^ TODO make logic gates for NAND, NOR, XNOR to determine requisite for signal output -->
+| Name  | Symbol                                | Requisite for Signal Output   | Boolean Equivalent            |
+|-------|---------------------------------------|-------------------------------|-------------------------------|
+| NOT   | ![](../images/logic/CDA3103_not.png)  | No input signal               | x', $\bar{x}$                 |
+| AND   | ![](../images/logic/CDA3103_and.png)  | All input signals             | xy                            |
+| OR    | ![](../images/logic/CDA3103_or.png)   | Any input signal              | x + y                         |
+| XOR   | ![](../images/logic/CDA3103_xor.png)  | Exactly one input signal      | x $\oplus$ y, x'y + xy'       |
+| NAND  | ![](../images/logic/CDA3103_nand.png) | Absence of any input signal   | (xy)'                         |
+| NOR   | ![](../images/logic/CDA3103_nor.png)  | No input signals              | (x + y)'                      |
+| XNOR  | ![](../images/logic/CDA3103_xnor.png) | Equal input signals           | (x $\oplus$ y)', x'y' + xy    |
+
 ## 2. Combinational Circuits
-<!-- TODO MAYBE multi-input logic gate behavior -->
 
 - *Combinational circuits* comprised of:
     - Basic boolean operations as logic gates
@@ -157,4 +157,4 @@ addi - add immediate - dest, op1, op2
     subi - substract immediate
 
 
-***UP-TO-DATE***
+***WIP***

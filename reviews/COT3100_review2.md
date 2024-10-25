@@ -21,6 +21,7 @@
 
 - The *Cartesian product* of two sets is the set of all combinations of elements from either set
     - All elements as ordered pairs
+    - Typically evaluated before other set operations
 
 >**Example:** Perform the Cartesian product $\{1,2,3\} \times \{x,y,z\}$.
 >
@@ -37,23 +38,45 @@
     - "All elements in A that are not also an element in B"
 - By combining identities of sets, logical statements can be created
 
-| Common Identities     \\\\TODO move                                            |
-|-------------------------------------------------------------------|
-| $x \notin A \cup B \leftrightarrow x \notin A \land x \notin B$   |
-| $x \notin A \cap B \leftrightarrow x \notin A \lor x \notin B$    |
-| $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
+### Common Set Identities
+| Name                          | Identity                                                          |
+|-------------------------------|-------------------------------------------------------------------|
+|                               | $x \notin A \cup B \leftrightarrow x \notin A \land x \notin B$   |
+|                               | $x \notin A \cap B \leftrightarrow x \notin A \lor x \notin B$    |
+|                               | $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
+| Definition of union           | A $\cup$ B = { x \| x $\in$ A $\lor$ x $\in$ B }                  |
+| Definition of intersection    | A $\cap$ B = { x \| x $\in$ A $\land$ x $\in$ B }                 |
+| Definition of set difference  | A - B = { x \| x $\in$ A $\land$ x $\notin$ B }                   |
 
-### Common Identities
-| Name                          | Identity  |
-|-------------------------------|-----------|
-| Definition of union           |           |
-| Definition of intersection    |           |
-| Definition of exclusion       |           |
-
-greater precedence: x or union/intersection?
-
+>**Example:** 
+>
+>
+>
+>
+>
 
 ## 2. Relations on Sets
+
+- For sets A and B, a *relation* from A to B is a subset, R, of A $\times$ B
+such that every pair of elements satisfies some relationship ()
+    - If x $\in$ A is related to y $\in$ B, expressed as x *R* y $\leftrightarrow$ (x,y) $\in$ R
+    - If x is not related to y, expressed as x ~~*R*~~ y $\leftrightarrow$ (x,y) $\notin$ R
+- Domain A and codomain B, or vice-versa
+
+>**Example:** Both $\emptyset$ and all of A $\times$ B are extreme examples of relations from A to B,
+>one with no relations and the other with every possible relation.
+
+- x *R* y does not necessarily imply y *R* x
+- Relationships not easily explainable, like decision by coin flip, can still be the foundation of a relation
+- *Divides to* is a possible relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
+    - Represented as $x | y$
+- *Arrow diagram* used to represent relations
+
+>**Example:**
+>
+>
+>
+
 reflexivity, - 
 transitivity, -
 and symmetry -
@@ -63,3 +86,5 @@ inverse relation
 relation to cartesian product
 
 equivalence relation as fulfilling reflexivity, transitivity, and symmetry
+
+***WIP***
