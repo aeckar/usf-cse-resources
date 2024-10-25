@@ -151,5 +151,10 @@ Additional identities
     - Specification defines
 
 
+immediate = literal constant
+
+addi - add immediate - dest, op1, op2
+    subi - substract immediate
+
 
 ***UP-TO-DATE***

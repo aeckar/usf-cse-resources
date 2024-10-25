@@ -5,7 +5,7 @@
     <a href="https://quizlet.com/957758773/cot-3100-set-laws-identities-flash-cards">quizlet</a>
 </p>
 
-## 1. Set Logic
+## 1. Set Logic & Proofs
 
 - Sets are *mutually disjoint* if all are disjoint from all others
     - $A \cap B \cap C \cap ... \equiv \emptyset$
@@ -43,8 +43,6 @@
 | $x \notin A \cap B \leftrightarrow x \notin A \lor x \notin B$    |
 | $x \notin A - B \leftrightarrow x \notin A \lor x \in B$          |
 
-
-
 ### Common Identities
 | Name                          | Identity  |
 |-------------------------------|-----------|
@@ -52,4 +50,16 @@
 | Definition of intersection    |           |
 | Definition of exclusion       |           |
 
-- 
+greater precedence: x or union/intersection?
+
+
+## 2. Relations on Sets
+reflexivity, - 
+transitivity, -
+and symmetry -
+
+inverse relation
+
+relation to cartesian product
+
+equivalence relation as fulfilling reflexivity, transitivity, and symmetry

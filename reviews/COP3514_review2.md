@@ -129,6 +129,7 @@ int tail = arr + (arr_size - 1);    // "Tail" element is last element
                                     // Recall first element is at index 0
 while (cur < tail + 1) {    // Iterate over all elements, starting from first
                             // A pointer to 1 past the last element in an array may be pointed to, but not dereferenced
+                            // Add/subtract pointers in same array to obtain distance between their pointed-to elements
     printf("%d", *cur);     // Dereference value at current index
     ++cur;                  // Don't forget to increment (decrement) pointer
 }
@@ -144,26 +145,47 @@ while (*scur != '\0') {     // Elegant string iteration
 
 ### String Manipulation
 ```c
-#include <string.h> // Contains utility functions related to strings
+#include <stdio.h>                      // Import puts()
+#include <string.h>                     // Contains utility functions related to strings
 
 // ...
-char *string1const1 = "What the sigma"; // If initialized as a pointer, will point to pre-allocated string literal
+char *string1const1 = "cat";            // If initialized as a pointer, will point to pre-allocated string literal
                                         // Underlying array cannot be accessed, else will throw a runtime error
-char *string1const2 = "What the sigma";
+char *string1const2 = "cat";
 if (string1const1 == string1const2) {   // Because the array is shared, direct comparison is typically true
     // Always run
 }
-char string1[] = "What the sigma";  // If initialized as an array, will allocate a new array on the stack
-char string2[] = "On skibidi";
-if (string1 == string1const1) {     // Comparison between string array and literals will always fail
+char string1[100] = "cat";              // If initialized as an array, will allocate a new array on the stack
+char string2[] = "Dog";
+if (string1 == string1const1) {         // Comparison between string array and literals will always fail
     // Unreachable
 }
-strcat
-strtok
-strlen
-strcpy
-strstr
-strcmp
+                                        // If any string is not suffixed by \0, the following functions will cause buffer overflow
+strcat(string1, string2);               // (string concatenate) Append string1 to string2, store result in string2
+puts(string1);                          // Outputs: catDog
+printf("%d", strlen(string2));          // (string length) Returns length of string
+                                        // Outputs: 9
+strcpy(string1, string2);               // (string copy) Copy string2 to array backing string1
+puts(string1);                          // Outputs: cat
+printf("%d %d %d",
+    strcmp(string1, string2),           // (string comparison) Returns first non-zero difference between characters in the two strings, or 0 if the strings are equivalent
+    strcmp(string2, string1),
+    strcmp(string1, string1)
+);                                      // Outputs: 31 -31 0
+                                        //
+char *tokens = strtok("Hello, world", " ");     // (string tokenize) Splits a string according a string containing delimiter characters
+                                                // Internally stores an array of the split sections (tokens)
+while (tokens != NULL) {                        // If returns NULL, no tokens are left; end of string reached
+    printf("%s...", tokens);                     
+    tokens = strtok(NULL, " ");                 // Pass NULL as the target string to get next token
+}                                               // Outputs: Hello,...world...
+
+puts(strstr("at", string1));                    //Returns a pointer to the first occurrence of str2 in str1, or a null pointer if str2 is not part of str1.
+                                                // Matching does not include null terminator, stops there
+                                                // Outputs (index 1 in string1): at
+if (strstr(string2, string1) == NULL) {
+    // Always run
+}
 ```
 
 ### Command-line arguments
@@ -185,18 +207,11 @@ int main(int argc, char **argv) {   // Alternatively, char argv[][] or char *arg
 
 - ASCII is predecessor to Unicode
     - ASCII encoding is first section of unicode
-- _ bits
-- 
+- Each character is 7 bits, although `char` takes up 8 bits/1 byte
 
 ```c
-char lower = 'a';   // is actually value _
-printf("%d", (int)c);   // same value as _
-char upper = 'A';           // is same as value _
-printf("%d", lower > upper);    // false/true
-        // lowercase after uppercase
-```
-
-### Pointer Arithmetic
-```c
-pointer arithmetic defined only within same array or struct
+char lower = 'a';               // Represents integer value 97
+printf("%d", (int) lower);      // Outputs: 97
+char upper = 'A';               // Represents integer value 
+printf("%d", lower > upper);    // IMPORTANT: lowercase numbers come after uppercase in ASCII table
 ```
