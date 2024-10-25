@@ -111,7 +111,7 @@ free(n);
 - Local variables may be stored in quick-access *registers* at the compiler's discretion
 
 ## 4. Advanced C Concepts
-### Arrays 
+### Array Iteration Techniques
 ```c
 int arr[] = {1,2,3};
 int arr_size = 3;
@@ -133,6 +133,17 @@ while (cur < tail + 1) {    // Iterate over all elements, starting from first
     printf("%d", *cur);     // Dereference value at current index
     ++cur;                  // Don't forget to increment (decrement) pointer
 }
+int two_d[][8] = {"Hello", "world"};    // Two-dimensional array (variable points to pointer pointing to first element of first array)
+int error[][] = {3,4,5};                // Compilation error: Size of inner arrays cannot be inferred, must be made explicit
+```
+
+### Strings
+```c
+#include <stdio.h>                      // Import puts()
+#include <string.h>                     // Contains utility functions related to strings
+
+// ...
+
 char *str = "Meet my outside COT, I bet you won't";
          // ['M', 'e', 'e', ..., 'n', '\'', 't', '\0']
                             // All strings suffixed by null terminator character, '\0'
@@ -141,14 +152,6 @@ while (*scur != '\0') {     // Elegant string iteration
     printf("%c", *scur);
     ++scur;
 }
-```
-
-### String Manipulation
-```c
-#include <stdio.h>                      // Import puts()
-#include <string.h>                     // Contains utility functions related to strings
-
-// ...
 char *string1const1 = "cat";            // If initialized as a pointer, will point to pre-allocated string literal
                                         // Underlying array cannot be accessed, else will throw a runtime error
 char *string1const2 = "cat";
