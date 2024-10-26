@@ -174,7 +174,7 @@ Registers store 32-bit values. RISC-V has 32 registers to work with.
 - Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
 `SLTU rd, rs1, rs2 #rs1 <s rs2`
-- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+- Compares the unsigned values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
 #### Logical Instructions
 `AND rd, rs1, rs2`
