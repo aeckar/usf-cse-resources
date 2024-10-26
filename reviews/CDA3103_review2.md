@@ -249,4 +249,75 @@ ADD t3, t1, t2 # t3 = t1 + t2 = 6 * t0
 - Does arithmetic right shifting on `rs1` by the value of `Imm`. Inserts sign bit to the most significant bit and shifts out the least significant bit.
 - Can be used for dividing with 2^n constants. Example: `SRAI t1, t0, 1 # t1 = t0/2`
 
+#### Memory Reading Instructions
+Used for reading values from arrays.
+
+`LB rd, Imm(rs1)`
+- Loads 1 byte (8-bits) from the memory address `rs1` + `Imm` offset and sign extends it.
+
+`LH rd, Imm(rs1)`
+- Loads 2 bytes (16-bits) from the memory address `rs1` + `Imm` offset and sign extends it.
+
+`LW rd, Imm(rs1)`
+- Loads 4 bytes (32-bits) from the memory address `rs1` + `Imm` offset.
+
+`LBU rd, Imm(rs1)`
+- Loads 1 byte (8-bits) from the memory address `rs1` + `Imm` offset and zero extends it.
+
+`LHU rd, Imm(rs1)`
+- Loads 2 bytes (16-bits) from the memory address `rs1` + `Imm` offset and zero extends it.
+
+### S-Type Instructions
+Used for writing values to arrays.
+
+`SB rs2, Imm(rs1)`
+- Saves lower 1 byte (8-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
+
+`SH rs2, Imm(rs1)`
+- Saves lower 2 byte (16-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
+
+`SW rs2, Imm(rs1)`
+- Saves 4 byte (32-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
+
+### U-Type Instructions
+`LUI rd, Imm`
+- Used to initialize big values with `Imm` (20-bits) in the upper bits of `rd`. Examples:
+```
+0xABCDE265
+
+LUI t0, 0xABCDE
+ADDI t0, t0, 0x265
+
+0xABCDE965
+LUI t1, 0xABCDF
+ADDI t1, t1, 0x965
+```
+- If d11 in the hex value is 1 (Ex: 9 = 1001), then add one to `Imm` as shown in the 2nd example.
+
+
+### B-Type Instructions
+Used for comparing values between registers to jump to different branches of RISC-V code.
+
+`BEQ rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **they are equal** then go to `Imm` branch.
+
+`BNE rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **they are not equal** then go to `Imm` branch.
+
+`BLT rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Signed Comparison.
+- If you have `a > c` in C code, then you can make the same comparison using `BLT` *but switch the values around*.
+
+`BGE rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **`rs1` is greater than or equal to `rs2`** then go to `Imm` branch. Signed Comparison.
+- If you have `a <= c` in C code, then you can make the same comparison using `BGE` *but switch the values around*.
+
+`BLTU rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Unsigned Comparison.
+- If you have `a > c` in C code, then you can make the same comparison using `BLTU` *but switch the values around*.
+
+`BGEU rs1, rs2, Imm`
+- Compares `rs1` and `rs2`. If **`rs1` is greater than or equal to `rs2`** then go to `Imm` branch. Unsigned Comparison.
+- If you have `a <= c` in C code, then you can make the same comparison using `BGEU` *but switch the values around*.
+
 ***WIP***
