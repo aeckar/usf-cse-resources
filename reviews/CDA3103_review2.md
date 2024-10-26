@@ -152,7 +152,9 @@ Additional identities
 
 ### Registers
 Registers store 32-bit values. RISC-V has 32 registers to work with.
-<img src="../images/CDA3103_RISCV_Registers.png" alt="RISC-V Registers" width="30%">
+
+<img src="../images/CDA3103_RISCV_Registers.png" alt="RISC-V Registers">
+
 
 **X0 (zero):** Hardwired value to 0. Can be used to initialize other registers.
 **X5-X7 & X28-X31 (t0-t6):** Used to hold temporary values in registers.
@@ -197,20 +199,54 @@ Registers store 32-bit values. RISC-V has 32 registers to work with.
 ### I-Type Instructions
 - I-Type instructions can be used either for immediate arithmetical, logical or shifting instructions, or for memory reading.
 
-- Arithmetic, logical, and shifting is similar to R-Type. `rs2` gets replaced by `Imm` which is a 12-bit value.
+- Arithmetic, logical, and shifting is similar to R-Type. `rs2` gets replaced by `Imm` which is a 12-bit value with a data range of [-2048, 2047].
 
 #### Arithmetic Instructions
-`ADD rd, rs1, Imm #rd = rs1 + Imm`
-- Adds the values from registers `rs1` and `rs2` and stores the result in `rd`.
+`ADDI rd, rs1, Imm #rd = rs1 + Imm`
+- Adds the values from register `rs1` with `Imm` and stores the result in `rd`.
+- There is no SUBI as `Imm` can be a negative number.
+- Useful for initializing constants from C code. Example `ADDI t0, zero, 20 #t0 = 20`.
 
-`SLT rd, rs1, rs2 #rs1 <s rs2`
-- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+`SLTI rd, rs1, Imm #rs1 <s rs2`
+- Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
-`SLTU rd, rs1, rs2 #rs1 <s rs2`
-- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+`SLTIU rd, rs1, Imm #rs1 <s rs2`
+- Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
-addi - add immediate - dest, op1, op2
-    subi - substract immediate
+#### Logical Instructions
+`ANDI rd, rs1, Imm`
+- Does logical and using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
+- The ANDI instruction can be used to clear some specific bits since `x and 0 = 0`.
+- The ANDI instruction can also be used to find the modulo of 2^n. Example C: `X % 16` -> Example RISC-V: `ANDI t1, t0, 15`.
 
+`ORI rd, rs1, Imm`
+- Does logical or using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
+- The ORI instruction can be used to set some specific bits since `x or 1 = 1`.
+
+`XORI rd, rs1, Imm`
+- Does logical exclusive or using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
+- There is no NOT instruction in RISC-V, but XORI can be used in it's place: `XORI t1, t0, -1 # t1 = NOT t0`
+
+#### Shifting Instructions
+`SLLI rd, rs1, Imm`
+- Does logical left shifting on `rs1` by the value of `Imm`. Inserts zeros to the least significant bit and shifts out the most significant bit.
+- Can be used for multipling with 2^n constants. Example: `SLLI t2, t0, 2 # t2 = t0 * 4`
+- If the constant is not a power of 2, then use multiple left shifts and add together at the end. Example:
+
+```
+C: j = h * 6
+
+RISC-V:
+SLLI t1, t0, 1 # t1 = t0 * 2
+SLLI t2, t0, 2 # t2 = t0 * 4
+ADD t3, t1, t2 # t3 = t1 + t2 = 6 * t0
+```
+
+`SRLI rd, rs1, Imm`
+- Does logical right shifting on `rs1` by the value of `Imm`. Inserts zeros to the most significant bit and shifts out the least significant bit.
+
+`SRAI rd, rs1, Imm`
+- Does arithmetic right shifting on `rs1` by the value of `Imm`. Inserts sign bit to the most significant bit and shifts out the least significant bit.
+- Can be used for dividing with 2^n constants. Example: `SRAI t1, t0, 1 # t1 = t0/2`
 
 ***WIP***
