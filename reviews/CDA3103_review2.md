@@ -150,8 +150,64 @@ Additional identities
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
     - Specification defines
 
+### Registers
+Registers store 32-bit values. RISC-V has 32 registers to work with.
+<img src="../images/CDA3103_RISCV_Registers.png" alt="RISC-V Registers" width="30%">
 
-immediate = literal constant
+**X0 (zero):** Hardwired value to 0. Can be used to initialize other registers.
+**X5-X7 & X28-X31 (t0-t6):** Used to hold temporary values in registers.
+**X8-X9 & X18-X27 (s0-s11):** Can also be used to hold temporary values in registers.
+**X10-X11 (a0-a1):** Can be used to hold function arguments or return values.
+**X12-X17 (a2-a7):** Can be used to hold function arguments.
+
+### R-Type Instructions
+#### Arithmetic Instructions
+`ADD rd, rs1, rs2 #rd = rs1 + rs2`
+- Adds the values from registers `rs1` and `rs2` and stores the result in `rd`.
+
+`SUB rd, rs1, rs2 #rd = rs1 - rs2`
+- Subtracts the values of `rs1` from `rs2` and stores the result in `rd`. **Order is important here**.
+
+`SLT rd, rs1, rs2 #rs1 <s rs2`
+- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+
+`SLTU rd, rs1, rs2 #rs1 <s rs2`
+- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+
+#### Logical Instructions
+`AND rd, rs1, rs2`
+- Does logical and using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
+
+`OR rd, rs1, rs2`
+- Does logical or using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
+
+`XOR rd, rs1, rs2`
+- Does logical exclusive or using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
+
+#### Shifting Instructions
+`SLL rd, rs1, rs2`
+- Does logical left shifting on `rs1` using the lower 5-bits of `rs2`. Inserts zeros to the least significant bit and shifts out the most significant bit.
+
+`SRL rd, rs1, rs2`
+- Does logical right shifting on `rs1` using the lower 5-bits of `rs2`. Inserts zeros to the most significant bit and shifts out the least significant bit.
+
+`SRA rd, rs1, rs2`
+- Does arithmetic right shifting on `rs1` using the lower 5-bits of `rs2`. Inserts sign bit to the most significant bit and shifts out the least significant bit.
+
+### I-Type Instructions
+- I-Type instructions can be used either for immediate arithmetical, logical or shifting instructions, or for memory reading.
+
+- Arithmetic, logical, and shifting is similar to R-Type. `rs2` gets replaced by `Imm` which is a 12-bit value.
+
+#### Arithmetic Instructions
+`ADD rd, rs1, Imm #rd = rs1 + Imm`
+- Adds the values from registers `rs1` and `rs2` and stores the result in `rd`.
+
+`SLT rd, rs1, rs2 #rs1 <s rs2`
+- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+
+`SLTU rd, rs1, rs2 #rs1 <s rs2`
+- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
 addi - add immediate - dest, op1, op2
     subi - substract immediate
