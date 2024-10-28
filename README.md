@@ -1,7 +1,7 @@
 A repository of exam review sheets and other resources compiled by students at the University of South Florida
 in the Computer Science and Computer Engineering programs.
 
-Additional resources:
+### Additional Resources
 
 - [Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)
 - [Using CSV files with Anki](https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file)
