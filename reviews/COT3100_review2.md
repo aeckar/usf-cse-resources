@@ -55,13 +55,20 @@
 >
 >
 
-## 2. Relations on Sets
+## 2. Relations and Sets
 
 - For sets A and B, a *relation* from A to B is a subset, R, of A $\times$ B
 such that every pair of elements satisfies some relationship ()
     - If x $\in$ A is related to y $\in$ B, expressed as x *R* y $\leftrightarrow$ (x,y) $\in$ R
     - If x is not related to y, expressed as x ~~*R*~~ y $\leftrightarrow$ (x,y) $\notin$ R
+    - Replace *R* with set initial
 - Domain A and codomain B, or vice-versa
+
+- Function F from A to B 
+    - For every element...
+    - For every element...
+
+!!! diff between domain and codomain?
 
 >**Example:** Both $\emptyset$ and all of A $\times$ B are extreme examples of relations from A to B,
 >one with no relations and the other with every possible relation.
@@ -77,6 +84,10 @@ such that every pair of elements satisfies some relationship ()
 >
 >
 
+- Relation from A to A itself is relation *on* A
+    - **Example:**  The operation $<$ is a relation on $\R$, a subset of $\R \times \R = \R^2$
+
+- Power set P(x) is set of all ssubsets of x
 reflexivity, - 
 transitivity, -
 and symmetry -

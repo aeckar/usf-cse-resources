@@ -300,7 +300,7 @@
 ### Derived Boolean Identities
 | Name              | Form                      | Property          |
 |-------------------|---------------------------|-------------------|
-| Mutual Exclusion  | x + x'y = x + y           | Absorption Law    |
+| Redundancy        | x + x'y = x + y           | Absorption Law    |
 | Consensus Theorem | xy + y'z + xz = xy + y'z  | Absorption Law    |
 | Definition of XOR | x $\oplus$ y = x'y + xy'  |                   |
 
@@ -383,7 +383,7 @@
 - POS's can be represented by their maxterms
     - Represented as elements in $\prod{M}(...)$
     - Every row in truth table where *F* is `0`, as a sum; for each variable, if it is `1`, complement it
-    - Every term multiplied to each other
+    - Each term multiplied to each other
 - Elements of formal representations of the above represented as decimal integers
     - Converted from binary to base-10
 

@@ -96,7 +96,7 @@
 ### Derived Logical Identities
 | Name              | Form                                                                                              | Property      |
 |-------------------|---------------------------------------------------------------------------------------------------|---------------|
-| Mutual Exclusion  | x $\lor$ ~x $\land$ y = x $\lor$ y                                                                | Absorption    |
+| Redundancy        | x $\lor$ ~x $\land$ y = x $\lor$ y                                                                | Absorption    |
 | Consensus Theorem | (x $\land$ y) $\lor$ (~y $\land$ z) $\lor$ (x $\land$ z) = (x $\land$ y) $\lor$ (~y $\land$ z)    | Absorption    |
 
 - A "neither-nor" relationship implies *~p $\land$ ~q*

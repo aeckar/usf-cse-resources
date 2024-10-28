@@ -32,8 +32,12 @@ Additional resources:
 ### Contributors
 
 - Angel Eckardt: Repository owner and primary author/editor
+- Agus Niccolini: Fixed typo in COP 3514 project 4, task 1; images and information for CDA 3103 review 2
+- Clay5701: Images and information for CDA 3103 review
+- Maren0000: Information on RISC-V for CDA 3103 review 2
+
+### Special Thanks
+
 - riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
-- Agus Niccolini: Fixed typo in COP 3514 project 4, task 1; images and information for CDA 3103 review 2
-- Clay5701: Images and information for CDA 3103 review 
