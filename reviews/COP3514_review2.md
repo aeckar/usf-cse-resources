@@ -9,7 +9,7 @@
 - *C++* is a superset of C
     - Created by Bjarne Stroustrup in 1985
     - Adds object-oriented programming
-- `g++` is a popular C++ compilers
+- `g++` is a popular C++ compiler
 - Due to Hurricane Milton, anything related to C++ *will not* be on any exam for Fall 2024
 
 ## 2. C++ Syntax
