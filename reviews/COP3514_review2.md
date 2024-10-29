@@ -155,12 +155,12 @@ while (*scur != '\0') {     // Elegant string iteration
 char *string1const1 = "cat";            // If initialized as a pointer, will point to pre-allocated string literal
                                         // Underlying array cannot be accessed, else will throw a runtime error
 char *string1const2 = "cat";
-if (string1const1 == string1const2) {   // Because the array is shared, direct comparison is typically true
+if (string1const1 == string1const2) {   // Because the same pointer is returned for every literal of the same string, direct comparison is typically true
     // Always run
 }
 char string1[100] = "cat";              // If initialized as an array, will allocate a new array on the stack
 char string2[] = "Dog";
-if (string1 == string1const1) {         // Comparison between string array and literals will always fail
+if (string1 == string1const1) {         // Comparison between string arrays and other strings will always fail
     // Unreachable
 }
                                         // If any string is not suffixed by \0, the following functions will cause buffer overflow
