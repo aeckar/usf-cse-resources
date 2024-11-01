@@ -36,7 +36,7 @@ two
 
 ## Guide
 
-*Note: The only code in any of the sections below will be something done in class or common algorithms.*
+*Note: The only code in any of the sections below will be something done in class or a simple demonstraion of a concept.*
 
 ### **File Input**
 
