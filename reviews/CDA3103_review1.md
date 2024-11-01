@@ -54,7 +54,7 @@
 
 ### Computer Level Hierarchy
 | Level | Name                  | Description                                                                   | Example               |
-|-------|-----------------------|-------------------------------------------------------------------------------|-----------------------|
+|:-----:|-----------------------|-------------------------------------------------------------------------------|-----------------------|
 | 6     | User                  | Program execution, user interface                                             | Executing programs    |
 | 5     | High-Level Language   | Programming in a high-level language                                          | Python                |
 | 4     | Assembly Language     | Programming assembly language                                                 | RISC-V                |
@@ -365,7 +365,7 @@
 >**Example:** Use a K-map to simplify $F(x,y,z) = y(x'z + xz) + x'yz' + xy'z$.
 >
 >| x \ yz   | 0 0   | 0 1                           | 1 0                           | 1 1                           |
->|----------|-------|-------------------------------|-------------------------------|-------------------------------|
+>|:--------:|:-----:|:-----------------------------:|:-----------------------------:|:-----------------------------:|
 >| **0**    | 0     | 0                             | <font color="pink">1</font>   | <font color="pink">1</font>   |
 >| **1**    | 0     | <font color="cyan">1</font>   |  0                            | <font color="cyan">1</font>   |
 >

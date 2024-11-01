@@ -11,6 +11,7 @@
     - Adds object-oriented programming
 - `g++` is a popular C++ compiler
 - Due to Hurricane Milton, anything related to C++ *will not* be on any exam for Fall 2024
+- Also due to the hurricane, file I/O will not be on exam 2 for Fall 2024
 
 ## 2. C++ Syntax
 ### Classes
@@ -79,38 +80,7 @@ int n;
 std::cin << &n;                     // Store basic input without regard for type 
 ```
 
-## 3. Memory Allocation in C
-
-- The *stack* is a chunk of memory allocated from the system to hold data for quick access
-    - Data can only be accessed as long as within scope
-    - Stores local variables, functions called, and return values
-    - Deeply recursive functions may allocate more space than is on the stack
-        - Leads to stack overflow
-
-```c
-
-int n;  // Local variables set aside space on the stack to store data
-```
-
-- The *heap* is memory allocated from the system, more so than the stack
-    - Data can be accessed at any point in a program
-    - Slower than using the stack
-    - Memory allocated must be freed, else creates a memory leak
-        - Leads to heap overflow/out of memory error
-
-```c
-#include <stdlib.h> // Contains miscellaneous standard library utilities
-
-int *n = malloc(sizeof(int));
-*n = 5;
-printf("%d", *n);       // Dynamically allocated data can only be accessed by pointer
-free(n);
-```
-
-- Both sources of memory are stored in RAM
-- Local variables may be stored in quick-access *registers* at the compiler's discretion
-
-## 4. Advanced C Concepts
+## 3. Advanced C Concepts
 ### Array Iteration
 ```c
 int arr[] = {1,2,3};

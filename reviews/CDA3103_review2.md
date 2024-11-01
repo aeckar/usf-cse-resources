@@ -19,7 +19,7 @@
 | tera-     | T         | $10^{12}$     |
 | peta-     | P         | $10^{15}$     |
 
-## 1. Logic Gates and Multiplexers
+## 1. Logic Gates, Multiplexers, and Decoders
 
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
@@ -36,6 +36,8 @@
 | NOR   | ![](../images/logic/CDA3103_nor.png)  | No input signals              | (x + y)'                      |
 | XNOR  | ![](../images/logic/CDA3103_xnor.png) | Equal input signals           | (x $\oplus$ y)', x'y' + xy    |
 
+- A *multiplexer* takes 
+
 ## 2. Combinational Circuits
 
 - *Combinational circuits* comprised of:
@@ -47,14 +49,13 @@
 
 ## 3. Sequential Circuits
 
-<!-- TODO refactor -->
-These are circuits that hold and use data (typically 1 bit) from their previous inputs to produce their next outputs.
+- Hold and use data, typically 1 bit, from previous input(s) to produce next output(s)
 
 There are multiple types, but all of them are going to be either synchronous or asynchronous. 
 - **Synchronous circuits** respond to inputs only when the clock is in a rising state (going from 0 to 1). Most sequential circuits are synchronous.
 - **Asynchronous circuits** respond to inputs all the time (they don't have a clock).
 
-### Sequential Circuit Types
+### Basic Sequential Circuit Types
 
 #### **Set-Reset Latch**
 
@@ -67,8 +68,8 @@ There are multiple types, but all of them are going to be either synchronous or 
 <img src="../images/CDA3103_sr_latch.png" alt="Set-Reset Latch" width="25%">  
 
 **Truth table:**
-| S (Set) | R (Reset) | Qt | Q(t+1) |
-|:-------:|:---------:|:-----------------:|:-------------------:|
+| S (Set)   | R (Reset) | Qt | Q(t+1) |
+|--------|:---------:|:-----------------:|:-------------------:|
 |   0     |     0     |         0         |          0          |
 |   0     |     0     |         1         |          1          |
 |   0     |     1     |         0         |          0          |
