@@ -40,9 +40,9 @@ two
 
 ### **File Input**
 
-You're going to need to get the characters that are in the input file into your C program. To do this you will need some code to handle reading lines from a file.
+The characters in the input file need a way to get into your C program. To do this you will need some code to handle reading lines from a file.
 
-A simple example of some code that reads a file:
+A simple example of code that reads a file:
 
 ```c
 #include <stdio.h>
@@ -68,9 +68,9 @@ int main() {
 
 In this example, each line of the string is stored in `char content[]`.
 
-Now, we need the whole file, not just one line. We can concatenate each line to a larger string to get the whole string.
+Now, you need the whole file, not just one line. You can concatenate each line to a larger string to get the whole string.
 
-Recall the concatenate function we built in class:
+Recall the concatenate function built in class:
 
 ```c
 void concatenate(char *s1, char *s2) {
@@ -84,11 +84,11 @@ void concatenate(char *s1, char *s2) {
 }
 ```
 
-Using a combination of these two functions you should be able to read any whole file into a string.
+Using a combination of these two functions a whole file can be read into one string.
 
 ### **String Processing**
 
-Remember a string is simply an array of characters with a null terminator (`\0`) at the end. Printing every character in a string array string would look something like this "string\0". What if we put more characters after the null terminator and make something like this "string\0test\0"? Here's a C program that does just that:
+Remember a string is simply an array of characters with a null terminator (`\0`) at the end. Printing every character in a string array string would look something like this `"string\0"`. What if more characters are put after the null terminator to make something like this `"string\0test\0"`? Here's a C program that does just that:
 
 ```c
 #include <stdio.h>
@@ -105,15 +105,15 @@ int main() {
 }
 ```
 
-With this technique, you can store more than one word in a single string. All you need to do is store pointers to specific parts of the string array.
+With this technique, more than one word can be stored in a single array. All you need to do is store pointers to specific parts of the string array.
 
-Now, how is this helpful? We can now divide the main string up into its individual words by replacing whitespace or punctuation with null terminating characters and storing pointers to the start of each word. 
+Now, how is this helpful? The main string can now be divided up into its individual words by replacing whitespace or punctuation with null terminating characters and storing pointers to the start of each word. 
 
-***You can store the pointers in an array.***
+***The pointers can be stored in an array.***
 
 ### **Sorting**
 
-Once you have an array of word pointers, you're going to have to sort them into aphabetical order. You can use pretty much any common sorting algorithm you want to do this. A very common and simple example is ***bubble sort*** (pictured below).
+Once you have an array of word pointers, the array needs to be sorted into aphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
 
 ```c
 void bubbleSort(int a[], int n) {
@@ -138,7 +138,7 @@ void bubbleSort(int a[], int n) {
 }
 ```
 
-For our array of strings we're going to need to modify the swapping condition. We need to see if the two words being compared are not in alphabetical order. To do this, we can make a function that will compare two strings. We need this function to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. We must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***pseudo-code***:
+For our array of strings, the swapping condition will need to be modified. The two words being compared need to be checked for alphabetical order. To do this, a function can be used to compare two strings. This function needs to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. The function must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***pseudo-code***:
 
 ```
 int word_comp(char* word1, char* word2) {
@@ -165,7 +165,7 @@ int word_comp(char* word1, char* word2) {
 
 ### **Duplication Removal**
 
-Once your array is sorted, you can remove the duplicates. Because the array of words is already sorted, the duplicates will be right next to each other. In the original example in the project instructions above the sorted array would look like this:
+Once your array is sorted, the duplicates must be removed. Because the array of words is already sorted, the duplicates will be right next to each other. In the original example in the project instructions above the sorted array would look like this:
 
 ```
 one
@@ -175,36 +175,36 @@ two
 two
 ```
 
-To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index you just created. If they are equal, skip and if they are diffent move the current word to your new indexing variable plus 1. If that was confusing, here's an example using the values above:
+To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index just created. If they are equal, skip and if they are diffent move the current word to the new indexing variable plus 1. If that was confusing, here's an example using the values above:
 
-We can skip the first element since it's always unique. Now we compare `array[0]` with `array[1]` ("one" and "one"). They are the same word so we skip it and move on to the next word. Now we compare `array[0]` with `array[2]` ("one" and "three"). They are different so we set `array[0 + 1]` to `array[2]`. The array now looks like this:
-
-```
-one
-three
-three
-two
-two
-```
-
-To continue, we compare `array[1]` with `array[3]` ("three" and "two"). They are different so we set `array[1 + 1]` with `array[3]`. Next we compare `array[2]` with `array[4]` ("two" and "two"). They are the same word so we skip it. This is the final array:
+The first element can be skipped since it's always unique. Now compare `array[0]` with `array[1]` ("one" and "one"). They are the same word so it's skipped. Now compare `array[0]` with `array[2]` ("one" and "three"). They are different so `array[0 + 1]` is set to `array[2]`. The array now looks like this:
 
 ```
 one
 three
+three
+two
+two
+```
+
+To continue, compare `array[1]` with `array[3]` ("three" and "two"). They are different so set `array[1 + 1]` to `array[3]`. Next compare `array[2]` with `array[4]` ("two" and "two"). They are the same word so it's skipped. This is the final array:
+
+```
+one
+three
 two
 two
 two
 ```
 
-Notice the last word, "two", is repeating. To fix this we can keep track of how many unique words there are. In this case there are 3 unique words. 
+Notice the last word, "two", is repeating. To fix this you can keep track of how many unique words there are. In this case there are 3 unique words. 
 
-***This is the first value we need to print to the output file!***
+***This is the first value that needs to be printed to the output file!***
 
 When using this array, make sure to use it with the proper size (that being the number of unique words).
 If you want to clean things up, you can loop through the array again and set the remaining pointers to `NULL`.
 
-You can print every word in this new array using a simple `for` loop.
+Every word in this new array can be printed using a simple `for` loop.
 
 ### File Output
 
@@ -232,12 +232,12 @@ int main() {
 
 ### **Tokenizing**
 
-There are many ways to do this part. The goal is to compare every word in the original string with your new sorted and filtered array of words.
-The token is equal to how far into the sorted array you go before you find the current word in the array. Here's an example:
+There are many ways to do this part. The goal is to compare every word in the original string with the new sorted and filtered array of words.
+The token is equal to how far into the sorted array the current word is located. Here's an example:
 
 Say the current word in the string is "two" and my sorted array of words is `one three two`. You would need to go 3 elements deep to find the word "two", therefore the token is 3.
 
-You can use a `for` loop to match a given word with its position in the sorted array. Use the comparison function used for the sorting algorithm to find when the two words are equal.
+A `for` loop can be used to match a given word with its position in the sorted array. Use the comparison function used for the sorting algorithm to find when the two words are equal.
 
 ### Below are some common issues when tokenizing and potential fixes:
 
