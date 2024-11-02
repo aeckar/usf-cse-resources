@@ -1,5 +1,7 @@
 # CDA 3103 Computer Organization & Architecture - Exam 1 Review
 
+<!-- Use 'img' tags when image resizing is needed. -->
+
 <p style="text-align:center">
     <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
     <a href="https://quizlet.com/830254006/cda-3103-exam-1-flash-cards">quizlet</a>
@@ -253,7 +255,7 @@
     - First widely-used encoding to support letter case
 
 <p style="text-align:center">
-    <img src="../images/CDA3103_EDBDIC_table.png" alt="EDBDIC Table" width=600>
+    <img src="../images/CDA3103_EDBDIC_table.png" alt="EDBDIC Table" width=80%>
 </p>
 
 - *ASCII* is an 7-bit character encoding
@@ -262,7 +264,7 @@
 - Last, *parity bit* used to check for errors
     - If odd parity, number of `1`s must be odd, vice-versa
 <p style="text-align:center">
-    <img src="../images/CDA3103_ASCII_table.png" alt="ASCII Table" width=600>
+    <img src="../images/CDA3103_ASCII_table.png" alt="ASCII Table" width=80%>
 </p>
 
 - *Unicode* extends ASCII to 16 bits
@@ -349,6 +351,7 @@
 - *Karnaugh maps* (K-maps) can be used to simplify expressions intuitively
     - Products can be formed from groups of bits of size $2^n, n \in Z$
     - It might be helpful to create a truth table first and then convert it to a K-map
+    - Not directly tested on the exam, but may be faster than using identities
 - By using identities, K-maps, or truth tables, Boolean expressions can be converted to their simplest form
     - Each row in a truth table corresponds to a term
     - Use to easily convert function to CSOP

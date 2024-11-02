@@ -1,5 +1,7 @@
 # CDA 3103 Computer Organization & Architecture - Exam 2 Review
 
+<!-- Use 'img' tags when image resizing is needed. -->
+
 <p style="text-align:center">
     <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
     <a href="https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards">quizlet</a>
@@ -24,19 +26,34 @@
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
     - All except NOT can accept any number of inputs
+- Presence of electricity in some part of a circuit is a *signal*
+    - Represents `1`
+    - Absence represents `0`
 
 ### Common Logic Gates
-| Name  | Symbol                                | Requisite for Signal Output   | Boolean Equivalent            |
-|-------|---------------------------------------|-------------------------------|-------------------------------|
-| NOT   | ![](../images/logic/CDA3103_not.png)  | No input signal               | x', $\bar{x}$                 |
-| AND   | ![](../images/logic/CDA3103_and.png)  | All input signals             | xy                            |
-| OR    | ![](../images/logic/CDA3103_or.png)   | Any input signal              | x + y                         |
-| XOR   | ![](../images/logic/CDA3103_xor.png)  | Exactly one input signal      | x $\oplus$ y, x'y + xy'       |
-| NAND  | ![](../images/logic/CDA3103_nand.png) | Absence of any input signal   | (xy)'                         |
-| NOR   | ![](../images/logic/CDA3103_nor.png)  | No input signals              | (x + y)'                      |
-| XNOR  | ![](../images/logic/CDA3103_xnor.png) | Equal input signals           | (x $\oplus$ y)', x'y' + xy    |
+| Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            |
+|-------|-----------------------------------------------|-------------------------------|-------------------------------|
+| NOT   | ![](../images/gates/logic/CDA3103_not.png)    | No input signal               | x', $\bar{x}$                 |
+| AND   | ![](../images/gates/logic/CDA3103_and.png)    | All input signals             | xy                            |
+| OR    | ![](../images/gates/logic/CDA3103_or.png)     | Any input signal              | x + y                         |
+| XOR   | ![](../images/gates/logic/CDA3103_xor.png)    | Exactly one input signal      | x $\oplus$ y, x'y + xy'       |
+| NAND  | ![](../images/gates/logic/CDA3103_nand.png)   | Absence of any input signal   | (xy)'                         |
+| NOR   | ![](../images/gates/logic/CDA3103_nor.png)    | No input signals              | (x + y)'                      |
+| XNOR  | ![](../images/gates/logic/CDA3103_xnor.png)   | Equal input signals           | (x $\oplus$ y)', x'y' + xy    |
 
-- A *multiplexer* takes 
+<p style="text-align:center">
+    <img src="../images/gates/combinational/CDA3103_mux_circuit.png">
+</p>
+
+- A *multiplexer* chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs
+    - efe
+
+<p style="text-align:center">
+    <img src="../images/gates/combinational/CDA3013_decoder_circuit.PNG">
+</p>
+
+- A *decoder* converts *n* inputs to $2^n$ outputs
+    - efse
 
 ## 2. Combinational Circuits
 
@@ -47,41 +64,43 @@
 - Output is function of input
     - Same output given same input
 
+>**Example:**
+>
+>
+
 ## 3. Sequential Circuits
 
 - Hold and use data, typically 1 bit, from previous input(s) to produce next output(s)
+    - For each type, either synchronous or asynchronous
 
-There are multiple types, but all of them are going to be either synchronous or asynchronous. 
-- **Synchronous circuits** respond to inputs only when the clock is in a rising state (going from 0 to 1). Most sequential circuits are synchronous.
-- **Asynchronous circuits** respond to inputs all the time (they don't have a clock).
+- *Synchronous* circuits respond to initial & past inputs only when clock is in specific state. Most sequential circuits are synchronous.
+- *Asynchronous* circuits respond to inputs all the time (they don't have a clock).
 
-### Basic Sequential Circuit Types
-
-#### **Set-Reset Latch**
+### Set-Reset Latch
 
 - Holds one bit of data. It is also the smallest circuit capable doing this.
 - Is asynchronous. It doesn't have a clock.
 - Can have an undefined state (its data is invalid).
 
-**Circuit:**  
+**Circuit:**
 
 <img src="../images/CDA3103_sr_latch.png" alt="Set-Reset Latch" width="25%">  
 
 **Truth table:**
-| S (Set)   | R (Reset) | Qt | Q(t+1) |
-|--------|:---------:|:-----------------:|:-------------------:|
-|   0     |     0     |         0         |          0          |
-|   0     |     0     |         1         |          1          |
-|   0     |     1     |         0         |          0          |
-|   0     |     1     |         1         |          0          |
-|   1     |     0     |         0         |          1          |
-|   1     |     0     |         1         |          1          |
-|   1     |     1     |         X         |        Invalid       |
+| S (Set)   | R (Reset) | Q(t + 1)                      |
+|:---------:|:---------:|:-----------------------------:|
+| 0         | 0         | Q(t)                          |
+| 0         | 1         | 0                             |
+| 1         | 0         | 1                             |
+| 1         | 1         | <small>*undefined*</small>    |
 
+>**Example:**
+>
+>
 
 #### Set-Reset Flip-Flop
 
-- Same basic logic as a Set-Reset Latch (see above table and description).
+- Extends SR latch
 - Only updates when a signal from a clock is received.
 - Circuit is the same as a Set-Reset Latch but modified with AND gates to account for the clock.
 
@@ -108,10 +127,10 @@ You will more commonly see this as a **block diagram**:
 
 **Truth Table:**
 
-| D | Q(t + 1) |
-|:-----:|:-----:|
-|   0   |   0   |
-|   1   |   1   |
+| D (Data)  | Q(t + 1)  |
+|:---------:|:---------:|
+| 0         | 0         |
+| 1         | 1         |
 
 *Click [Here](https://circuitverse.org/users/269149/projects/d-flip-flop-40d49df4-0896-410a-bbd5-16acdd8883ae) for a working model of this circuit*
 
@@ -143,7 +162,6 @@ Convert circuit to boolean expression by working backwards from last logic gate 
 
 
 Additional identities
-
 
 
 ## 4. RISC-V Assembly

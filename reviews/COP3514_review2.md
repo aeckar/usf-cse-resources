@@ -163,7 +163,8 @@ if (strstr(string2, string1) == NULL) {
 
 ### Command-line arguments
 ```bash
-./a.out "Hello, world"  # Program name, in this case "a.out", is always first argument
+./a.out "Hello, world"  # Program name, in this case "./a.out", is always first argument
+                        # IMPORTANT: If "./" is used, it is also part of the first argument
 ```
 
 ```c
