@@ -104,7 +104,7 @@ while (cur < tail + 1) {    // Iterate over all elements, starting from first
     ++cur;                  // Don't forget to increment (decrement) pointer
 }
 int two_d[][8] = {"Hello", "world"};    // Two-dimensional array (variable points to pointer pointing to first element of first array)
-int error[][] = {3,4,5};                // Compilation error: Size of inner arrays cannot be inferred, must be made explicit
+int error[][] = {{3},{4},{5}};                // Compilation error: Size of inner arrays cannot be inferred, must be made explicit
 ```
 
 ### String Manipulation
