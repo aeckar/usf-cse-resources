@@ -138,7 +138,7 @@ void bubbleSort(int a[], int n) {
 }
 ```
 
-For our array of strings we're going to need to modify the swapping condition. We need to see if the two words being compared are not in alphabetical order. To do this, we can make a function that will compare two strings. We need this function to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. We must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***psudo-code***:
+For our array of strings we're going to need to modify the swapping condition. We need to see if the two words being compared are not in alphabetical order. To do this, we can make a function that will compare two strings. We need this function to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. We must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***pseudo-code***:
 
 ```
 int word_comp(char* word1, char* word2) {
@@ -187,7 +187,7 @@ two
 two
 ```
 
-To continue, we compare `array[1]` with `array[3]` ("three" and "two"). They are different so we set `array[1 + 1]` with `array[3]`. Next we compare `array[2]` with `array[4]` ("two" and "two"). They are the same word so we skip it. This is the final array.
+To continue, we compare `array[1]` with `array[3]` ("three" and "two"). They are different so we set `array[1 + 1]` with `array[3]`. Next we compare `array[2]` with `array[4]` ("two" and "two"). They are the same word so we skip it. This is the final array:
 
 ```
 one
