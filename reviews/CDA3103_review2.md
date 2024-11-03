@@ -1,6 +1,7 @@
 # CDA 3103 Computer Organization & Architecture - Exam 2 Review
 
 <!-- Use 'img' tags when image resizing is needed. -->
+<!-- Use 'table' tag to display images side-by-side. -->
 
 <p style="text-align:center">
     <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
@@ -21,72 +22,59 @@
 | tera-     | T         | $10^{12}$     |
 | peta-     | P         | $10^{15}$     |
 
-## 1. Logic Gates, Multiplexers, and Decoders
+## 1. Logic Gates & Combinational Circuits
 
-- Boolean expressions can be represented as a diagram of *logic gates*
-    - Composed of transistors
-    - All except NOT can accept any number of inputs
 - Presence of electricity in some part of a circuit is a *signal*
     - Represents `1`
     - Absence represents `0`
+- Boolean expressions can be represented as a diagram of *logic gates*
+    - Composed of transistors
+    - All except NOT can accept any number of input (incoming) signals
 
 ### Common Logic Gates
-| Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            |
-|-------|-----------------------------------------------|-------------------------------|-------------------------------|
-| NOT   | ![](../images/gates/logic/CDA3103_not.png)    | No input signal               | x', $\bar{x}$                 |
-| AND   | ![](../images/gates/logic/CDA3103_and.png)    | All input signals             | xy                            |
-| OR    | ![](../images/gates/logic/CDA3103_or.png)     | Any input signal              | x + y                         |
-| XOR   | ![](../images/gates/logic/CDA3103_xor.png)    | Exactly one input signal      | x $\oplus$ y, x'y + xy'       |
-| NAND  | ![](../images/gates/logic/CDA3103_nand.png)   | Absence of any input signal   | (xy)'                         |
-| NOR   | ![](../images/gates/logic/CDA3103_nor.png)    | No input signals              | (x + y)'                      |
-| XNOR  | ![](../images/gates/logic/CDA3103_xnor.png)   | Equal input signals           | (x $\oplus$ y)', x'y' + xy    |
+| Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            | Simplified Form   |
+|-------|-----------------------------------------------|-------------------------------|-------------------------------|-------------------|
+| NOT   | ![](../images/gates/logic/CDA3103_not.png)    | No input signal               | x', $\bar{x}$                 |                   |
+| AND   | ![](../images/gates/logic/CDA3103_and.png)    | All input signals             | xy                            |                   |
+| OR    | ![](../images/gates/logic/CDA3103_or.png)     | Any input signal              | x + y                         |                   |
+| XOR   | ![](../images/gates/logic/CDA3103_xor.png)    | Exactly one input signal      | x $\oplus$ y                  | x'y + xy'         |
+| NAND  | ![](../images/gates/logic/CDA3103_nand.png)   | Absence of any input signal   | (xy)'                         | x' + y'           |
+| NOR   | ![](../images/gates/logic/CDA3103_nor.png)    | No input signals              | (x + y)'                      | x'y'              |
+| XNOR  | ![](../images/gates/logic/CDA3103_xnor.png)   | Equal input signals           | (x $\oplus$ y)'               | x'y' + xy         |
 
-<p style="text-align:center">
-    <img src="../images/gates/combinational/CDA3103_mux_circuit.png">
-</p>
+- From DeMorgan's Law, we can represent NAND and NOR gates in the following forms as well:
 
-- A *multiplexer* chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs
-    - efe
+<table>
+    <tr>
+        <td><img src="../images/gates/logic/CDA3103_nand_alt.png"></td>
+        <td><img src="../images/gates/logic/CDA3103_nor_alt.png"></td>
+    </tr>
+</table>
 
-<p style="text-align:center">
-    <img src="../images/gates/combinational/CDA3013_decoder_circuit.PNG">
-</p>
-
-- A *decoder* converts *n* inputs to $2^n$ outputs
-    - efse
-
-## 2. Combinational Circuits
-
-- *Combinational circuits* comprised of:
-    - Basic boolean operations as logic gates
-    - Input(s)
-    - Output(s)
-- Output is function of input
-    - Same output given same input
-
->**Example:**
->
->
+### Common Combinational Circuits
+| Name          | Circuit Diagram                                                   | Purpose                                                                                                               | Boolean Equivalent                            |
+|---------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| Multiplexer   | ![](../images/gates/combinational/CDA3103_mux_circuit.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
+| Decoder       | ![](../images/gates/combinational/CDA3013_decoder_circuit.PNG)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
 
 ## 3. Sequential Circuits
 
 - Hold and use data, typically 1 bit, from previous input(s) to produce next output(s)
     - For each type, either synchronous or asynchronous
+- *Synchronous* circuits respond to initial & past inputs only when clock is in specific state
+    - Most sequential circuits
+- *Asynchronous* circuits respond to inputs all the time (do not have a clock)
+- Signal output given previous & current inputs shown by *characteristic table*
+    - Similar to a truth table
 
-- *Synchronous* circuits respond to initial & past inputs only when clock is in specific state. Most sequential circuits are synchronous.
-- *Asynchronous* circuits respond to inputs all the time (they don't have a clock).
+<!--------------------------------------------------------------------------------------------------------------------->
 
 ### Set-Reset Latch
 
-- Holds one bit of data. It is also the smallest circuit capable doing this.
-- Is asynchronous. It doesn't have a clock.
-- Can have an undefined state (its data is invalid).
-
-**Circuit:**
-
+#### Circuit Diagram
 <img src="../images/CDA3103_sr_latch.png" alt="Set-Reset Latch" width="25%">  
 
-**Truth table:**
+#### Characteristic Table
 | S (Set)   | R (Reset) | Q(t + 1)                      |
 |:---------:|:---------:|:-----------------------------:|
 | 0         | 0         | Q(t)                          |
@@ -94,59 +82,63 @@
 | 1         | 0         | 1                             |
 | 1         | 1         | <small>*undefined*</small>    |
 
->**Example:**
->
->
+#### Properties
+- Holds one bit of data
+- Asynchronous
 
-#### Set-Reset Flip-Flop
+<!--------------------------------------------------------------------------------------------------------------------->
 
+### [Set-Reset Flip-Flop](https://circuitverse.org/users/269149/projects/sr-flip-flop-0b7a0de1-fe11-40df-9094-3a27b6963370)
+
+#### Circuit Diagram
+<img src="../images/CDA3103_sr_flipflop.png" alt="Set-Reset Flip Flop" width="35%">
+
+#### Block Diagram
+<img src="../images/CDA3103_sr_flipflop_block.png" alt="Set-Rest Flip-Flop Block Diagram" width="25%">
+
+#### Characteristic Table
+TODO TODO TODO
+
+#### Properties
 - Extends SR latch
 - Only updates when a signal from a clock is received.
 - Circuit is the same as a Set-Reset Latch but modified with AND gates to account for the clock.
 
-**Circuit:**
+<!--------------------------------------------------------------------------------------------------------------------->
 
-<img src="../images/CDA3103_sr_flipflop.png" alt="Set-Reset Flip Flop" width="35%">
+### [D Flip-Flop](https://circuitverse.org/users/269149/projects/d-flip-flop-40d49df4-0896-410a-bbd5-16acdd8883ae)
 
-You will more commonly see this as a **block diagram**:
-
-<img src="../images/CDA3103_sr_flipflop_block.png" alt="Set-Rest Flip-Flop Block Diagram" width="25%">
-
-*Click [Here](https://circuitverse.org/users/269149/projects/sr-flip-flop-0b7a0de1-fe11-40df-9094-3a27b6963370) for a working model of this circuit*
-
-#### D Flip-Flop
-
-- A modified SR Flip-Flop in which only one input (SET) is needed.
-- Reset is always the opposite of Set.
-- The information stored in a D Flip-Flop is only changed when the input changes.
-- Subsequent clock pulses do not effect the data stored.
-
-**Circuit:**
-
+#### Circuit Diagram
 <img src="../images/CDA3103_d_flipflop.png" alt="D Flip-Flop Block Diagram" width="30%">
 
-**Truth Table:**
+#### Block Diagram
+TODO TODO TODO
 
+#### Characteristic Table
 | D (Data)  | Q(t + 1)  |
 |:---------:|:---------:|
 | 0         | 0         |
 | 1         | 1         |
 
-*Click [Here](https://circuitverse.org/users/269149/projects/d-flip-flop-40d49df4-0896-410a-bbd5-16acdd8883ae) for a working model of this circuit*
+#### Properties
+- A modified SR Flip-Flop in which only one input (SET) is needed.
+- Reset is always the opposite of Set.
+- The information stored in a D Flip-Flop is only changed when the input changes.
+- Subsequent clock pulses do not effect the data stored.
 
-#### JK Flip-Flop
+<!--------------------------------------------------------------------------------------------------------------------->
 
-- A modified SR Flip-Flop in which Set and Reset can both be 1.
-- Set is denoted with J and Reset is denoted with K.
-- When J and K are both 1, Q(t+1) gets set to the complement of Q(t).
+### [JK Flip-Flop](https://circuitverse.org/users/269149/projects/jk-flip-flop-5d11e97f-e706-45b7-9dd6-fba45eb3f167)
 
-**Circuit:**
-
+#### Circuit Diagram
 <img src="../images/CDA3103_jk_flipflop.png" alt="JK Flip-Flop" width="30%">
 
-**Truth Table:**
-| J (Set) | K (Reset) | Q(t) | Q(t + 1) |
-|:-----:|:-----:|:-----:|:-----:|
+#### Block Diagram
+TODO TODO TODO
+
+#### Characteristic Table
+| J (Set)   | K (Reset) | Q(t)  | Q(t + 1) |
+|:---------:|:---------:|:-----:|:-----:|
 |   0   |   0   |   0   |   0   |
 |   0   |   0   |   1   |   1   |
 |   0   |   1   |   0   |   0   |
@@ -156,30 +148,48 @@ You will more commonly see this as a **block diagram**:
 |   1   |   1   |   0   |   1   |
 |   1   |   1   |   1   |   0   |
 
-*Click [Here](https://circuitverse.org/users/269149/projects/jk-flip-flop-5d11e97f-e706-45b7-9dd6-fba45eb3f167) for a working model of this circuit*
+#### Properties
+- A modified SR Flip-Flop in which Set and Reset can both be 1.
+- Set is denoted with J and Reset is denoted with K.
+- When J and K are both 1, Q(t+1) gets set to the complement of Q(t).
+
+<!--------------------------------------------------------------------------------------------------------------------->
 
 Convert circuit to boolean expression by working backwards from last logic gate (give example with AST)
 
-
 Additional identities
-
 
 ## 4. RISC-V Assembly
 
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
     - Specification defines
+    - We will use RV32I, a dialect of RISC-V
+- Recall registers are a small, extremely fast units of memory
+    - Store 32-bit values
+    - 32 in total
+- Instructions operate on values in registers
+    - Follows the form `id rs, ra1, ...`
+        - Instruction ID, register store, register arguments...
+        - Location to store result must be made explicit
+    - Are case-insensitive
 
-### Registers
-Registers store 32-bit values. RISC-V has 32 registers to work with.
+### RV32I Registers
+| Register      | Mnemonic/Alliance | Description                       | Use-case                  | Saver     |
+|:-------------:|:-----------------:|-----------------------------------|---------------------------|-----------|
+| `x0`          | `zero`            | Hard-wired zero                   | Immediate constant +TODO initialize other registers? |           |
+| `x1`          | `ra`              | Return address                    |           | Caller    |
+| `x2`          | `sp`              | Stack pointer                     |           | Callee    |
+| `x3`          | `gp`              | Global pointer                    | <small>*we will not use this*</small> |           |
+| `x4`          | `tp`              | Thread pointer                    | <small>*we will not use this*</small> |           |
+| `x5`-`x7`     | `t0`-`t2`         | Temporaries                       |           | Caller    |
+| `x8`          | `s0`/`fp`         | Saved register/frame pointer      |           | Callee    |
+| `x9`          | `s1`              | Saved register                    |           | Callee    |
+| `x10`-`x11`   | `a0`-`a1`         | Function arguments/return values  |           | Caller    |
+| `x12`-`x17`   | `a2`-`a7`         | Function arguments                |           | Caller    |
+| `x18`-`x27`   | `s2`-`s11`        | Saved registers                   |           | Callee    |
+| `x28`-`x31`   | `t3`-`t6`         | Temporaries                       |           | Caller    |
 
-<img src="../images/CDA3103_RISCV_Registers.png" alt="RISC-V Registers">
-
-
-**X0 (zero):** Hardwired value to 0. Can be used to initialize other registers.
-**X5-X7 & X28-X31 (t0-t6):** Used to hold temporary values in registers.
-**X8-X9 & X18-X27 (s0-s11):** Can also be used to hold temporary values in registers.
-**X10-X11 (a0-a1):** Can be used to hold function arguments or return values.
-**X12-X17 (a2-a7):** Can be used to hold function arguments.
+- Caller and callee savers TODO
 
 ### R-Type Instructions
 #### Arithmetic Instructions

@@ -1,6 +1,19 @@
 A repository of exam review sheets and other resources compiled by students at the University of South Florida
 in the Computer Science and Computer Engineering programs.
 
+With development initially starting in Summer of 2024, this repository aims to increase the passing rate of the courses
+within these programs through the creation of comprehensive and easily digestible study guides, flashcards,
+and practice questions.
+
+These materials are not intended to replace independent study, but to complement it
+by ensuring that all information is covered and understood.
+
+As of November 2024, this repository contains materials covering:
+- EGN 3443, Probability & Statistics for Engineers
+- COP 3514, Program Design
+- CDA 3103, Computer Organization & Architecture
+- COT 3100, Intro to Discrete Structures
+
 ### Additional Resources
 
 - [Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)
@@ -9,9 +22,11 @@ in the Computer Science and Computer Engineering programs.
 
 ### How To Contribute
 
-1. [Fork this repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) using GitHub or the [`git`](https://git-scm.com/downloads/win) CLI tool
+1. [Fork this repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+   using GitHub or the [`git`](https://git-scm.com/downloads/win) CLI tool
 2. Make changes to your forked repository
-3. [Submit a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) to this repository
+3. [Submit a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+   to this repository
 
 ### Contribution Guidelines
 
