@@ -9,7 +9,9 @@ Note this is a guide *not* a solution. Different approaches to various problems 
 ## Simplified Directions
 
 The goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). Along
-with printing the tokens you will need to sort the words of the string in aphabetical order, print the number of unique words, *N*, and print those *N* words each on a newline. A word's **token** is its position aphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters and the only delimiters will be whitespace (' ' and '\n) and periods ('.').
+with printing the tokens you will need to sort the words of the string in aphabetical order, print the number of unique words, *N*, and print those *N* unique words each on a newline.
+
+A word's **token** is its position aphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters, and the only non-alphabetical characters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
 
 <u>**Example:**</u>
 
@@ -34,6 +36,12 @@ two
 3 1
 ```
 
+There are three components to the outfile in the example above:
+
+- The number of unique words (1 line)
+- *N* unique words (Next *N* lines)
+- For *M* sentences, each sentence with its word replaced by its position in the above list (*M* lines)
+
 ## Guide
 
 *Note: The only code in any of the sections below will be something done in class or a simple demonstraion of a concept.*
@@ -42,7 +50,7 @@ two
 
 The characters in the input file need a way to get into your C program. To do this you will need some code to handle reading lines from a file.
 
-A simple example of code that reads a file:
+Here is a simple example of a C program that reads a file and prints each line:
 
 ```c
 #include <stdio.h>
@@ -68,7 +76,7 @@ int main() {
 
 In this example, each line of the string is stored in `char content[]`.
 
-Now, you need the whole file, not just one line. You can concatenate each line to a larger string to get the whole string.
+Now, you need the whole file, not just one line. You can concatenate each line to a larger string to get the whole input string.
 
 Recall the concatenate function built in class:
 
@@ -88,7 +96,9 @@ Using a combination of these two functions a whole file can be read into one str
 
 ### **String Processing**
 
-Remember a string is simply an array of characters with a null terminator (`\0`) at the end. Printing every character in a string array string would look something like this `"string\0"`. What if more characters are put after the null terminator to make something like this `"string\0test\0"`? Here's a C program that does just that:
+Remember, a string is simply an array of characters with a null terminator (`\0`) at the end. Printing every character in a string array string would look something like this: `string\0`. What if more characters are put after the null terminator to make something like this: `string\0test\0`?
+
+Here is a C program built to demonstrate this:
 
 ```c
 #include <stdio.h>
@@ -109,7 +119,7 @@ With this technique, more than one word can be stored in a single array. All you
 
 Now, how is this helpful? The main string can now be divided up into its individual words by replacing whitespace or punctuation with null terminating characters and storing pointers to the start of each word. 
 
-***The pointers can be stored in an array.***
+***The pointers to individual words can be stored in an array.***
 
 ### **Sorting**
 
@@ -138,7 +148,9 @@ void bubbleSort(int a[], int n) {
 }
 ```
 
-For our array of strings, the swapping condition will need to be modified. The two words being compared need to be checked for alphabetical order. To do this, a function can be used to compare two strings. This function needs to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. The function must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***pseudo-code***:
+For our array of strings, the swapping condition (the condition checked by the nested `if` statement) will need to be modified. The two words being compared need to be checked for alphabetical order. To do this, a function can be used to compare two strings.
+
+This function needs to take in two `char` pointers as arguments and compare each character of the two strings until a difference is found or a null terminator is encountered. This function will return 1 if the strings are out of alphabetical order, -1 if they are in the correct order and 0 if they are the same string. The function must also return 1 if word 1 is **longer** than word 2 and word 2 fits inside word 1 (Ex. "in" and "inside". If "inside" was word 1 and "in" was word 2 they would need to be swapped because the shorter word must be first.) Here's an example of this function in ***pseudo-code***:
 
 ```
 int word_comp(char* word1, char* word2) {
@@ -165,7 +177,7 @@ int word_comp(char* word1, char* word2) {
 
 ### **Duplication Removal**
 
-Once your array is sorted, the duplicates must be removed. Because the array of words is already sorted, the duplicates will be right next to each other. In the original example in the project instructions above the sorted array would look like this:
+Once your array is sorted, the duplicates must be removed. Because the array of words is already sorted, the duplicates will be right next to each other. In the original example in the project instructions above, the sorted array would look like this:
 
 ```
 one
@@ -175,7 +187,7 @@ two
 two
 ```
 
-To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index just created. If they are equal, skip and if they are diffent move the current word to the new indexing variable plus 1. If that was confusing, here's an example using the values above:
+To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index just created. If they are equal, skip and if they are different move the current word to the new indexing variable plus 1. Here's an example using the words above to hopefully clear this concept up:
 
 The first element can be skipped since it's always unique. Now compare `array[0]` with `array[1]` ("one" and "one"). They are the same word so it's skipped. Now compare `array[0]` with `array[2]` ("one" and "three"). They are different so `array[0 + 1]` is set to `array[2]`. The array now looks like this:
 
@@ -204,7 +216,7 @@ Notice the last word, "two", is repeating. To fix this you can keep track of how
 When using this array, make sure to use it with the proper size (that being the number of unique words).
 If you want to clean things up, you can loop through the array again and set the remaining pointers to `NULL`.
 
-Every word in this new array can be printed using a simple `for` loop.
+Every word in this newly sorted array can be printed using a simple `for` loop.
 
 ### File Output
 
@@ -235,7 +247,7 @@ int main() {
 There are many ways to do this part. The goal is to compare every word in the original string with the new sorted and filtered array of words.
 The token is equal to how far into the sorted array the current word is located. Here's an example:
 
-Say the current word in the string is "two" and my sorted array of words is `one three two`. You would need to go 3 elements deep to find the word "two", therefore the token is 3.
+Say the current word in the string is "two" and the sorted array of words is `one three two`. You would need to go 3 elements deep to find the word "two"; therefore, the token is 3.
 
 A `for` loop can be used to match a given word with its position in the sorted array. Use the comparison function used for the sorting algorithm to find when the two words are equal.
 
@@ -249,8 +261,92 @@ A `for` loop can be used to match a given word with its position in the sorted a
 
 - This can be tricky because if you're using an array holding just words it's likely all periods are gone. Periods should always be followed by a space or a newline meaning, depending on how you set up your string processing algorithm, there should be **two** null terminators at the end of a sentence. This means on every word, you can check if the two characters before it are `\0`. If they are, print a newline.
 
+### **Using Structures**
+
+Structures are not technically required for this project; however, using them may prove to be useful. Structures (also called structs) are used when grouping data could be helpful. In this project for example, you may want to group a word's pointer with its token. You can think of a struct like a class that can only have member variables (no functions). Here are some examples of structs, and how they can be used in C:
+
+```c
+#include <stdio.h>
+
+//Struct declaration
+
+struct Entity {
+    int a;
+    int b;
+    char c;
+};
+
+int main() {
+
+    struct Entity entity1;      //Struct instance
+
+    entity1.a = 2;
+    entity1.b = 3;
+    entity1.c = 'a';
+
+    printf("%d\n", entity1.a);
+    printf("%d\n", entity1.b);
+    printf("%c\n", entity1.c);
+
+    //You can also make pointers to structs.
+
+    struct Entity* entity1_ptr = &entity1;
+
+    //The arrow operator ('->') will dereference a pointer to a struct 
+    //and access a member variable within that struct at the same time.
+
+    entity1_ptr->a = 4;         //entity1_ptr->a == (*entity1_ptr).a
+    entity1_ptr->b = 5;
+    entity1_ptr->c = 'b';
+
+    printf("%d\n", entity1_ptr->a);
+    printf("%d\n", entity1_ptr->b);
+    printf("%c\n", entity1_ptr->c);
+
+    return 0;
+}
+```
+
+You can also create arrays of structs, which may be helpful in this project.
+
+```c
+#include <stdio.h>
+#define SIZE 5
+
+//You can also create a struct using this syntax.
+//It eliminates the need to type "struct" before every instance of the struct.
+
+typedef struct {
+    int a;
+    int b;
+    char c;
+} Entity;
+
+int main() {
+
+    //Notice the word "struct" is missing from the declaration.
+    Entity entity_arr[SIZE];
+
+    for (int i = 0; i < SIZE; i++) {
+        entity_arr[i].a = i;
+        entity_arr[i].b = (i + 1);
+        entity_arr[i].c = 'a' + i;
+    }
+
+    for (int i = 0; i < SIZE; i++) {
+        printf("%d\n", entity_arr[i].a);
+        printf("%d\n", entity_arr[i].b);
+        printf("%c\n", entity_arr[i].c);
+    }
+
+    return 0;
+}
+```
+
+Again, using structs is not required, but they can help organize your code and better manage data.
+
 ## Conclusion
 
-Once again, this is just a general outline to be used to create your own solution. Experimentation is encouraged and to some extent, required. If you have any additional questions feel free to ask them in the discord.
+Remember, this is just a general outline to be used to create your own solution. Experimentation is encouraged and to some extent, required. If you have any additional questions feel free to ask them in the discord.
 
 Good luck :)
