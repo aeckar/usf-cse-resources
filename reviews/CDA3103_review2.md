@@ -18,19 +18,21 @@
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
     - All except NOT can accept any number of input (incoming) signals
+- All other gates can be created from NAND and NOR gates
+    - "Universal gates", more commonly NAND
 
 <!-- Images in the following tables are not perfectly aligned--leave as-is. -->
 
 ### Common Logic Gates
-| Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            | Simplified Form   |
-|-------|-----------------------------------------------|-------------------------------|-------------------------------|-------------------|
-| NOT   | ![](../images/gates/logic/CDA3103_not.png)    | No input signal               | x', $\bar{x}$                 |                   |
-| AND   | ![](../images/gates/logic/CDA3103_and.png)    | All input signals             | xy                            |                   |
-| OR    | ![](../images/gates/logic/CDA3103_or.png)     | Any input signal              | x + y                         |                   |
-| XOR   | ![](../images/gates/logic/CDA3103_xor.png)    | Exactly one input signal      | x $\oplus$ y                  | x'y + xy'         |
-| NAND  | ![](../images/gates/logic/CDA3103_nand.png)   | Absence of any input signal   | (xy)'                         | x' + y'           |
-| NOR   | ![](../images/gates/logic/CDA3103_nor.png)    | No input signals              | (x + y)'                      | x'y'              |
-| XNOR  | ![](../images/gates/logic/CDA3103_xnor.png)   | Equal input signals           | (x $\oplus$ y)'               | x'y' + xy         |
+| Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            | Simplified Form   | NAND Form     |
+|-------|-----------------------------------------------|-------------------------------|-------------------------------|-------------------|---------------|
+| NOT   | ![](../images/gates/logic/CDA3103_not.png)    | No input signal               | x', $\bar{x}$                 |                   | (xx)'         |
+| AND   | ![](../images/gates/logic/CDA3103_and.png)    | All input signals             | xy                            |                   | ((xy)'(xy)')' |
+| OR    | ![](../images/gates/logic/CDA3103_or.png)     | Any input signal              | x + y                         |                   | ((xx)'(yy)')' |
+| XOR   | ![](../images/gates/logic/CDA3103_xor.png)    | Exactly one input signal      | x $\oplus$ y                  | x'y + xy'         |               |
+| NAND  | ![](../images/gates/logic/CDA3103_nand.png)   | Absence of any input signal   | (xy)'                         | x' + y'           |               |
+| NOR   | ![](../images/gates/logic/CDA3103_nor.png)    | No input signals              | (x + y)'                      | x'y'              |               |
+| XNOR  | ![](../images/gates/logic/CDA3103_xnor.png)   | Equal input signals           | (x $\oplus$ y)'               | x'y' + xy         |               |
 
 - From DeMorgan's Law, we can represent NAND and NOR gates in the following forms as well:
 
@@ -40,15 +42,13 @@
 </p>
 
 ### Common Combinational Circuits
-| Name          | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
-|---------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Multiplexer   | ![](../images/gates/combinational/CDA3103_mux.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
-| Decoder       | ![](../images/gates/combinational/CDA3013_decoder.PNG)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
+| Name          | Block Diagram                                                 | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
+|---------------|---------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| Multiplexer   | ![](../images/gates/combinational/CDA3103_mux_block.png)      | ![](../images/gates/combinational/CDA3103_mux.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
+| Decoder       | ![](../images/gates/combinational/CDA3013_decoder_block.png)  | ![](../images/gates/combinational/CDA3013_decoder.png)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
 
-- Multiplexers described by their
-    - **Ex:** 
-- Decoders described by their
-    - **Ex:** 
+- Multiplexers and decoders described by their inputs/outputs
+    - **Ex:** 4-to-1 multiplexer (4 inputs/1 output)
 
 ## 3. Sequential Circuits
 
@@ -173,16 +173,17 @@ Additional identities
 - *Caller-saved* registers must be saved/restored by the calling function to be preserved
 - *Callee-saved* registers must be saved/restored by the function being called to be preserved
 
->**Example:** caller saved and callee saved TODO TODO TODO
+>**Example:** TODO caller saved and callee saved example
 >
 >
 >
 >
 >
 
--
-
-.data, .text TODO
+- Programs divided into sections
+    - `section .data` contains constants
+    - `section .text` contains instructions
+- Functions defined by their name, followed by a colon
 
 ---
 
@@ -201,7 +202,7 @@ Additional identities
 >```
 >$\checkmark$
 
-| Instruction           | Description                                                                                                               |
+| Instruction Form      | Description                                                                                                               |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------|
 | `add  rd, rs1, rs2`   | Adds `rs1` and `rs2`, storing the result in `rd`                                                                          |
 | `sub  rd, rs1, rs2`   | Subtracts `rs1` from `rs2`, storing the result in `rd`                                                                    |
@@ -221,129 +222,85 @@ Additional identities
 - I-type instruction use-cases
     - Arithmetic, logical, and shift operations using immediates (constants)
     - Reading from memory
-- Arithmetic, logical, and shifting is similar to R-Type. `rs2` gets replaced by `Imm` which is a 12-bit value with a data range of [-2048, 2047].
+- `imm` is 12-bit integer within range [-2048, 2047]
 
-| Instruction           | Description                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------|
-| `addi rd, rs1, imm`   | Adds `rs1` and `imm`, storing the result in `rd`<br>*No `subi`, as `imm` can be negative* |
-| `slti rd, rs1, imm`   |  |
-| `sltiu rd, rs1, imm`  |  |
-| `andi rd, rs1, imm`   |  |
-| `ori rd, rs1, imm`    |  |
-| `xori rd, rs2, imm`   |  |
-| `slli rd, rs1, imm`   | Logical left shift |
-| `srli rd, rs1, imm`   | Logical right shift |
-| `srai rd, rs1, imm`   | Arithmetic right shift |
-| `lb rd, imm(rs1)`     |  | 
-| `lh rd, imm(rs1)`     |  |
-| `lw rd, imm(rs1)`     |  |
-| `lbu rd, imm(rs1)`    |  |
-| `lhu rd, imm(rs1)`    |  |
+| Instruction Form      | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| `addi rd, rs1, imm`   | Adds `rs1` and `imm`, storing the result in `rd`<br>*No `subi`, as `imm` can be negative*     |
+| `slti rd, rs1, imm`   | If `rs1` < `imm`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as signed*      |
+| `sltiu rd, rs1, imm`  | If `rs1` < `imm`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as unsigned*    |
+| `andi rd, rs1, imm`   | Bitwise AND on `rs1` and `imm`, storing the result in `rd`                                    |
+| `ori rd, rs1, imm`    | Bitwise OR on `rs1` and `rs2`, storing the result in `rd`                                     |
+| `xori rd, rs2, imm`   | Bitwise XOR on `rs1` and `rs2`, storing the result in `rd`                                    |
+| `slli rd, rs1, imm`   | Logical left shift on `rs1`<br>*Inserts zeros where previous LSB were*                        |
+| `srli rd, rs1, imm`   | Logical right shift in `rs1`<br>*Inserts zeros where previous MSB were*                       |
+| `srai rd, rs1, imm`   | Arithmetic right shift on `rs1`<br>*Inserts previous sign bit where previous MSB were*        |
+| `lb rd, imm(rs1)`     | Loads 1 byte (8 bits) from address `rs1 + imm`, with sign extension                           |
+| `lh rd, imm(rs1)`     | Loads 2 bytes (16 bits) from address `rs1 + imm`, with sign extension                         |
+| `lw rd, imm(rs1)`     | Loads 4 bytes (32 bits) from address `rs1 + imm`                                              |
+| `lbu rd, imm(rs1)`    | Loads 1 byte (8 bits) from address `rs1 + imm`, with MSB filled with zeros                    |
+| `lhu rd, imm(rs1)`    | Loads 2 bytes (16 bits) from address `rs1 + imm`, with MSB filled with zeros                  |
+
+| Instruction   | Use-Case                                                      | Example                                               |
+|---------------|---------------------------------------------------------------|-------------------------------------------------------|
+| `andi`        | Clear specific bits, since `x0 = 0`<br>Find modulo of $2^n$   | `x % n` $\leftrightarrow$ `andi rd, {&x}, {n - 1}`    |
+| `ori`         | Set specific bits, since `x + 1 = 1`                          |                                                       |
+| `xori`        | Logical NOT                                                   | `!x` $\leftrightarrow$ `xori rd, {&x}, -1`            |
+| `slli`        | Multiply by $2^n$, where *n* is the shift amount              | `x * 4` $\leftrightarrow$ `slli rd, {&x}, 2`          |
+| `srai`        | Divide by $2^n$, where *n* is the shift amount                | `x / 2` $\leftrightarrow$ `srai rd, {&x}, 1`          |
+| `l{...}`      | Read value from an array                                      | `x = (int) y[6]` $\leftrightarrow$ `lw {&x}, 6({&y})` |
+
+- For `slli`, if the constant is not a power of 2, sum multiple left shifts
+
+>**Example:** Convert the following C code to RISC-V.
+>```c
+>j = h * 6          // j in t3, h in t0
+>```
+>
+>```assembly
+>slli t1, t0, 1     # t1 = t0 * 2
+>slli t2, t0, 2     # t2 = t0 * 4
+>add t3, t1, t2     # t3 = t1 + t2 = 6 * t0
+>```
+>$\checkmark$
 
 ---
 
 ### S-Type Instructions
 
-- 
+- Used to write values to an array 
 
-| Instruction           | Description                                                                               |
+| Instruction Form      | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
+| `sb rs2, imm(rs1)`    |  |
+| `sh rs2, imm(rs1)`    |  |
+| `sw rs2, imm(rs1)`    |  |
 
 ### U-Type Instructions
 
 - 
 
-| Instruction           | Description                                                                               |
+| Instruction Form      | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
+| `lui rd, imm`         |  |
 
 ### B-Type Instructions
 
-- 
+- Used for implementing conditional jumps
+- *Branches* specified by labels
+    - Functions defined as branches
+    - Represented by `imm`
 
-| Instruction           | Description                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------|
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
-| `` |  |
+| Instruction Form      | Jump Condition                |
+|-----------------------|-------------------------------|
+| `beq rs1, rs2, imm`   | `rs1` ==`rs2`                 |
+| `bne rs1, rs2, imm`   | `rs1` != `rs2`                |
+| `blt rs1, rs2, imm`   | `rs1` < `rs2`                 |
+| `bge rs1, rs2, imm`   | `rs1` > `rs2`                 |
+| `bltu rs1, rs2, imm`  | `rs1` < `rs2` *(unsigned)*    |
+| `bgeu rs1, rs2, imm`  | `rs1` > `rs2` *(unsigned)*    |
 
-#### Arithmetic Instructions
-- Useful for initializing constants from C code. Example `ADDI t0, zero, 20 #t0 = 20`. TODO example
-
-- Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
-
-- Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
-
-#### Logical Instructions
-`ANDI rd, rs1, Imm`
-- Does logical and using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
-- The ANDI instruction can be used to clear some specific bits since `x and 0 = 0`.
-- The ANDI instruction can also be used to find the modulo of 2^n. Example C: `X % 16` -> Example RISC-V: `ANDI t1, t0, 15`.
-
-`ORI rd, rs1, Imm`
-- Does logical or using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
-- The ORI instruction can be used to set some specific bits since `x or 1 = 1`.
-
-`XORI rd, rs1, Imm`
-- Does logical exclusive or using the values of `rs1` and `Imm` on each bit and stores the result in `rd`.
-- There is no NOT instruction in RISC-V, but XORI can be used in it's place: `XORI t1, t0, -1 # t1 = NOT t0`
-
-#### Shifting Instructions
-`SLLI rd, rs1, Imm`
-- Does logical left shifting on `rs1` by the value of `Imm`. Inserts zeros to the least significant bit and shifts out the most significant bit.
-- Can be used for multipling with 2^n constants. Example: `SLLI t2, t0, 2 # t2 = t0 * 4`
-- If the constant is not a power of 2, then use multiple left shifts and add together at the end. Example:
-
-```
-C: j = h * 6
-
-RISC-V:
-SLLI t1, t0, 1 # t1 = t0 * 2
-SLLI t2, t0, 2 # t2 = t0 * 4
-ADD t3, t1, t2 # t3 = t1 + t2 = 6 * t0
-```
-
-`SRLI rd, rs1, Imm`
-- Does logical right shifting on `rs1` by the value of `Imm`. Inserts zeros to the most significant bit and shifts out the least significant bit.
-
-`SRAI rd, rs1, Imm`
-- Does arithmetic right shifting on `rs1` by the value of `Imm`. Inserts sign bit to the most significant bit and shifts out the least significant bit.
-- Can be used for dividing with 2^n constants. Example: `SRAI t1, t0, 1 # t1 = t0/2`
-
-#### Memory Reading Instructions
-Used for reading values from arrays.
-
-`LB rd, Imm(rs1)`
-- Loads 1 byte (8-bits) from the memory address `rs1` + `Imm` offset and sign extends it.
-
-`LH rd, Imm(rs1)`
-- Loads 2 bytes (16-bits) from the memory address `rs1` + `Imm` offset and sign extends it.
-
-`LW rd, Imm(rs1)`
-- Loads 4 bytes (32-bits) from the memory address `rs1` + `Imm` offset.
-
-`LBU rd, Imm(rs1)`
-- Loads 1 byte (8-bits) from the memory address `rs1` + `Imm` offset and zero extends it.
-
-`LHU rd, Imm(rs1)`
-- Loads 2 bytes (16-bits) from the memory address `rs1` + `Imm` offset and zero extends it.
+- Less than/greater than or equal to? TODO
 
 ### S-Type Instructions
 Used for writing values to arrays.
@@ -372,15 +329,9 @@ ADDI t1, t1, 0x965
 ```
 - If d11 in the hex value is 1 (Ex: 9 = 1001), then add one to `Imm` as shown in the 2nd example.
 
-
 ### B-Type Instructions
-Used for comparing values between registers to jump to different branches of RISC-V code.
 
-`BEQ rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **they are equal** then go to `Imm` branch.
 
-`BNE rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **they are not equal** then go to `Imm` branch.
 
 `BLT rs1, rs2, Imm`
 - Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Signed Comparison.
@@ -400,11 +351,13 @@ Used for comparing values between registers to jump to different branches of RIS
 
 ---
 
+TODO
+
 >**Example:** Convert the following C program to RISC-V:
 >```c
 >
 >```
 >
->```asm
+>```assembly
 >
 >```
