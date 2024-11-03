@@ -8,20 +8,6 @@
     <a href="https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards">quizlet</a>
 </p>
 
-### SI Unit Prefixes 
-| Prefix    | Symbol    | Value         |
-|-----------|-----------|---------------|
-| femto-    | f         | $10^{-15}$    |
-| pico-     | p         | $10^{-12}$    |
-| nano-     | n         | $10^{-9}$     |
-| micro-    | $\mu$     | $10^{-6}$     |
-| milli-    | m         | $10^{-3}$     |
-| kilo-     | k         | $10^3$        | 
-| mega-     | M         | $10^6$        |
-| giga-     | G         | $10^9$        |
-| tera-     | T         | $10^{12}$     |
-| peta-     | P         | $10^{15}$     |
-
 ## 1. Logic Gates & Combinational Circuits
 
 - Presence of electricity in some part of a circuit is a *signal*
@@ -200,7 +186,7 @@ Additional identities
 >
 
 ### R-Type Instructions
-
+---
 - Arithmetic, logical, and shift operations using values stored in registers
 - Bitwise operations AND, OR, and XOR apply the boolean operation to every bit in the operands
     - Analogous to `&`, `|`, and `^` operators in C
@@ -228,7 +214,7 @@ Additional identities
 | `sra  rd, rs1, rs2`   | Arithmetic right shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts previous sign bit where previous MSB were*   |
 
 ### I-Type Instructions
-
+---
 - I-type instruction use-cases
     - Arithmetic, logical, and shift operations using immediates (constants)
     - Reading from memory
@@ -252,7 +238,7 @@ Additional identities
 | `lhu `|
 
 ### S-Type Instructions
-
+---
 -
 
 | Instruction           | Description                                                                               |
