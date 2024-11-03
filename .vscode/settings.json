@@ -74,6 +74,7 @@
         "slti",
         "sltiu",
         "sltu",
+        "srai",
         "srli",
         "stdbool",
         "stdlib",

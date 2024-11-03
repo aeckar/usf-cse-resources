@@ -4,7 +4,8 @@
 
 <p style="text-align:center">
     <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
-    <a href="https://quizlet.com/830254006/cda-3103-exam-1-flash-cards">quizlet</a>
+    <a href="https://quizlet.com/830254006/cda-3103-exam-1-flash-cards">quizlet</a> |
+    <a href="https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94">recitations</a>
 </p>
 
 ### SI Unit Prefixes

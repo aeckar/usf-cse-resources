@@ -2,10 +2,12 @@
 
 <!-- Use 'img' tags when image resizing is needed. -->
 <!-- Use 'table' tag to display images side-by-side. -->
+<!-- GitHub renders instructions & circuit images in tables with proper alignment/width. -->
 
 <p style="text-align:center">
     <a href="../textbooks/CDA3103_textbook.pdf">textbook</a> |
-    <a href="https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards">quizlet</a>
+    <a href="https://quizlet.com/845007313/cda-3103-exam-2-risc-v-logic-gate-circuits-flash-cards">quizlet</a> |
+    <a href="https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94">recitations</a>
 </p>
 
 ## 1. Logic Gates & Combinational Circuits
@@ -16,6 +18,8 @@
 - Boolean expressions can be represented as a diagram of *logic gates*
     - Composed of transistors
     - All except NOT can accept any number of input (incoming) signals
+
+<!-- Images in the following tables are not perfectly aligned--leave as-is. -->
 
 ### Common Logic Gates
 | Name  | Symbol                                        | Requisite for Signal Output   | Boolean Equivalent            | Simplified Form   |
@@ -30,18 +34,21 @@
 
 - From DeMorgan's Law, we can represent NAND and NOR gates in the following forms as well:
 
-<table>
-    <tr>
-        <td><img src="../images/gates/logic/CDA3103_nand_alt.png"></td>
-        <td><img src="../images/gates/logic/CDA3103_nor_alt.png"></td>
-    </tr>
-</table>
+<p style="text-align:center">
+    <img src="../images/gates/logic/CDA3103_nand_alt.png" alt="NAND gate as OR gate with complementary arguments" width=35%><br>
+    <img src="../images/gates/logic/CDA3103_nor_alt.png" alt="NOR gate as AND gate with complementary arguments" width=35%>
+</p>
 
 ### Common Combinational Circuits
-| Name          | Circuit Diagram                                                   | Purpose                                                                                                               | Boolean Equivalent                            |
-|---------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Multiplexer   | ![](../images/gates/combinational/CDA3103_mux_circuit.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
-| Decoder       | ![](../images/gates/combinational/CDA3013_decoder_circuit.PNG)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
+| Name          | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
+|---------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| Multiplexer   | ![](../images/gates/combinational/CDA3103_mux.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
+| Decoder       | ![](../images/gates/combinational/CDA3013_decoder.PNG)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
+
+- Multiplexers described by their
+    - **Ex:** 
+- Decoders described by their
+    - **Ex:** 
 
 ## 3. Sequential Circuits
 
@@ -53,12 +60,29 @@
 - Signal output given previous & current inputs shown by *characteristic table*
     - Similar to a truth table
 
-<!--------------------------------------------------------------------------------------------------------------------->
+---
 
-### Set-Reset Latch
+### SR Latch
+
+- Holds one bit of data, $Q$
+    - Complement is secondary output, $\bar{Q}$
+- Asynchronous
 
 #### Circuit Diagram
-<img src="../images/CDA3103_sr_latch.png" alt="Set-Reset Latch" width="25%">  
+<img src="../images/gates/sequential/CDA3103_sr_latch.png" alt="SR Latch" width=25%>  
+
+---
+
+### SR Flip-Flop ([interactive](https://circuitverse.org/users/269149/projects/sr-flip-flop-0b7a0de1-fe11-40df-9094-3a27b6963370))
+
+- Extends SR latch
+    - Clock controls speed at which output is updated to next value
+
+#### Circuit Diagram
+<img src="../images/gates/sequential/CDA3103_sr_flipflop.png" alt="SR Flip Flop" width=35%>
+
+#### Block Diagram
+<img src="../images/gates/sequential/CDA3103_sr_flipflop_block.png" alt="Set-Rest Flip-Flop Block Diagram" width=35%>
 
 #### Characteristic Table
 | S (Set)   | R (Reset) | Q(t + 1)                      |
@@ -68,37 +92,20 @@
 | 1         | 0         | 1                             |
 | 1         | 1         | <small>*undefined*</small>    |
 
-#### Properties
-- Holds one bit of data
-- Asynchronous
+---
 
-<!--------------------------------------------------------------------------------------------------------------------->
+### D Flip-Flop ([interactive](https://circuitverse.org/users/269149/projects/d-flip-flop-40d49df4-0896-410a-bbd5-16acdd8883ae))
 
-### [Set-Reset Flip-Flop](https://circuitverse.org/users/269149/projects/sr-flip-flop-0b7a0de1-fe11-40df-9094-3a27b6963370)
-
-#### Circuit Diagram
-<img src="../images/CDA3103_sr_flipflop.png" alt="Set-Reset Flip Flop" width="35%">
-
-#### Block Diagram
-<img src="../images/CDA3103_sr_flipflop_block.png" alt="Set-Rest Flip-Flop Block Diagram" width="25%">
-
-#### Characteristic Table
-TODO TODO TODO
-
-#### Properties
-- Extends SR latch
-- Only updates when a signal from a clock is received.
-- Circuit is the same as a Set-Reset Latch but modified with AND gates to account for the clock.
-
-<!--------------------------------------------------------------------------------------------------------------------->
-
-### [D Flip-Flop](https://circuitverse.org/users/269149/projects/d-flip-flop-40d49df4-0896-410a-bbd5-16acdd8883ae)
+- Modified SR flip-flop where only "set" input is needed
+    - "Reset" input is always complement of "set"
+- Information stored in flip-flop changes only as input changes
+- Clock pulses update output, but do not change it
 
 #### Circuit Diagram
-<img src="../images/CDA3103_d_flipflop.png" alt="D Flip-Flop Block Diagram" width="30%">
+<img src="../images/gates/sequential/CDA3103_d_flipflop.png" alt="D Flip-Flop Block Diagram" width=35%>
 
 #### Block Diagram
-TODO TODO TODO
+<img src="../images/gates/sequential/CDA3103_d_flipflop_block.png" width=35%>
 
 #### Characteristic Table
 | D (Data)  | Q(t + 1)  |
@@ -106,40 +113,28 @@ TODO TODO TODO
 | 0         | 0         |
 | 1         | 1         |
 
-#### Properties
-- A modified SR Flip-Flop in which only one input (SET) is needed.
-- Reset is always the opposite of Set.
-- The information stored in a D Flip-Flop is only changed when the input changes.
-- Subsequent clock pulses do not effect the data stored.
+---
 
-<!--------------------------------------------------------------------------------------------------------------------->
+### JK Flip-Flop ([interactive](https://circuitverse.org/users/269149/projects/jk-flip-flop-5d11e97f-e706-45b7-9dd6-fba45eb3f167))
 
-### [JK Flip-Flop](https://circuitverse.org/users/269149/projects/jk-flip-flop-5d11e97f-e706-45b7-9dd6-fba45eb3f167)
+- Modified SR flip-flop where both inputs can be `1`
+- "Set" denoted by J, "reset" denoted by K.
 
 #### Circuit Diagram
-<img src="../images/CDA3103_jk_flipflop.png" alt="JK Flip-Flop" width="30%">
+<img src="../images/gates/sequential/CDA3103_jk_flipflop.png" alt="JK Flip-Flop" width=35%>
 
 #### Block Diagram
-TODO TODO TODO
+<img src="../images/gates/sequential/CDA3103_jk_flipflop_block.png" alt="JK Flip-Flop Block Diagram" width=35%>
 
 #### Characteristic Table
-| J (Set)   | K (Reset) | Q(t)  | Q(t + 1) |
-|:---------:|:---------:|:-----:|:-----:|
-|   0   |   0   |   0   |   0   |
-|   0   |   0   |   1   |   1   |
-|   0   |   1   |   0   |   0   |
-|   0   |   1   |   1   |   0   |
-|   1   |   0   |   0   |   1   |
-|   1   |   0   |   1   |   1   |
-|   1   |   1   |   0   |   1   |
-|   1   |   1   |   1   |   0   |
+| J (Set)   | K (Reset) | Q(t + 1)  |
+|:---------:|:---------:|:---------:|
+| 0         | 0         | Q(t)      |
+| 0         | 1         | 0         |
+| 1         | 0         | 1         |
+| 1         | 1         | Q(t)'     |
 
-#### Properties
-- A modified SR Flip-Flop in which Set and Reset can both be 1.
-- Set is denoted with J and Reset is denoted with K.
-- When J and K are both 1, Q(t+1) gets set to the complement of Q(t).
-
-<!--------------------------------------------------------------------------------------------------------------------->
+---
 
 Convert circuit to boolean expression by working backwards from last logic gate (give example with AST)
 
@@ -185,8 +180,14 @@ Additional identities
 >
 >
 
-### R-Type Instructions
+-
+
+.data, .text TODO
+
 ---
+
+### R-Type Instructions
+
 - Arithmetic, logical, and shift operations using values stored in registers
 - Bitwise operations AND, OR, and XOR apply the boolean operation to every bit in the operands
     - Analogous to `&`, `|`, and `^` operators in C
@@ -200,21 +201,23 @@ Additional identities
 >```
 >$\checkmark$
 
-| Instruction           | Description                                                                                                                                   |
-|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| `add  rd, rs1, rs2`   | Adds `rs1` and `rs2`, storing the result in `rd`                                                                                              |
-| `sub  rd, rs1, rs2`   | Subtracts `rs1` from `rs2`, storing the result in `rd`                                                                                        |
-| `slt  rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as signed*                                                      |
-| `sltu rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as unsigned*                                                    |
-| `and  rd, rs1, rs2`   | Bitwise AND on `rs1` and `rs2`, storing the result in `rd`                                                                                    |
-| `or   rd, rs1, rs2`   | Bitwise OR on `rs1` and `rs2`, storing the result in `rd`                                                                                     |
-| `xor  rd, rs1, rs2`   | Bitwise XOR on `rs1` and `rs2`, storing the result in `rd`                                                                                    |
-| `sll  rd, rs1, rs2`   | Logical left shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts zeros where previous LSB were*                   |
-| `srl  rd, rs1, rs2`   | Logical right shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts zeros where previous MSB were*                  |
-| `sra  rd, rs1, rs2`   | Arithmetic right shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts previous sign bit where previous MSB were*   |
+| Instruction           | Description                                                                                                               |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `add  rd, rs1, rs2`   | Adds `rs1` and `rs2`, storing the result in `rd`                                                                          |
+| `sub  rd, rs1, rs2`   | Subtracts `rs1` from `rs2`, storing the result in `rd`                                                                    |
+| `slt  rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as signed*                                  |
+| `sltu rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as unsigned*                                |
+| `and  rd, rs1, rs2`   | Bitwise AND on `rs1` and `rs2`, storing the result in `rd`                                                                |
+| `or   rd, rs1, rs2`   | Bitwise OR on `rs1` and `rs2`, storing the result in `rd`                                                                 |
+| `xor  rd, rs1, rs2`   | Bitwise XOR on `rs1` and `rs2`, storing the result in `rd`                                                                |
+| `sll  rd, rs1, rs2`   | Logical left shift on `rs1`<br>*Shift amount is 5 LSB of `rs2`<br>Inserts zeros where previous LSB were*                  |
+| `srl  rd, rs1, rs2`   | Logical right shift on `rs1`<br>*Shift amount is 5 LSB of `rs2`<br>Inserts zeros where previous MSB were*                 |
+| `sra  rd, rs1, rs2`   | Arithmetic right shift on `rs1`<br>*Shift amount is 5 LSB of `rs2`<br>Inserts previous sign bit where previous MSB were*  |
+
+---
 
 ### I-Type Instructions
----
+
 - I-type instruction use-cases
     - Arithmetic, logical, and shift operations using immediates (constants)
     - Reading from memory
@@ -223,33 +226,63 @@ Additional identities
 | Instruction           | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
 | `addi rd, rs1, imm`   | Adds `rs1` and `imm`, storing the result in `rd`<br>*No `subi`, as `imm` can be negative* |
-| `slti rd, rs1, imm`   | 
-| `sltiu rd, rs1, imm`  | 
-| `andi rd, rs1, imm`   |
-| `ori ` |
-| `xori ` |
-| `slli ` |
-| `srli ` |
-| `sri `
-| `lb ` |  
-| `lh `|
-| `lw `|
-| `lbu `|
-| `lhu `|
+| `slti rd, rs1, imm`   |  |
+| `sltiu rd, rs1, imm`  |  |
+| `andi rd, rs1, imm`   |  |
+| `ori rd, rs1, imm`    |  |
+| `xori rd, rs2, imm`   |  |
+| `slli rd, rs1, imm`   | Logical left shift |
+| `srli rd, rs1, imm`   | Logical right shift |
+| `srai rd, rs1, imm`   | Arithmetic right shift |
+| `lb rd, imm(rs1)`     |  | 
+| `lh rd, imm(rs1)`     |  |
+| `lw rd, imm(rs1)`     |  |
+| `lbu rd, imm(rs1)`    |  |
+| `lhu rd, imm(rs1)`    |  |
+
+---
 
 ### S-Type Instructions
----
--
+
+- 
 
 | Instruction           | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
-|
-|
-|
-|
-|
-|
-|
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+
+### U-Type Instructions
+
+- 
+
+| Instruction           | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+
+### B-Type Instructions
+
+- 
+
+| Instruction           | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
+| `` |  |
 
 #### Arithmetic Instructions
 - Useful for initializing constants from C code. Example `ADDI t0, zero, 20 #t0 = 20`. TODO example
@@ -365,4 +398,13 @@ Used for comparing values between registers to jump to different branches of RIS
 - Compares `rs1` and `rs2`. If **`rs1` is greater than or equal to `rs2`** then go to `Imm` branch. Unsigned Comparison.
 - If you have `a <= c` in C code, then you can make the same comparison using `BGEU` *but switch the values around*.
 
-***WIP***
+---
+
+>**Example:** Convert the following C program to RISC-V:
+>```c
+>
+>```
+>
+>```asm
+>
+>```

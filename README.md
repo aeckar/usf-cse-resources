@@ -14,11 +14,8 @@ As of November 2024, this repository contains materials covering:
 - CDA 3103, Computer Organization & Architecture
 - COT 3100, Intro to Discrete Structures
 
-### Additional Resources
-
-- [Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)
-- [Using CSV files with Anki](https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file)
-- [CDA 3103 Recitations, Spring 2024](https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94)
+[Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)<br>
+[Using CSV files with Anki](https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file)
 
 ### How To Contribute
 
@@ -50,9 +47,6 @@ As of November 2024, this repository contains materials covering:
 - Agus Niccolini: Fixed typo in COP 3514 project 4, task 1; images and information for CDA 3103 review 2
 - Clay5701: Images and information for CDA 3103 review
 - Maren0000: Information on RISC-V for CDA 3103 review 2
-
-### Special Thanks
-
 - riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
