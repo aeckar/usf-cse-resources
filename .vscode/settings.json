@@ -6,7 +6,9 @@
         120
     ],
     "cSpell.words": [
+        "addi",
         "Agus",
+        "andi",
         "Anki",
         "Barebones",
         "biconditional",
@@ -32,6 +34,7 @@
         "giga",
         "hardwiring",
         "Idempotency",
+        "immediates",
         "infty",
         "iostream",
         "Jing",
@@ -67,6 +70,11 @@
         "scur",
         "secho",
         "signedness",
+        "slli",
+        "slti",
+        "sltiu",
+        "sltu",
+        "srli",
         "stdbool",
         "stdlib",
         "strcat",
@@ -77,11 +85,13 @@
         "strstr",
         "strtok",
         "struct",
+        "subi",
         "tebi",
         "tera",
         "tollens",
         "USF's",
         "vimtutor",
-        "XNOR"
+        "XNOR",
+        "xori"
     ]
 }

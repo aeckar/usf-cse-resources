@@ -168,7 +168,7 @@ Additional identities
     - Store 32-bit values
     - 32 in total
 - Instructions operate on values in registers
-    - Follows the form `id rs, ra1, ...`
+    - Follows the form `inst rs, ra1, ...`
         - Instruction ID, register store, register arguments...
         - Location to store result must be made explicit
     - Are case-insensitive
@@ -189,57 +189,87 @@ Additional identities
 | `x18`-`x27`   | `s2`-`s11`        | Saved registers                   |           | Callee    |
 | `x28`-`x31`   | `t3`-`t6`         | Temporaries                       |           | Caller    |
 
-- Caller and callee savers TODO
+- *Caller-saved* registers must be saved/restored by the calling function to be preserved
+- *Callee-saved* registers must be saved/restored by the function being called to be preserved
+
+>**Example:** caller saved and callee saved TODO TODO TODO
+>
+>
+>
+>
+>
 
 ### R-Type Instructions
-#### Arithmetic Instructions
-`ADD rd, rs1, rs2 #rd = rs1 + rs2`
-- Adds the values from registers `rs1` and `rs2` and stores the result in `rd`.
 
-`SUB rd, rs1, rs2 #rd = rs1 - rs2`
-- Subtracts the values of `rs1` from `rs2` and stores the result in `rd`. **Order is important here**.
+- Arithmetic, logical, and shift operations using values stored in registers
+- Bitwise operations AND, OR, and XOR apply the boolean operation to every bit in the operands
+    - Analogous to `&`, `|`, and `^` operators in C
 
-`SLT rd, rs1, rs2 #rs1 <s rs2`
-- Compares the signed values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
+>**Example:** Evaluate $10100110_2$ *AND* $01110111_2$.
+>```
+>10100110
+>01110111
+>--------
+>00100110
+>```
+>$\checkmark$
 
-`SLTU rd, rs1, rs2 #rs1 <s rs2`
-- Compares the unsigned values of `rs1` and `rs2`. If `rs1` is less than `rs2`, then `rd` will be 1. Otherwise, `rd` will be 0.
-
-#### Logical Instructions
-`AND rd, rs1, rs2`
-- Does logical and using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
-
-`OR rd, rs1, rs2`
-- Does logical or using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
-
-`XOR rd, rs1, rs2`
-- Does logical exclusive or using the values of `rs1` and `rs2` on each bit and stores the result in `rd`.
-
-#### Shifting Instructions
-`SLL rd, rs1, rs2`
-- Does logical left shifting on `rs1` using the lower 5-bits of `rs2`. Inserts zeros to the least significant bit and shifts out the most significant bit.
-
-`SRL rd, rs1, rs2`
-- Does logical right shifting on `rs1` using the lower 5-bits of `rs2`. Inserts zeros to the most significant bit and shifts out the least significant bit.
-
-`SRA rd, rs1, rs2`
-- Does arithmetic right shifting on `rs1` using the lower 5-bits of `rs2`. Inserts sign bit to the most significant bit and shifts out the least significant bit.
+| Instruction           | Description                                                                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `add  rd, rs1, rs2`   | Adds `rs1` and `rs2`, storing the result in `rd`                                                                                              |
+| `sub  rd, rs1, rs2`   | Subtracts `rs1` from `rs2`, storing the result in `rd`                                                                                        |
+| `slt  rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as signed*                                                      |
+| `sltu rd, rs1, rs2`   | If `rs1` < `rs2`, 1 is stored in `rd`, or 0 otherwise<br>*Treats the operands as unsigned*                                                    |
+| `and  rd, rs1, rs2`   | Bitwise AND on `rs1` and `rs2`, storing the result in `rd`                                                                                    |
+| `or   rd, rs1, rs2`   | Bitwise OR on `rs1` and `rs2`, storing the result in `rd`                                                                                     |
+| `xor  rd, rs1, rs2`   | Bitwise XOR on `rs1` and `rs2`, storing the result in `rd`                                                                                    |
+| `sll  rd, rs1, rs2`   | Logical left shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts zeros where previous LSB were*                   |
+| `srl  rd, rs1, rs2`   | Logical right shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts zeros where previous MSB were*                  |
+| `sra  rd, rs1, rs2`   | Arithmetic right shift on `rs1`<br>*Shift amount is 5 least significant bits of `rs2`<br>Inserts previous sign bit where previous MSB were*   |
 
 ### I-Type Instructions
-- I-Type instructions can be used either for immediate arithmetical, logical or shifting instructions, or for memory reading.
 
+- I-type instruction use-cases
+    - Arithmetic, logical, and shift operations using immediates (constants)
+    - Reading from memory
 - Arithmetic, logical, and shifting is similar to R-Type. `rs2` gets replaced by `Imm` which is a 12-bit value with a data range of [-2048, 2047].
 
-#### Arithmetic Instructions
-`ADDI rd, rs1, Imm #rd = rs1 + Imm`
-- Adds the values from register `rs1` with `Imm` and stores the result in `rd`.
-- There is no SUBI as `Imm` can be a negative number.
-- Useful for initializing constants from C code. Example `ADDI t0, zero, 20 #t0 = 20`.
+| Instruction           | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+| `addi rd, rs1, imm`   | Adds `rs1` and `imm`, storing the result in `rd`<br>*No `subi`, as `imm` can be negative* |
+| `slti rd, rs1, imm`   | 
+| `sltiu rd, rs1, imm`  | 
+| `andi rd, rs1, imm`   |
+| `ori ` |
+| `xori ` |
+| `slli ` |
+| `srli ` |
+| `sri `
+| `lb ` |  
+| `lh `|
+| `lw `|
+| `lbu `|
+| `lhu `|
 
-`SLTI rd, rs1, Imm #rs1 <s rs2`
+### S-Type Instructions
+
+-
+
+| Instruction           | Description                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------|
+|
+|
+|
+|
+|
+|
+|
+
+#### Arithmetic Instructions
+- Useful for initializing constants from C code. Example `ADDI t0, zero, 20 #t0 = 20`. TODO example
+
 - Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
-`SLTIU rd, rs1, Imm #rs1 <s rs2`
 - Compares the signed values of `rs1` and `Imm`. If `rs1` is less than `Imm`, then `rd` will be 1. Otherwise, `rd` will be 0.
 
 #### Logical Instructions
