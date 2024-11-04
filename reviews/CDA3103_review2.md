@@ -41,16 +41,6 @@
     <img src="../images/gates/logic/CDA3103_nor_alt.png" alt="NOR gate as AND gate with complementary arguments" width=35%>
 </p>
 
-TODO example from homework
-
->**Example:** Convert the following circuit to a boolean expression.
->
->
->
->
->
-> $\checkmark$
-
 - *Half-adder* adds two bits, providing the result and carry
 
 <p style="text-align:center">
@@ -325,12 +315,11 @@ TODO boolean minimization/maximization
 
 - Deal with upper bytes of values
 
-| Instruction Form      | Description                               |
-|-----------------------|-------------------------------------------|
-| `lui rd, imm`         | Loads upper 20 bits of `imm` into `rd`    |
+| Instruction Form      | Description                                           |
+|-----------------------|-------------------------------------------------------|
+| `lui rd, imm`         | Loads lower 20 bits of `imm` as upper 20 bits of `rd` |
 
 - `lui` can be used to initialize registers with large values
-    - If d11 in the hex value is 1 (Ex: 9 = 1001), add `1` to `imm` as shown in the 2nd example
 
 >**Example:** Initialize the registers `t0` and `t1` with values `0xABCDE265` and `0xABCDE965`, respectively.
 >
@@ -338,11 +327,18 @@ TODO boolean minimization/maximization
 >lui  t0, 0xABCDE       # upper 20 bits
 >addi t0, t0, 0x265     # lower 12 bits
 >
->lui  t1, 0xABCDF       # upper 20 bits
->addi t1, t1, 0x965     # lower 12 bits
+>lui  t1, 0xABCDE       # upper 20 bits
+>addi t1, t1, 0x765     # lower 12 bits
+>addi t1, t1, 0x200     # if bit in position [2] greater than 7, add remainder
 >```
 >
 > $\checkmark$
+>
+>Another way to load 0xABCDE965 (will **not** work in RARS/VS Code, but valid for exam):
+>```assembly
+>lui  t1, 0xABCDF       # upper 20 bits, adding 1 since bit in position [2] greater than 8
+>addi t1, t1, 0x965     # lower 12 bits, with sign extension
+>```
 
 ---
 
@@ -359,7 +355,7 @@ TODO boolean minimization/maximization
 | `beq rs1, rs2, imm`   | `rs1` ==`rs2`                     |
 | `bne rs1, rs2, imm`   | `rs1` != `rs2`                    |
 | `blt rs1, rs2, imm`   | `rs1` < `rs2`, `rs2` > `rs1`      |
-| `bge rs1, rs2, imm`   | `rs1` >= `rs2`, `rs2` >= `rs1`    |
+| `bge rs1, rs2, imm`   | `rs1` >= `rs2`, `rs2` <= `rs1`    |
 | `bltu rs1, rs2, imm`  | `rs1` < `rs2` *(unsigned)*        |
 | `bgeu rs1, rs2, imm`  | `rs1` >= `rs2` *(unsigned)*       |
 
@@ -434,7 +430,44 @@ TODO finish
 >```
 >
 >```assembly
+>selectionSort:
+>   # a0 contains int 'arr[]', a1 contains 'int n'
+>   addi t0, zero, 0		# int i = 0;
+>	addi t1, a1, -1			# int temp = n - 1;
 >
+>OUTER:
+>	bge  t0, t1, ENDOUTER		# break if i >= n - 1
+>	addi t2, t0, 0			# int min_idx = i;
+>	addi t3, t0, 1			# int j = i + 1
+>	addi t4, a0, 0			# pointer iterator over 'arr' starting at [0] 	  (for arr[i])
+>	add  t5, a0, t3			# pointer iterator over 'arr' starting at [i + 1] (for arr[j])
+>	add  t6, a0, t2			# int temp2 = arr + min_idx
+>	lw   s1, (t6)			# load arr[min_idx]	# branch if arr[j] >= arr[min_idx]
+>
+>INNER:
+>	bge  t3, a1, IFOUTER		# break if j >= n
+>	lw   s0, (t5)			# load arr[j]
+>
+>IFINNER:
+>	bge s0, s1, UPDATEINNER		# branch if  arr[j] < arr[min_idx]
+>	addi t2, t3, 0			# min_idx = j;
+>
+>UPDATEINNER:
+>	addi t3, t3, 1			# j++;
+>	j    INNER
+>
+>IFOUTER:
+>	beq t0, t2, UPDATEOUTER		# branch if i == min_idx
+>	lw  s0, (t4)			# int temp3 = arr[i];
+>	sw  s1, (t4)			# arr[i] = arr[min_idx];
+>	sw  s0, (t6)			# arr[min_idx] = temp3;
+> 
+>UPDATEOUTER:
+>	addi t0, t0, 1			# i++;
+>	addi a0, a0, 4			# update 'arr' pointer
+>	j    OUTER
+>
+>ENDOUTER:
 >```
 >
 > $\checkmark$
