@@ -85,7 +85,7 @@
 | Name          | Block Diagram                                                 | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
 |---------------|---------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
 | Multiplexer   | ![](../images/gates/combinational/CDA3103_mux_block.png)      | ![](../images/gates/combinational/CDA3103_mux.png)        | Chooses one input among $2^n$ inputs ($I_0\dots I_{2^n-1}$), according to *n* selection inputs ($S_0,S_1,\dots S_n$)  | $S_1S_0I_3+S_1S_0'I_2+S_1'S_0I_1+S_1'S_0'I_0$ |
-| Decoder       | ![](../images/gates/combinational/CDA3013_decoder_block.png)  | ![](../images/gates/combinational/CDA3013_decoder.png)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
+| Decoder       | ![](../images/gates/combinational/CDA3013_decoder_block.png)  | ![](../images/gates/combinational/CDA3103_decoder.png)    | Converts *n* inputs ($x,y,\dots$) to $2^n$ outputs                                                                    | $xy,xy',x'y,x'y'$                             |
 
 - Multiplexers and decoders described by their inputs/outputs
     - **Ex:** 4-to-1 multiplexer (4 inputs/1 output)
