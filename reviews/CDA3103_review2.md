@@ -41,6 +41,9 @@
     <img src="../images/gates/logic/CDA3103_nor_alt.png" alt="NOR gate as AND gate with complementary arguments" width=35%>
 </p>
 
+- *Half-adder* TODO
+- Full-adder
+
 ### Common Combinational Circuits
 | Name          | Block Diagram                                                 | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
 |---------------|---------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
@@ -49,6 +52,7 @@
 
 - Multiplexers and decoders described by their inputs/outputs
     - **Ex:** 4-to-1 multiplexer (4 inputs/1 output)
+
 
 ## 3. Sequential Circuits
 
@@ -140,7 +144,7 @@ Convert circuit to boolean expression by working backwards from last logic gate 
 
 Additional identities
 
-## 4. RISC-V Assembly
+## 4. Introduction to RISC-V Assembly
 
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
     - Specification defines
@@ -180,12 +184,7 @@ Additional identities
 >
 >
 
-- Programs divided into sections
-    - `section .data` contains constants
-    - `section .text` contains instructions
-- Functions defined by their name, followed by a colon
-
----
+## 5. RISC-V ISA
 
 ### R-Type Instructions
 
@@ -254,7 +253,7 @@ Additional identities
 
 >**Example:** Convert the following C code to RISC-V.
 >```c
->j = h * 6          // j in t3, h in t0
+>j = h * 6          // j in t3, h in t0f
 >```
 >
 >```assembly
@@ -276,6 +275,8 @@ Additional identities
 | `sh rs2, imm(rs1)`    |  |
 | `sw rs2, imm(rs1)`    |  |
 
+---
+
 ### U-Type Instructions
 
 - 
@@ -283,6 +284,8 @@ Additional identities
 | Instruction Form      | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
 | `lui rd, imm`         |  |
+
+---
 
 ### B-Type Instructions
 
@@ -331,8 +334,6 @@ ADDI t1, t1, 0x965
 
 ### B-Type Instructions
 
-
-
 `BLT rs1, rs2, Imm`
 - Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Signed Comparison.
 - If you have `a > c` in C code, then you can make the same comparison using `BLT` *but switch the values around*.
@@ -351,7 +352,28 @@ ADDI t1, t1, 0x965
 
 ---
 
-TODO
+### Pseudo-Instructions
+
+
+| Instruction Form  | Description                       |
+|-------------------|-----------------------------------|
+| `j label`         | Jump to `label`                   |
+| `jr rs`           | Jump to address in register `rs1` |
+| `mv rd, rs`       | Copy value in `rs` to `rd`        |
+| `la rd, label`    | Store address of `label` in `rd`  |
+
+
+## 6. Program Organization in RISC-V
+
+- Programs divided into sections
+    - `section .data` contains constants
+    - `section .text` contains instructions
+- Functions defined by their name, followed by a colon
+- `.global {label}`/`.globl {label}` to make functions/labels accessible from other binaries
+- 
+
+`.data` constants in the form `label: .{type} {value}`
+or for ascii strings: `label: .asciz "{string contents}"`
 
 >**Example:** Convert the following C program to RISC-V:
 >```c
