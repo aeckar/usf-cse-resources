@@ -431,40 +431,40 @@ func2:
 ># Assume a0 contains int 'arr[]', a1 contains 'int n'
 >
 >selectionSort:
->   addi t0, zero, 0              # int i = 0;
->	addi t1, a1, -1			    # int temp = n - 1;
+>   addi t0, zero, 0             # int i = 0;
+>    addi t1, a1, -1             # int temp = n - 1;
 >
 >OUTER:
->	bge  t0, t1, ENDOUTER		# break if i >= n - 1
->	addi t2, t0, 0			    # int min_idx = i;
->	addi t3, t0, 1			    # int j = i + 1
->	addi t4, a0, 0			    # pointer iterator over 'arr' starting at [0] 	  (for arr[i])
->	add  t5, a0, t3			    # pointer iterator over 'arr' starting at [i + 1] (for arr[j])
->	add  t6, a0, t2			    # int temp2 = arr + min_idx
->	lw   s1, (t6)			    # load arr[min_idx]	# branch if arr[j] >= arr[min_idx]
+>    bge  t0, t1, ENDOUTER       # break if i >= n - 1
+>    addi t2, t0, 0              # int min_idx = i;
+>    addi t3, t0, 1              # int j = i + 1
+>    addi t4, a0, 0              # pointer iterator over 'arr' starting at [0]       (for arr[i])
+>    add  t5, a0, t3             # pointer iterator over 'arr' starting at [i + 1] (for arr[j])
+>    add  t6, a0, t2             # int temp2 = arr + min_idx
+>    lw   s1, (t6)               # load arr[min_idx]
 >
 >INNER:
->	bge  t3, a1, IFOUTER		# break if j >= n
->	lw   s0, (t5)			    # load arr[j]
+>    bge  t3, a1, IFOUTER        # break if j >= n
+>    lw   s0, (t5)               # load arr[j]
 >
 >IFINNER:
->	bge s0, s1, UPDATEINNER		# branch if  arr[j] < arr[min_idx]
->	addi t2, t3, 0			    # min_idx = j;
+>    bge s0, s1, UPDATEINNER     # branch if  arr[j] < arr[min_idx]
+>    addi t2, t3, 0              # min_idx = j;
 >
 >UPDATEINNER:
->	addi t3, t3, 1			    # j++;
->	j    INNER
+>    addi t3, t3, 1              # j++;
+>    j    INNER
 >
 >IFOUTER:
->	beq t0, t2, UPDATEOUTER		# branch if i == min_idx
->	lw  s0, (t4)			    # int temp3 = arr[i];
->	sw  s1, (t4)			    # arr[i] = arr[min_idx];
->	sw  s0, (t6)			    # arr[min_idx] = temp3;
+>    beq t0, t2, UPDATEOUTER     # branch if i == min_idx
+>    lw  s0, (t4)                # int temp3 = arr[i];
+>    sw  s1, (t4)                # arr[i] = arr[min_idx];
+>    sw  s0, (t6)                # arr[min_idx] = temp3;
 > 
 >UPDATEOUTER:
->	addi t0, t0, 1			    # i++;
->	addi a0, a0, 4			    # update 'arr' pointer
->	j    OUTER
+>    addi t0, t0, 1              # i++;
+>    addi a0, a0, 4              # update 'arr' pointer
+>    j    OUTER
 >
 >ENDOUTER:
 >```
