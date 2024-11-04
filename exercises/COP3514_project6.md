@@ -113,7 +113,7 @@ Now, how is this helpful? The main string can now be divided up into its individ
 
 ### **Sorting**
 
-Once you have an array of word pointers, the array needs to be sorted into aphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
+Once you have an array of word pointers, the array needs to be sorted into alphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
 
 ```c
 void bubbleSort(int a[], int n) {
