@@ -90,9 +90,7 @@
 - Multiplexers and decoders described by their inputs/outputs
     - **Ex:** 4-to-1 multiplexer (4 inputs/1 output)
 
-TODO boolean minimization/maximization
-
-## 3. Sequential Circuits
+## 4. Sequential Circuits
 
 - Hold and use data, typically 1 bit, from previous input(s) to produce next output(s)
     - For each type, either synchronous or asynchronous
@@ -178,7 +176,7 @@ TODO boolean minimization/maximization
 
 ---
 
-## 4. Introduction to RISC-V Assembly
+## 5. Introduction to RISC-V Assembly
 
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
     - Specification defines
@@ -214,7 +212,7 @@ TODO boolean minimization/maximization
 - *Callee-saved* registers must be saved/restored by the function being called to be preserved
     - By contract, values stored in these registers is shared between functions
 
-## 5. RISC-V ISA
+## 6. RISC-V ISA
 
 ### R-Type Instructions
 
@@ -320,6 +318,12 @@ TODO boolean minimization/maximization
 | `lui rd, imm`         | Loads lower 20 bits of `imm` as upper 20 bits of `rd` |
 
 - `lui` can be used to initialize registers with large values
+    - Because the sign bit of the first 12 numbers is 1, the number overflows and thus must be converted
+- To store numbers not representable in 12-bit signed format (not in [-0x800, 0x7FF] or [-2048, 2047]):
+    1. Convert digits to binary
+    2. Store largest 20 bits with `lui`
+    3. Find absolute value of smallest 12 bits, which should produce a negative number
+    4. Store the negative number by prefixing with `-` and storing it with `addi`
 
 >**Example:** Initialize the registers `t0` and `t1` with values `0xABCDE265` and `0xABCDE965`, respectively.
 >
@@ -328,17 +332,10 @@ TODO boolean minimization/maximization
 >addi t0, t0, 0x265     # lower 12 bits
 >
 >lui  t1, 0xABCDE       # upper 20 bits
->addi t1, t1, 0x765     # lower 12 bits
->addi t1, t1, 0x200     # if bit in position [2] greater than 7, add remainder
+>addi t1, t1, -0x69B    # lower 12 bits, as signed since number is over 7FF (convert to binary first)
 >```
 >
 > $\checkmark$
->
->Another way to load 0xABCDE965 (will **not** work in RARS/VS Code, but valid for exam):
->```assembly
->lui  t1, 0xABCDF       # upper 20 bits, adding 1 since bit in position [2] greater than 8
->addi t1, t1, 0x965     # lower 12 bits, with sign extension
->```
 
 ---
 
@@ -374,7 +371,7 @@ TODO boolean minimization/maximization
 | `mv rd, rs`       | Copy value in `rs` to `rd`                    |
 | `la rd, label`    | Store address of `label` in `rd`              |
 
-## 6. Program Organization in RISC-V
+## 7. Program Organization in RISC-V
 
 - Programs divided into sections
     - `section .data` contains constants represented by labels in the form `label: {type} {value}`
