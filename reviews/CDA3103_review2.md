@@ -44,9 +44,12 @@
 TODO example from homework
 
 >**Example:** Convert the following circuit to a boolean expression.
-><img>
 >
 >
+>
+>
+>
+> $\checkmark$
 
 - *Half-adder* adds two bits, providing the result and carry
 
@@ -97,6 +100,7 @@ TODO example from homework
 - Multiplexers and decoders described by their inputs/outputs
     - **Ex:** 4-to-1 multiplexer (4 inputs/1 output)
 
+TODO boolean minimization/maximization
 
 ## 3. Sequential Circuits
 
@@ -192,6 +196,7 @@ TODO example from homework
 - Recall registers are a small, extremely fast units of memory
     - Store 32-bit values
     - 32 in total
+- Memory addresses are 4 bytes (1 word)
 - Instructions operate on values in registers
     - Follows the form `inst rs, ra1, ...`
         - Instruction ID, register store, register arguments...
@@ -228,12 +233,14 @@ TODO example from homework
     - Analogous to `&`, `|`, and `^` operators in C
 
 >**Example:** Evaluate $10100110_2$ *AND* $01110111_2$.
+>
 >```
 >10100110
 >01110111
 >--------
 >00100110
 >```
+>
 >$\checkmark$
 
 | Instruction Form      | Description                                                                                                               |
@@ -269,11 +276,11 @@ TODO example from homework
 | `slli rd, rs1, imm`   | Logical left shift on `rs1`<br>*Inserts zeros where previous LSB were*                        |
 | `srli rd, rs1, imm`   | Logical right shift in `rs1`<br>*Inserts zeros where previous MSB were*                       |
 | `srai rd, rs1, imm`   | Arithmetic right shift on `rs1`<br>*Inserts previous sign bit where previous MSB were*        |
-| `lb rd, imm(rs1)`     | Loads 1 byte (8 bits) from address `rs1 + imm`, with sign extension                           |
-| `lh rd, imm(rs1)`     | Loads 2 bytes (16 bits) from address `rs1 + imm`, with sign extension                         |
+| `lb rd, imm(rs1)`     | Loads lowest byte (8 bits) from address `rs1 + imm`, with sign extension                      |
+| `lh rd, imm(rs1)`     | Loads lowest 2 bytes (16 bits) from address `rs1 + imm`, with sign extension                  |
 | `lw rd, imm(rs1)`     | Loads 4 bytes (32 bits) from address `rs1 + imm`                                              |
-| `lbu rd, imm(rs1)`    | Loads 1 byte (8 bits) from address `rs1 + imm`, with MSB filled with zeros                    |
-| `lhu rd, imm(rs1)`    | Loads 2 bytes (16 bits) from address `rs1 + imm`, with MSB filled with zeros                  |
+| `lbu rd, imm(rs1)`    | Loads lowest byte (8 bits) from address `rs1 + imm`, with MSB filled with zeros               |
+| `lhu rd, imm(rs1)`    | Loads lowest 2 bytes (16 bits) from address `rs1 + imm`, with MSB filled with zeros           |
 
 | Instruction   | Use-Case                                                      | Example                                               |
 |---------------|---------------------------------------------------------------|-------------------------------------------------------|
@@ -284,6 +291,7 @@ TODO example from homework
 | `srai`        | Divide by $2^n$, where *n* is the shift amount                | `x / 2` $\leftrightarrow$ `srai rd, {&x}, 1`          |
 | `l{...}`      | Read value from an array                                      | `x = (int) y[6]` $\leftrightarrow$ `lw {&x}, 6({&y})` |
 
+- For instructions with an offset of `0`, the offset can be omitted
 - For `slli`, if the constant is not a power of 2, sum multiple left shifts
 
 >**Example:** Convert the following C code to RISC-V.
@@ -296,6 +304,7 @@ TODO example from homework
 >slli t2, t0, 2     # t2 = t0 * 4
 >add t3, t1, t2     # t3 = t1 + t2 = 6 * t0
 >```
+>
 >$\checkmark$
 
 ---
@@ -304,21 +313,36 @@ TODO example from homework
 
 - Used to write values to an array 
 
-| Instruction Form      | Description                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------|
-| `sb rs2, imm(rs1)`    |  |
-| `sh rs2, imm(rs1)`    |  |
-| `sw rs2, imm(rs1)`    |  |
+| Instruction Form      | Description                                                           |
+|-----------------------|-----------------------------------------------------------------------|
+| `sb rs2, imm(rs1)`    | Saves lowest byte (8 bits) of `rs2` to the address `rs1 + imm`        |
+| `sh rs2, imm(rs1)`    | Saves lowest 2 bytes (16 bits) of `rs2` to the address `rs1 + imm`    |
+| `sw rs2, imm(rs1)`    | Saves 4 bytes (32 bytes) of `rs2` to the address `rs1 + imm`          |
 
 ---
 
 ### U-Type Instructions
 
-- 
+- Deal with upper bytes of values
 
-| Instruction Form      | Description                                                                               |
-|-----------------------|-------------------------------------------------------------------------------------------|
-| `lui rd, imm`         |  |
+| Instruction Form      | Description                               |
+|-----------------------|-------------------------------------------|
+| `lui rd, imm`         | Loads upper 20 bits of `imm` into `rd`    |
+
+- `lui` can be used to initialize registers with large values
+    - If d11 in the hex value is 1 (Ex: 9 = 1001), add `1` to `imm` as shown in the 2nd example
+
+>**Example:** Initialize the registers `t0` and `t1` with values `0xABCDE265` and `0xABCDE965`, respectively.
+>
+>```assembly
+>lui  t0, 0xABCDE       # upper 20 bits
+>addi t0, t0, 0x265     # lower 12 bits
+>
+>lui  t1, 0xABCDF       # upper 20 bits
+>addi t1, t1, 0x965     # lower 12 bits
+>```
+>
+> $\checkmark$
 
 ---
 
@@ -328,73 +352,31 @@ TODO example from homework
 - *Branches* specified by labels
     - Functions defined as branches
     - Represented by `imm`
+- Greater than/less than or equal to implemented by switching operands around
 
-| Instruction Form      | Jump Condition                |
-|-----------------------|-------------------------------|
-| `beq rs1, rs2, imm`   | `rs1` ==`rs2`                 |
-| `bne rs1, rs2, imm`   | `rs1` != `rs2`                |
-| `blt rs1, rs2, imm`   | `rs1` < `rs2`                 |
-| `bge rs1, rs2, imm`   | `rs1` > `rs2`                 |
-| `bltu rs1, rs2, imm`  | `rs1` < `rs2` *(unsigned)*    |
-| `bgeu rs1, rs2, imm`  | `rs1` > `rs2` *(unsigned)*    |
-
-### S-Type Instructions
-Used for writing values to arrays.
-
-`SB rs2, Imm(rs1)`
-- Saves lower 1 byte (8-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
-
-`SH rs2, Imm(rs1)`
-- Saves lower 2 byte (16-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
-
-`SW rs2, Imm(rs1)`
-- Saves 4 byte (32-bits) of `rs2` to the memory address `rs1`  + `Imm` offset.
-
-### U-Type Instructions
-`LUI rd, Imm`
-- Used to initialize big values with `Imm` (20-bits) in the upper bits of `rd`. Examples:
-```
-0xABCDE265
-
-LUI t0, 0xABCDE
-ADDI t0, t0, 0x265
-
-0xABCDE965
-LUI t1, 0xABCDF
-ADDI t1, t1, 0x965
-```
-- If d11 in the hex value is 1 (Ex: 9 = 1001), then add one to `Imm` as shown in the 2nd example.
-
-### B-Type Instructions
-
-`BLT rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Signed Comparison.
-- If you have `a > c` in C code, then you can make the same comparison using `BLT` *but switch the values around*.
-
-`BGE rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **`rs1` is greater than or equal to `rs2`** then go to `Imm` branch. Signed Comparison.
-- If you have `a <= c` in C code, then you can make the same comparison using `BGE` *but switch the values around*.
-
-`BLTU rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **`rs1` is less than `rs2`** then go to `Imm` branch. Unsigned Comparison.
-- If you have `a > c` in C code, then you can make the same comparison using `BLTU` *but switch the values around*.
-
-`BGEU rs1, rs2, Imm`
-- Compares `rs1` and `rs2`. If **`rs1` is greater than or equal to `rs2`** then go to `Imm` branch. Unsigned Comparison.
-- If you have `a <= c` in C code, then you can make the same comparison using `BGEU` *but switch the values around*.
+| Instruction Form      | Jump Condition                    |
+|-----------------------|-----------------------------------|
+| `beq rs1, rs2, imm`   | `rs1` ==`rs2`                     |
+| `bne rs1, rs2, imm`   | `rs1` != `rs2`                    |
+| `blt rs1, rs2, imm`   | `rs1` < `rs2`, `rs2` > `rs1`      |
+| `bge rs1, rs2, imm`   | `rs1` >= `rs2`, `rs2` >= `rs1`    |
+| `bltu rs1, rs2, imm`  | `rs1` < `rs2` *(unsigned)*        |
+| `bgeu rs1, rs2, imm`  | `rs1` >= `rs2` *(unsigned)*       |
 
 ---
 
 ### Pseudo-Instructions
 
-- `mv rd, rs` is the same as `addi rd, rs, 0``
+- Compiled to sequences of more primitive instructions
+    - **Example:** `mv rd, rs` is compiled as `addi rd, rs, 0`
 
-| Instruction Form  | Description                       |
-|-------------------|-----------------------------------|
-| `j label`         | Jump to `label`                   |
-| `jr rs`           | Jump to address in register `rs1` |
-| `mv rd, rs`       | Copy value in `rs` to `rd`        |
-| `la rd, label`    | Store address of `label` in `rd`  |
+| Instruction Form  | Description                                   |
+|-------------------|-----------------------------------------------|
+| `j label`         | Jump to `label`                               |
+| `jal label`       | Jump to branch function specified by `label`  |
+| `jr rs`           | Jump to address in register `rs1`             |
+| `mv rd, rs`       | Copy value in `rs` to `rd`                    |
+| `la rd, label`    | Store address of `label` in `rd`              |
 
 ## 6. Program Organization in RISC-V
 
@@ -409,23 +391,50 @@ ADDI t1, t1, 0x965
 | `.word`   | integer       | `{constant}`          |
 | `.asciz`  | ASCII string  | `"{string contents}"` |
 
+- Stack grows towards $-\infty$
 - Functions defined by a label of their name, followed by a colon
+- For non-leaf functions, the return process is:
+
+```assembly
+func1:
+    addi sp, sp, -1     # make space on stack for return address
+    sw   ra, (sp)       # push return address to stack
+    jal func2           # call branch function
+    ...
+
+func2:
+    ...
+    lw   ra, (sp)       # restore return address from stack
+    addi sp, sp, 4      # deallocate stack space
+    jr ra               # return to caller
+```
+
 - *Leaf* functions do not call other functions
     - No need to save return address
-- For non-leaf functions, the return process is:
-    1.
-    2.
-    3.
-    4.
-    5.
 
-TODO big example from Zhang review
+TODO finish
 
 >**Example:** Convert the following C program to RISC-V:
 >```c
->
+>void selectionSort(int arr[], int n) {
+>    for (int i = 0; i < n - 1; i++) {
+>        int min_idx = i;
+>        for (int j = i + 1; j < n; j++) {
+>            if (arr[j] < arr[min_idx]) {
+>                min_idx = j;
+>            }
+>        }
+>        if (i != min_idx) {
+>            int temp = arr[i];
+>            arr[i] = arr[min_idx];
+>            arr[min_idx] = temp;
+>        }
+>    }
+>}
 >```
 >
 >```assembly
 >
 >```
+>
+> $\checkmark$
