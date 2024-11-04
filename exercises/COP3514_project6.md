@@ -9,7 +9,7 @@ Note this is a guide *not* a solution. Different approaches to various problems 
 ## Simplified Directions
 
 The goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). Along
-with printing the tokens you will need to sort the words of the string in aphabetical order, print the number of unique words, *N*, and print those *N* words each on a newline. A word's **token** is its position aphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters and the only delimiters will be whitespace (' ' and '\n) and periods ('.').
+with printing the tokens you will need to sort the words of the string in alphabetical order, print the number of unique words, *N*, and print those *N* words each on a newline. Lastly, you will print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. A word's **token** is its position alphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters and the only delimiters will be whitespace (' ' and '\n) and periods ('.').
 
 <u>**Example:**</u>
 
