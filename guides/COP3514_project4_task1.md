@@ -1,6 +1,11 @@
-# COP 3514 - Project 4, Task 1
+# COP 3514 - Project 4, Task 1 Guide
 
 *Original by Jing Wang of the University of South Florida*
+
+**Disclaimer:** This is a guide *not* a solution.
+Different approaches to problems you may face in this project are outlined below,
+but not concrete solutions are not. 
+This is not the *only* way to look at this project, and you are encouraged to explore alternatives.
 
 ### Plain-English Directions
 

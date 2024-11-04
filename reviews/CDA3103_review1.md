@@ -150,11 +150,11 @@
 ## 3. Positional Number Systems
 
 | Number System | Base (Radix)  | Digits    | Bits per digit            | Literal Form      | C literal |
-|---------------|---------------|-----------|---------------------------|-------------------|-----------|
-| Binary        | 2             | 0, 1      | 1                         | N<sub>2</sub>     | 0bN       |
-| Octal         | 8             | 0-7       | 3                         | N<sub>8</sub>     | 0oN       |
-| Decimal       | 10            | 0-9       | <small>*varies*</small>   | N<sub>10</sub>    | N         |
-| Hexadecimal   | 16            | 0-9, A-F  | 4                         | N<sub>16</sub>    | 0xN       |
+|---------------|:-------------:|:---------:|:-------------------------:|:-----------------:|:---------:|
+| Binary        | 2             | 0, 1      | 1                         | $N_2$             | 0bN       |
+| Octal         | 8             | 0-7       | 3                         | $N_8$             | 0oN       |
+| Decimal       | 10            | 0-9       | <small>*varies*</small>   | $N_10$            | N         |
+| Hexadecimal   | 16            | 0-9, A-F  | 4                         | $N_16$            | 0xN       |
 
 - Digits A-F in hexadecimal
     - Corresponding to values 10-15
@@ -204,7 +204,7 @@
 >```
 >
 >| Position  | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
->|-----------|---|---|---|---|---|---|---|---|
+>|-----------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 >| Digit     | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 1 |
 > 
 >$137_{10} = 10001001_2 = 0000000010001001_2 \checkmark$
@@ -215,7 +215,7 @@
     - Going from right-to-left, add each bit according to the table below
 
 | # of 1's  | 0 | 1 | 2 | 3 |
-|-----------|---|---|---|---|
+|-----------|:-:|:-:|:-:|:-:|
 | Result    | 0 | 1 | 0 | 1 |
 | Carry     | 0 | 0 | 1 | 1 |
 
@@ -320,7 +320,7 @@
 >**Example:** Create a truth table for $F(x,y,z) = xy' + z(x' + y)$
 >
 >| x | y | z | F |
->|---|---|---|---|
+>|:-:|:-:|:-:|:-:|
 >| 0 | 0 | 0 | 0 |
 >| 0 | 0 | 1 | 1 |
 >| 0 | 1 | 0 | 0 |
@@ -394,7 +394,7 @@
 >**Example:** List the minterms and maxterms of the function represented by the truth table.
 >
 >| x | y | F |
->|---|---|---|
+>|:-:|:-:|:-:|
 >| 0 | 0 | 0 |
 >| 0 | 1 | 1 |
 >| 1 | 0 | 1 |

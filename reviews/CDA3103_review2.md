@@ -41,8 +41,52 @@
     <img src="../images/gates/logic/CDA3103_nor_alt.png" alt="NOR gate as AND gate with complementary arguments" width=35%>
 </p>
 
-- *Half-adder* TODO
-- Full-adder
+TODO example from homework
+
+>**Example:** Convert the following circuit to a boolean expression.
+><img>
+>
+>
+
+- *Half-adder* adds two bits, providing the result and carry
+
+<p style="text-align:center">
+    <img src="../images/gates/combinational/CDA3103_half_adder.png" alt="Half-Adder" width=35%>
+</p>
+
+### Bitwise Adder Conditions
+| Number of `1`'s    | Sum   | Carry |
+|:-----------------:|:-----:|:-----:|
+| 0                 | 0     | 0     |
+| 1                 | 1     | 0     |
+| 2                 | 0     | 1     |
+| 3                 | 1     | 1     |
+
+### Half-Adder Truth Table
+| x | y | Sum   | Carry |
+|:-:|:-:|:-----:|:-----:|
+| 0 | 0 | 0     | 0     |
+| 0 | 1 | 1     | 0     |
+| 1 | 0 | 1     | 0     |
+| 1 | 1 | 0     | 1     |
+
+- Full-adder extends half-adder to add binary numbers larger than 1 bit
+
+<p style="text-align:center">
+    <img src="../images/gates/combinational/CDA3103_full_adder.png" alt="Full-Adder" width=35%>
+</p>
+
+### Full-Adder Truth Table
+| x | y | Carry In  | Sum   | Carry out |
+|:-:|:-:|:---------:|:-----:|:---------:|
+| 0 | 0 | 0         | 0     | 0         |
+| 0 | 0 | 1         | 1     | 0         |
+| 0 | 1 | 0         | 1     | 0         |
+| 0 | 1 | 1         | 0     | 1         |
+| 1 | 0 | 0         | 1     | 0         |
+| 1 | 0 | 1         | 0     | 1         |
+| 1 | 1 | 0         | 0     | 1         |
+| 1 | 1 | 1         | 1     | 1         |
 
 ### Common Combinational Circuits
 | Name          | Block Diagram                                                 | Circuit Diagram                                           | Purpose                                                                                                               | Boolean Equivalent                            |
@@ -140,10 +184,6 @@
 
 ---
 
-Convert circuit to boolean expression by working backwards from last logic gate (give example with AST)
-
-Additional identities
-
 ## 4. Introduction to RISC-V Assembly
 
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
@@ -159,30 +199,25 @@ Additional identities
     - Are case-insensitive
 
 ### RV32I Registers
-| Register      | Mnemonic/Alliance | Description                       | Use-case                  | Saver     |
-|:-------------:|:-----------------:|-----------------------------------|---------------------------|-----------|
-| `x0`          | `zero`            | Hard-wired zero                   | Immediate constant +TODO initialize other registers? |           |
-| `x1`          | `ra`              | Return address                    |           | Caller    |
-| `x2`          | `sp`              | Stack pointer                     |           | Callee    |
-| `x3`          | `gp`              | Global pointer                    | <small>*we will not use this*</small> |           |
-| `x4`          | `tp`              | Thread pointer                    | <small>*we will not use this*</small> |           |
-| `x5`-`x7`     | `t0`-`t2`         | Temporaries                       |           | Caller    |
-| `x8`          | `s0`/`fp`         | Saved register/frame pointer      |           | Callee    |
-| `x9`          | `s1`              | Saved register                    |           | Callee    |
-| `x10`-`x11`   | `a0`-`a1`         | Function arguments/return values  |           | Caller    |
-| `x12`-`x17`   | `a2`-`a7`         | Function arguments                |           | Caller    |
-| `x18`-`x27`   | `s2`-`s11`        | Saved registers                   |           | Callee    |
-| `x28`-`x31`   | `t3`-`t6`         | Temporaries                       |           | Caller    |
+| Register      | Mnemonic/Alliance | Description                       | Use-case                                                          | Saver     |
+|:-------------:|:-----------------:|-----------------------------------|-------------------------------------------------------------------|-----------|
+| `x0`          | `zero`            | Hard-wired zero                   | Immediate constant `0`                                            |           |
+| `x1`          | `ra`              | Return address                    | Function to return to when current function terminates            | Caller    |
+| `x2`          | `sp`              | Stack pointer                     | Allocating stack memory for local variables & return addresses    | Callee    |
+| `x3`          | `gp`              | Global pointer                    | <small>*we will not use this*</small>                             |           |
+| `x4`          | `tp`              | Thread pointer                    | <small>*we will not use this*</small>                             |           |
+| `x5`-`x7`     | `t0`-`t2`         | Temporaries                       | Local variables when not in another function                      | Caller    |
+| `x8`          | `s0`/`fp`         | Saved register/frame pointer      | Storing temporaries between function calls                        | Callee    |
+| `x9`          | `s1`              | Saved register                    | Storing temporaries between function calls                        | Callee    |
+| `x10`-`x11`   | `a0`-`a1`         | Function arguments/return values  | Function arguments or return values                               | Caller    |
+| `x12`-`x17`   | `a2`-`a7`         | Function arguments                | Function arguments                                                | Caller    |
+| `x18`-`x27`   | `s2`-`s11`        | Saved registers                   | Storing temporaries between function calls                        | Callee    |
+| `x28`-`x31`   | `t3`-`t6`         | Temporaries                       | Local variables before other function calls                       | Caller    |
 
 - *Caller-saved* registers must be saved/restored by the calling function to be preserved
+    - By contract, values contained in these registers may be discarded by branch functions
 - *Callee-saved* registers must be saved/restored by the function being called to be preserved
-
->**Example:** TODO caller saved and callee saved example
->
->
->
->
->
+    - By contract, values stored in these registers is shared between functions
 
 ## 5. RISC-V ISA
 
@@ -303,8 +338,6 @@ Additional identities
 | `bltu rs1, rs2, imm`  | `rs1` < `rs2` *(unsigned)*    |
 | `bgeu rs1, rs2, imm`  | `rs1` > `rs2` *(unsigned)*    |
 
-- Less than/greater than or equal to? TODO
-
 ### S-Type Instructions
 Used for writing values to arrays.
 
@@ -354,6 +387,7 @@ ADDI t1, t1, 0x965
 
 ### Pseudo-Instructions
 
+- `mv rd, rs` is the same as `addi rd, rs, 0``
 
 | Instruction Form  | Description                       |
 |-------------------|-----------------------------------|
@@ -362,18 +396,30 @@ ADDI t1, t1, 0x965
 | `mv rd, rs`       | Copy value in `rs` to `rd`        |
 | `la rd, label`    | Store address of `label` in `rd`  |
 
-
 ## 6. Program Organization in RISC-V
 
 - Programs divided into sections
-    - `section .data` contains constants
-    - `section .text` contains instructions
-- Functions defined by their name, followed by a colon
-- `.global {label}`/`.globl {label}` to make functions/labels accessible from other binaries
-- 
+    - `section .data` contains constants represented by labels in the form `label: {type} {value}`
+    - `section .text` contains instructions and labels in the form `{id}:`
+- `.global {label}`/`.globl {label}` makes symbols (functions & labels) accessible from other binaries
 
-`.data` constants in the form `label: .{type} {value}`
-or for ascii strings: `label: .asciz "{string contents}"`
+### Constant Data Types
+| Type      | Description   | Form                  |
+|-----------|---------------|-----------------------|
+| `.word`   | integer       | `{constant}`          |
+| `.asciz`  | ASCII string  | `"{string contents}"` |
+
+- Functions defined by a label of their name, followed by a colon
+- *Leaf* functions do not call other functions
+    - No need to save return address
+- For non-leaf functions, the return process is:
+    1.
+    2.
+    3.
+    4.
+    5.
+
+TODO big example from Zhang review
 
 >**Example:** Convert the following C program to RISC-V:
 >```c

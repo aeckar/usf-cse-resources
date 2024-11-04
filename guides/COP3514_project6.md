@@ -2,11 +2,19 @@
 
 *Original by Jing Wang of the University of South Florida*
 
-Project 6, covering much of what we have learned in the course so far, is our most involved project yet. It's very easy to look at the instructions and be overwhelmed by the task at hand. Rather than thinking of this project as a one large complex problem, think of it as many smaller, more managable problems. Approach each problem one by one and slowly piece together the bigger picture.
+**Disclaimer:** This is a guide *not* a solution.
+Different approaches to problems you may face in this project are outlined below,
+but not concrete solutions are not. 
+This is not the *only* way to look at this project, and you are encouraged to explore alternatives.
 
-Note this is a guide *not* a solution. Different approaches to various problems you may face with this project will be outlined below, concrete solutions will not. Keep in mind this is not the *only* way to look at this project and you are encouraged to explore alternatives.
+## Preliminary
 
-## Simplified Directions
+Project 6, covering much of what we have learned in the course so far, is our most involved project yet.
+It's very easy to look at the instructions and be overwhelmed by the task at hand.
+Rather than thinking of this project as a one large complex problem, think of it as many smaller,
+more manageable problems. Approach each problem one by one and slowly piece together the bigger picture.
+
+## Plain-English Directions
 
 The goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). Along with printing the tokens you will need to sort the words of the string in alphabetical order, print the number of unique words, *N*, and print those *N* words each on a newline. Lastly, you will print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. A word's **token** is its position alphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters and the only delimiters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
 
@@ -41,7 +49,7 @@ There are three components to the outfile in the example above:
 
 ## Guide
 
-*Note: The only code in any of the sections below will be something done in class or a simple demonstraion of a concept.*
+*Note: The only code in any of the sections below will be something done in class or a simple demonstration of a concept.*
 
 ### **File Input**
 
@@ -120,7 +128,7 @@ Now, how is this helpful? The main string can now be divided up into its individ
 
 ### **Sorting**
 
-Once you have an array of word pointers, the array needs to be sorted into aphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
+Once you have an array of word pointers, the array needs to be sorted into alphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
 
 ```c
 void bubbleSort(int a[], int n) {
@@ -151,7 +159,7 @@ This function needs to take in two `char` pointers as arguments and compare each
 
 ```
 int word_comp(char* word1, char* word2) {
-    initiallize ch1 and ch2 with word1 and word2 respectively
+    initialize ch1 and ch2 with word1 and word2 respectively
 
     while (*ch1 and *ch2 aren't null terminators) 
         if (*ch1 comes before *ch2 alphabetically)     
@@ -217,7 +225,7 @@ Every word in this newly sorted array can be printed using a simple `for` loop.
 
 ### File Output
 
-File output is suprisingly straight foward in C. All you need to do is open the output file for writing and use `fprintf()` instead of `printf()`.
+File output is surprisingly straight forward in C. All you need to do is open the output file for writing and use `fprintf()` instead of `printf()`.
 
 ```c
 #include <stdio.h>
