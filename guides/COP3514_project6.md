@@ -16,7 +16,15 @@ more manageable problems. Approach each problem one by one and slowly piece toge
 
 ## Plain-English Directions
 
-The goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). Along with printing the tokens you will need to sort the words of the string in alphabetical order, print the number of unique words, *N*, and print those *N* words each on a newline. Lastly, you will print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. A word's **token** is its position alphabetically relative to the list of *N* unique words. When printing the tokens, you must print a newline after every period. All of these will be printed to an output file, not the console. The maximum length of the input file is 10,000 characters. There are no capital letters and the only delimiters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
+The end goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). This project can be broken down into three main objectives:
+
+**Objective 1:** On line 1, you will need to print the number of unique words, *N*.
+
+**Objective 2:** On the following *N* lines print those *N* unique words in **alphabetical order**, each on a newline. 
+
+**Objective 3:** For each sentence you will need to print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. This number is referred to as a word's **token**. When printing the tokens, you must print a newline after every period.
+
+All of these will be printed to an output file, not the console. Both the input file and the output file will be passed as **command line arguments**. The maximum length of the input file is 10,000 characters. There are no capital letters and the only non-alphabetical characters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
 
 <u>**Example:**</u>
 
@@ -41,7 +49,7 @@ two
 3 1
 ```
 
-There are three components to the outfile in the example above:
+There are three components to the output file in the example above:
 
 - The number of unique words (1 line)
 - *N* unique words (Next *N* lines)
@@ -49,9 +57,13 @@ There are three components to the outfile in the example above:
 
 ## Guide
 
-*Note: The only code in any of the sections below will be something done in class or a simple demonstration of a concept.*
+This guide will be broken down into multiple sections, each explaning a separate part of the project. 
+
+>**Note:** The only code in any of the sections below will be something done in class or a simple demonstration of a concept.
 
 ### **File Input**
+
+***
 
 The characters in the input file need a way to get into your C program. To do this you will need some code to handle reading lines from a file.
 
@@ -101,6 +113,8 @@ Using a combination of these two functions a whole file can be read into one str
 
 ### **String Processing**
 
+***
+
 Remember, a string is simply an array of characters with a null terminator (`\0`) at the end. Printing every character in a string array string would look something like this: `string\0`. What if more characters are put after the null terminator to make something like this: `string\0test\0`?
 
 Here is a C program built to demonstrate this:
@@ -127,6 +141,8 @@ Now, how is this helpful? The main string can now be divided up into its individ
 ***The pointers to individual words can be stored in an array.***
 
 ### **Sorting**
+
+***
 
 Once you have an array of word pointers, the array needs to be sorted into alphabetical order. Pretty much any common sorting algorithm can be used to do this. A very common and simple example is ***bubble sort*** (pictured below).
 
@@ -182,6 +198,8 @@ int word_comp(char* word1, char* word2) {
 
 ### **Duplication Removal**
 
+***
+
 Once your array is sorted, the duplicates must be removed. Because the array of words is already sorted, the duplicates will be right next to each other. In the original example in the project instructions above, the sorted array would look like this:
 
 ```
@@ -223,7 +241,9 @@ If you want to clean things up, you can loop through the array again and set the
 
 Every word in this newly sorted array can be printed using a simple `for` loop.
 
-### File Output
+### **File Output**
+
+***
 
 File output is surprisingly straight forward in C. All you need to do is open the output file for writing and use `fprintf()` instead of `printf()`.
 
@@ -249,6 +269,8 @@ int main() {
 
 ### **Tokenizing**
 
+***
+
 There are many ways to do this part. The goal is to compare every word in the original string with the new sorted and filtered array of words.
 The token is equal to how far into the sorted array the current word is located. Here's an example:
 
@@ -267,6 +289,8 @@ A `for` loop can be used to match a given word with its position in the sorted a
 - This can be tricky because if you're using an array holding just words it's likely all periods are gone. Periods should always be followed by a space or a newline meaning, depending on how you set up your string processing algorithm, there should be **two** null terminators at the end of a sentence. This means on every word, you can check if the two characters before it are `\0`. If they are, print a newline.
 
 ### **Using Structures**
+
+***
 
 Structures are not technically required for this project; however, using them may prove to be useful. Structures (also called structs) are used when grouping data could be helpful. In this project for example, you may want to group a word's pointer with its token. You can think of a struct like a class that can only have member variables (no functions). Here are some examples of structs, and how they can be used in C:
 
