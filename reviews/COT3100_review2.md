@@ -7,14 +7,18 @@
 
 ## 1. Set Logic
 
-### Set Operators
-| Form          | Name                  | Set-Builder Notation                                                              | Common Identity           |
-|---------------|-----------------------|-----------------------------------------------------------------------------------|---------------------------|
-| A $\cup$ B    | union                 | { x \| x $\in$ A $\lor$ x $\in$ B }                                               |                           |
-| A $\cap$ B    | intersection          | { x \| x $\in$ A $\land$ x $\in$ B }                                              |                           |
-| A - B         | difference            | { x \| x $\in$ A $\land$ x $\notin$ B }                                           | A $\cup$ B $^C$           |
-| A $\times$ B  | cartesian product     | { (x,y) \| x $\in$ A, y $\in$ B }                                                 |                           |
-| A $\Delta$ B  | symmetric difference  | {x \| (x $\in$ A $\land$ x $\notin$ B) $\lor$ (x $\in$ B $\land$ x $\notin$ A) }  | (A - B) $\cup$ (B - A)    |
+- The following can be used in place of identities in formal logic
+    - "By definition of ..."
+### Set Operators & Constants
+| Form                  | Name                  | Set-Builder Notation                                                              |
+|-----------------------|-----------------------|-----------------------------------------------------------------------------------|
+| A $\cup$ B            | union                 | { x \| x $\in$ A $\lor$ x $\in$ B }                                               |
+| A $\cap$ B            | intersection          | { x \| x $\in$ A $\land$ x $\in$ B }                                              |
+| A - B                 | difference            | { x \| x $\in$ A $\land$ x $\notin$ B }                                           |
+| A $\times$ B          | cartesian product     | { (x,y) \| x $\in$ A, y $\in$ B }                                                 |
+| A $\Delta$ B          | symmetric difference  | { x \| (x $\in$ A $\land$ x $\notin$ B) $\lor$ (x $\in$ B $\land$ x $\notin$ A) } |
+| $\emptyset$           | empty set             | { x \| *false* }                                                                  |
+| $\textbf{\textbf{U}}$ | universal set         | { x \| *true* }                                                                   |
 
 - Recall order-of-operations for sets is undefined
 - Cartesian product can be found using a table
@@ -30,31 +34,28 @@
 > $= \{(x,1), (x,2), \dots, (z,3)\} \checkmark$
 
 ### Set Identities
-| Name                  | Intersection Form                                                 | Union Form                                                         |
-|-----------------------|-------------------------------------------------------------------|--------------------------------------------------------------------|
-| Identity Law          | **t** $\land$ x $\equiv$ x                                        | **c** $\lor$ x $\equiv$ x                                          |
-| Universal Bound Law   | **c** $\land$ x $\equiv$ **c**                                    | **t** $\lor$ x $\equiv$ **t**                                      |
-| Idempotency           | x $\land$ x $\equiv$ x                                            | x $\lor$ x $\equiv$ x                                              |
-| Inverse Property      | x $\land$ ~x $\equiv$ **c**                                       | x $\lor$ ~x $\equiv$ **t**                                         |
-| Commutativity         | x $\land$ y $\equiv$ y $\land$ x                                  | x $\lor$ y $\equiv$ y $\lor$ x                                     |
-| Associativity         | (x $\land$ y) $\land$ z $\equiv$ x $\land$ (y $\land$ z)          | (x $\lor$ y) $\lor$ z $\equiv$ x $\lor$ (y $\lor$ z)               |
-| Distributive Property | x $\lor$ (y $\land$ z) $\equiv$ (x $\lor$ y) $\land$ (x $\lor$ z) | x $\land$ (y $\lor$ z) $\equiv$ (x $\land$ y) $\lor$ (x $\land$ z) |
-| Absorption            | x $\land$ (x $\lor$ y) $\equiv$ x                                 | x $\lor$ (x $\land$ y) $\equiv$ x                                  |
-| DeMorgan's Law        | ~(x $\land$ y) $\equiv$ ~x $\lor$ ~y                              | ~(x $\lor$ y) $\equiv$ ~x $\land$ ~y                               |
+| Name                  | Intersection Form                                         | Union Form                                                         |
+|-----------------------|-----------------------------------------------------------|--------------------------------------------------------------------|
+| Identity Law          | A $\cap$ $\textbf{U}$ = A                                 | A $\cup$ $\emptyset$ = A                                           |
+| Universal Bound Law   | A $\cap$ $\emptyset$ = $\emptyset$                        | A $\cup$ $\textbf{U}$ = $\textbf{U}$                               |
+| Idempotent Law        | A $\cap$ A = A                                            | A $\cup$ A = A                                                     |
+| Inverse Law           | A $\cap A^C$ = $\emptyset$                                | A $\cup A^C$ = $\textbf{U}$                                        |
+| Commutative Law       | A $\cap$ B = B $\cap$ A                                   | A $\cup$ B = B $\cup$ A                                            |
+| Associative Law       | (A $\cap$ B) $\cap$ C = A $\cap$ (B $\cap$ C)             | (A $\cup$ B) $\cup$ C = A $\cup$ (B $\cup$ C)                      |
+| Distributive Law      | A $\cup$ (B $\cap$ C) = (A $\cup$ B) $\cap$ (A $\cup$ C)  | A $\cap$ (B $\cup$ C) = (A $\cap$ B) $\cup$ (A $\cap$ C)           |
+| Absorption Law        | A $\cap$ (A $\cup$ B) = A                                 | A $\cup$ (A $\cap$ B) = A                                          |
+| De Morgan's Law       | $(A \cap B)^C$ = $A^C$ $\cup$ $B^C$                       | $(A \cup B)^C$ = $A^C \cap B^C$                                    |
 
-| Name                          | Form                      |
-|-------------------------------|---------------------------|
-| Double Complement Law         | ~(~x) $\equiv$ x          |
-| Set Difference Law            | A - B =  A $\cup$ $B^C$   |
-| Reflexive Law                 | A $\subseteq$ A           |
-| Definition of Empty Set       |  |The empty set is a subset of *A*, $\emptyset \subseteq A$
-| Definition of Universal Set   |  |*A* is a subset of the universal set, $A \subseteq \textbf{U}$
+| Name                          | Form                                  |
+|-------------------------------|---------------------------------------|
+| Double Complement Law         | $(A^C)^C$ = C                         |
+| Set Difference Law            | A - B = A $\cup$ $B^C$                |
+| Symmetric Difference Law      | A $\Delta$ B = (A - B) $\cup$ (B - A) |
+| Reflexive Law                 | A $\subseteq$ A                       |
 
-- Methods of proof for set identities:
-    - Logic using q
-- To double-check identities, draw a venn diagram inside of the universal set, *U*
+- To double-check identities, draw a Venn diagram inside of the universal set, $\textbf{U}$
 
->**Example:** Prove 
+>**Example:** Prove TODO by drawing a Venn diagram.
 >
 >
 
@@ -72,6 +73,11 @@
 - Power set P(x) is set of all subsets of x
 Power set of empty set is set containing only empty set
 | p(A) | = 2^n where n = |A|
+
+>**Example:** Derive the power set of { TODO }.
+>
+>
+
 ### Common Set Identities
 | Name                          | Identity                                                          | Alternate Form                                                    |
 |-------------------------------|-------------------------------------------------------------------|-------------------------------------------------------------------|
@@ -90,31 +96,28 @@ Power set of empty set is set containing only empty set
     - x *R* y does not necessarily imply y *R* x
 - Relation from A to A itself is relation *on* A
     - **Ex:** The operator $<$ is a relation on $\R$, a subset of $\R \times \R = \R^2$
-
 - *Divides to* is a possible relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
-    - Represented as $x | y$
+    - Represented as $x | y$ or $\frac{x}{y} \in \Z$
 
 ### Properties of Relations
-| Property              | Definition    |
-|-----------------------|---------------|
+| Property              | Definition                            |
+|-----------------------|---------------------------------------|
 | symmetric             |
 | reflexive             | 
 | transitive            |
 | equivalence           | symmetric, reflexive, and transitive  |
 | inverse ($R^{-1}$)    |
 
-## 3. Graphing Relations
+## 3. Graphical Representations of Relations
 - *Arrow diagram* used to represent relations
 
->**Example:**
+>**Example:** Draw the arrow diagram of the relation TODO
 >
 >
 >
-
 
 - For every element in a relation, (*x*, *y*), a *directed graph* diagrams the relationship of each unique *x* to a unique *y*
     - Each domain me
 
-
->**Example:** Draw the directed graph of the relation blah blah blah
+>**Example:** Draw the directed graph of the relation TODO
 >
