@@ -80,7 +80,7 @@ int n;
 std::cin << &n;                     // Store basic input without regard for type 
 ```
 
-## 3. Advanced C Concepts
+## 3. More C Concepts
 ### Array Iteration
 ```c
 int arr[] = {1,2,3};
