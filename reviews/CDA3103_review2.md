@@ -214,7 +214,7 @@
 
 ## 6. RISC-V ISA
 
-### R-Type Instructions
+### R-Type Instructions - ALU Register-to-Register
 
 - Arithmetic, logical, and shift operations using values stored in registers
 - Bitwise operations AND, OR, and XOR apply the boolean operation to every bit in the operands
@@ -246,7 +246,7 @@
 
 ---
 
-### I-Type Instructions
+### I-Type Instructions - ALU Immediate-to-Register & Loading
 
 - I-type instruction use-cases
     - Arithmetic, logical, and shift operations using immediates (constants)
@@ -297,7 +297,7 @@
 
 ---
 
-### S-Type Instructions
+### S-Type Instructions - Storing
 
 - Used to write values to an array 
 
@@ -309,7 +309,7 @@
 
 ---
 
-### U-Type Instructions
+### U-Type Instructions - Long Immediates
 
 - Deal with upper bytes of values
 
@@ -339,7 +339,7 @@
 
 ---
 
-### B-Type Instructions
+### B-Type Instructions - Conditional Branch
 
 - Used for implementing conditional jumps
 - *Branches* specified by labels
@@ -358,7 +358,7 @@
 
 ---
 
-### Pseudo-Instructions
+### J-Type & Pseudo-Instructions
 
 - Compiled to sequences of more primitive instructions
     - **Example:** `mv rd, rs` is compiled as `addi rd, rs, 0`

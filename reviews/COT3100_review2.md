@@ -89,7 +89,7 @@
 | Definition of set difference  | A - B = { x \| x $\in$ A $\land$ x $\notin$ B }                   | $x \in A - B \leftrightarrow x \in A \land x \notin B$            |
 | Definition of set equality    | $A = B \leftrightarrow A \subseteq B \land B \subseteq A$         |                                                                   |
 
-## 2. Relations on Sets
+## 2. Relations over Sets
 - A *relation* is a subset of the cartesian product of two sets
     - Each pair of elements satisfies some condition (if true, a *relationship*)
     - First set is domain, second is codomain
@@ -114,8 +114,6 @@
     - $R^{-1} = \{ (b,a) | (a,b) \in R \}$
     - Same properties apply
 - Symmetric relations are equal to their inverse
-
-## 3. Graphical Representations of Relations
 - *Arrow diagram* used to represent relations between sets
 
 >**Example:**<br>
@@ -136,3 +134,8 @@
 >![](../images/COT3100_directed_graph.png)
 >
 >$\checkmark$
+
+## 3. Modular Arithmetic
+
+- a^m = (a mod n)^m mod n
+- 
