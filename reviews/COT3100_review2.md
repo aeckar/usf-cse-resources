@@ -54,13 +54,10 @@
 | Reflexive Law                 | A $\subseteq$ A                       |
 
 - To double-check identities, draw a Venn diagram inside of the universal set, $\textbf{U}$
-
->**Example:** Prove TODO by drawing a Venn diagram.
->
->
-
 - Sets are *mutually disjoint* if all are disjoint from all others
     - $A \cap B \cap C \cap ... \equiv \emptyset$
+- The *cardinality* of a set is its size
+    - $|A|=$ # of elements in $A$
 - A set can be *partitioned* into multiple sets:
     - That are mutually disjoint
     - Whose union is the original set
@@ -70,13 +67,13 @@
 >$\{\{1,2\},\{3,5\},\{4\}\}$<br>
 >$\{\{2\},\{1\},\{3,4,5\}\} \checkmark$ 
 
-- Power set P(x) is set of all subsets of x
-Power set of empty set is set containing only empty set
-| p(A) | = 2^n where n = |A|
+- Power set, $\mathcal{P}(A)$, is set of all subsets of $A$
+    - $\mathcal{P}(\emptyset) = \{ \emptyset \}$
+    - $|\mathcal{P}(A)| = 2^{|A|}$
 
->**Example:** Derive the power set of { TODO }.
+>**Example:** Derive the power set of $\{0,1,2\}$.
 >
->
+>$\{\emptyset,\{0\},\{1\},\{2\},\{0,1\},\{0,2\},\{1,2\},\{0,1,2\}\} \checkmark$
 
 ### Common Set Identities
 | Name                          | Identity                                                          | Alternate Form                                                    |
@@ -96,7 +93,7 @@ Power set of empty set is set containing only empty set
     - x *R* y does not necessarily imply y *R* x
 - Relation from A to A itself is relation *on* A
     - **Ex:** The operator $<$ is a relation on $\R$, a subset of $\R \times \R = \R^2$
-- *Divides to* is a possible relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
+- *Divides to* is a relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
     - Represented as $x | y$ or $\frac{x}{y} \in \Z$
 
 ### Properties of Relations on a Set
@@ -113,15 +110,23 @@ Power set of empty set is set containing only empty set
 - Symmetric relations are equal to their inverse
 
 ## 3. Graphical Representations of Relations
-- *Arrow diagram* used to represent relations
+- *Arrow diagram* used to represent relations between sets
 
->**Example:** Draw the arrow diagram of the relation TODO
+>**Example:**<br>
+>$C = D = \{−3, −2, −1, 1, 2, 3\}$<br>
+>$\forall (x, y) \in C \times D,(x, y) \in S \rightarrow \frac{1}{x} − \frac{1}{y} \in \Z$<br>
+> Draw the arrow diagram of the relation $S$.
 >
+>![](../images/COT3100_arrow_diagram.png)
 >
->
+>$\checkmark$
 
-- For every element in a relation, (*x*, *y*), a *directed graph* diagrams the relationship of each unique *x* to a unique *y*
-    - Each domain me
+- *Directed graph* used to represent relation on a set
+    - Each domain element connected to its analogous codomain element
+    - Set elements not related to any other element appear as unconnected vertices
 
->**Example:** Draw the directed graph of the relation TODO
+>**Example:** Draw the directed graph of the relation { (0,0), (0,1), (1,1), (1,2), (2,2), (2,3) } over the set { 0, 1, 2, 3 }.
 >
+>![](../images/COT3100_directed_graph.png)
+>
+>$\checkmark$
