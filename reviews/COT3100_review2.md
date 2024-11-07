@@ -5,7 +5,7 @@
     <a href="https://quizlet.com/957758773/cot-3100-set-laws-identities-flash-cards">quizlet</a>
 </p>
 
-<!-- The following tEx escapes do not render in GFM: \R, \textbf{Z}, \empty                         -->
+<!-- The following tEx escapes do not render in GFM: \textbf{R}, \textbf{Z}, \empty                         -->
 <!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
 <!-- There is no way to insert single tilde (~) in GFM tEx                                  -->
 
@@ -98,7 +98,7 @@
     - If x is not related to y, expressed as x ~~*R*~~ y $\leftrightarrow$ (x,y) $\notin$ R
     - x *R* y does not necessarily imply y *R* x
 - Relation from A to A itself is relation *on* A
-    - **Ex:** The operator $<$ is a relation on \textbf{R}, a subset of $\R \times \R = \R^2$
+    - **Ex:** The operator $<$ is a relation on $\textbf{R}$, a subset of $\textbf{R} \times \textbf{R} = \textbf{R}^2$
 - *Divides to* is a relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
     - Represented as $x | y$ or $\frac{x}{y} \in \textbf{Z}$
 
