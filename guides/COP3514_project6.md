@@ -18,11 +18,17 @@ more manageable problems. Approach each problem one by one and slowly piece toge
 
 The end goal of this program is to take a string of text from a file and convert it into a list of tokens (numbers). This project can be broken down into three main objectives:
 
-**Objective 1:** On line 1, you will need to print the number of unique words, *N*.
+**Objective 1:**
 
-**Objective 2:** On the following *N* lines print those *N* unique words in **alphabetical order**, each on a newline. 
+- On line 1, you will need to print the number of unique words, *N*.
 
-**Objective 3:** For each sentence you will need to print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. This number is referred to as a word's **token**. When printing the tokens, you must print a newline after every period.
+**Objective 2:**
+
+- On the following *N* lines print those *N* unique words in **alphabetical order**, each on a newline.
+
+**Objective 3:**
+
+- For each sentence you will need to print a single line of numbers separated by spaces referring to each word's position in the alphabetized list, in the order the words appear in the original input file. This number is referred to as a word's **token**. When printing the tokens, you must print a newline after every period.
 
 All of these will be printed to an output file, not the console. Both the input file and the output file will be passed as **command line arguments**. The maximum length of the input file is 10,000 characters. There are no capital letters and the only non-alphabetical characters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
 
@@ -59,7 +65,7 @@ There are three components to the output file in the example above:
 
 This guide will be broken down into multiple sections, each explaning a separate part of the project. 
 
->**Note:** The only code in any of the sections below will be something done in class or a simple demonstration of a concept.
+**Note:** The only code in any of the sections below will be something done in class or a simple demonstration of a concept.
 
 ### **File Input**
 
@@ -210,7 +216,7 @@ two
 two
 ```
 
-To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index just created. If they are equal, skip and if they are different move the current word to the new indexing variable plus 1. Here's an example using the words above to hopefully clear this concept up:
+To remove the duplicates, create a new indexing variable separate from the main index used to loop through the array. Compare each word in the array with the word at the new array index just created. If they are equal, skip and if they are different, copy the current word to the new indexing variable plus 1. Here's an example using the words above to hopefully clear this concept up:
 
 The first element can be skipped since it's always unique. Now compare `array[0]` with `array[1]` ("one" and "one"). They are the same word so it's skipped. Now compare `array[0]` with `array[2]` ("one" and "three"). They are different so `array[0 + 1]` is set to `array[2]`. The array now looks like this:
 
@@ -286,7 +292,7 @@ A `for` loop can be used to match a given word with its position in the sorted a
 
 #### How do I know when to print a newline?
 
-- This can be tricky because if you're using an array holding just words it's likely all periods are gone. Periods should always be followed by a space or a newline meaning, depending on how you set up your string processing algorithm, there should be **two** null terminators at the end of a sentence. This means on every word, you can check if the two characters before it are `\0`. If they are, print a newline.
+- This can be tricky because if you're using an array holding just words it's likely all periods are gone. Periods should always be followed by a space or a newline meaning, depending on how you set up your string processing algorithm, there should be **two** null terminators at the end of a sentence. This means on every word, you can check if the two characters before it are `\0`. If they are, print a newline. This issue is very dependent on how your program is set up so it's likely you may need to find your own solution to this problem.
 
 ### **Using Structures**
 
