@@ -5,6 +5,10 @@
     <a href="https://quizlet.com/957758773/cot-3100-set-laws-identities-flash-cards">quizlet</a>
 </p>
 
+<!-- The following tEx escapes do not render in GFM: \R, \textbf{Z}, \empty                         -->
+<!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
+<!-- There is no way to insert single tilde (~) in GFM tEx                                  -->
+
 ## 1. Set Logic
 
 - The following can be used in place of identities in formal logic
@@ -94,9 +98,9 @@
     - If x is not related to y, expressed as x ~~*R*~~ y $\leftrightarrow$ (x,y) $\notin$ R
     - x *R* y does not necessarily imply y *R* x
 - Relation from A to A itself is relation *on* A
-    - **Ex:** The operator $<$ is a relation on $\R$, a subset of $\R \times \R = \R^2$
+    - **Ex:** The operator $<$ is a relation on \textbf{R}, a subset of $\R \times \R = \R^2$
 - *Divides to* is a relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
-    - Represented as $x | y$ or $\frac{x}{y} \in \Z$
+    - Represented as $x | y$ or $\frac{x}{y} \in \textbf{Z}$
 
 ### Properties of Relations on a Set
 | Property              | Definition                                                                        |
@@ -116,7 +120,7 @@
 
 >**Example:**<br>
 >$C = D = \{−3, −2, −1, 1, 2, 3\}$<br>
->$\forall (x, y) \in C \times D,(x, y) \in S \rightarrow \frac{1}{x} − \frac{1}{y} \in \Z$<br>
+>$\forall (x, y) \in C \times D,(x, y) \in S \rightarrow \frac{1}{x} − \frac{1}{y} \in \textbf{Z}$<br>
 > Draw the arrow diagram of the relation $S$.
 >
 >![](../images/COT3100_arrow_diagram.png)
