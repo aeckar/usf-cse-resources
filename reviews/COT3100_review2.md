@@ -23,7 +23,7 @@
     - All elements as ordered pairs
     - Typically evaluated before other set operations
 
->**Example:** Perform the Cartesian product $\{1,2,3\} \times \{x,y,z\}$.
+>**Example:** Perform the Cartesian product $\{x,y,z\} \times \{1,2,3\}$.
 >
 >```
 >   1     2     3
