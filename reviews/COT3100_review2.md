@@ -9,9 +9,11 @@
 
 - The following can be used in place of identities in formal logic
     - "By definition of ..."
+
 ### Set Operators & Constants
 | Form                  | Name                  | Set-Builder Notation                                                              |
 |-----------------------|-----------------------|-----------------------------------------------------------------------------------|
+| $A^C$                 | complement            | { x \| x $\notin$ A }                                                             |
 | A $\cup$ B            | union                 | { x \| x $\in$ A $\lor$ x $\in$ B }                                               |
 | A $\cap$ B            | intersection          | { x \| x $\in$ A $\land$ x $\in$ B }                                              |
 | A - B                 | difference            | { x \| x $\in$ A $\land$ x $\notin$ B }                                           |
