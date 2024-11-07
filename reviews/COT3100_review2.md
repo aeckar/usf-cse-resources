@@ -99,14 +99,18 @@ Power set of empty set is set containing only empty set
 - *Divides to* is a possible relationship that states "$x$ divides $y$ if $y$ is divisible by $x$"
     - Represented as $x | y$ or $\frac{x}{y} \in \Z$
 
-### Properties of Relations
-| Property              | Definition                            |
-|-----------------------|---------------------------------------|
-| symmetric             |
-| reflexive             | 
-| transitive            |
-| equivalence           | symmetric, reflexive, and transitive  |
-| inverse ($R^{-1}$)    |
+### Properties of Relations on a Set
+| Property              | Definition                                                                        |
+|-----------------------|-----------------------------------------------------------------------------------|
+| reflexive             | $\forall a \in A,(a,a) \in R$                                                     |
+| symmetric             | $\forall a,b \in A, (a,b) \in R \rightarrow (b,a) \in R$                          |
+| transitive            | $\forall a,b,c \in A, ((a,b) \in R \land (b,c) \in R) \rightarrow (a,c) \in R$    |
+| equivalence           | <small>*symmetric, reflexive, and transitive*</small>                             |
+
+- The *inverse* of a relation is relation with flipped ordered pairs
+    - $R^{-1} = \{ (b,a) | (a,b) \in R \}$
+    - Same properties apply
+- Symmetric relations are equal to their inverse
 
 ## 3. Graphical Representations of Relations
 - *Arrow diagram* used to represent relations
