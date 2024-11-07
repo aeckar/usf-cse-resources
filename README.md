@@ -9,6 +9,7 @@ These materials are not intended to replace independent study, but to complement
 by ensuring that all information is covered and understood.
 
 As of November 2024, this repository contains materials covering:
+
 - EGN 3443, Probability & Statistics for Engineers
 - COP 3514, Program Design
 - CDA 3103, Computer Organization & Architecture
@@ -50,3 +51,12 @@ As of November 2024, this repository contains materials covering:
 - riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
+
+### Roadmap
+
+The following are planned to be added in the future:
+
+1. COP 3514 review 3
+2. CDA 3103 review 3
+3. COT 3100 review 3
+4. GitHub Pages site

@@ -10,6 +10,8 @@
 <!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
 <!-- There is no way to insert single tilde (~) in GFM tEx                                  -->
 
+**Disclaimer:** From student experience, use of the linked Quizlet is incredibly important for this exam.
+
 ### Logic Symbols and their Meanings
 | Symbol        | Pronunciation         |
 |---------------|-----------------------|
@@ -51,23 +53,26 @@
 ### Common Sets of Numbers
 | Symbol    | Elements              | Examples                                                  |
 |:---------:|-----------------------|-----------------------------------------------------------|
-| C         | complex numbers       | 2 + 7i                                                    |
-| R         | real numbers          | $\pi$, 16                                                 |
-| Z         | integers              | -3, 0, 24                                                 |
-| Q         | rational numbers      | 0.25, 9                                                   |
+| **C**     | complex numbers       | 2 + 7i                                                    |
+| **R**     | real numbers          | $\pi$, 16                                                 |
+| **Z**     | integers              | -3, 0, 24                                                 |
+| **Q**     | rational numbers      | 0.25, 9                                                   |
 | $^+, ^-$  | positives, negatives  | $R^+ \equiv (0, \infty)$ is set of all positive real numbers   |
 
-- $C \supseteq R \supseteq W \supseteq Z$
-- Sets denoted in either
-    - **Roster notation:** $\{ e_1,e_2,e_3, \ldots , e_n \}$
-    - **Set builder notation:** $\{ var \space type? | condition \}$
-        - **Ex:** $\{ x \in Z | x \lt 7 \} \equiv \{ \ldots ,4,5,6 \}$
+- **C** $\supseteq$ **R** $\supseteq$ **W** $\supseteq$ **Z**
+- Set-roster notation
+    - All elements in a list
+    - $\{ e_1,e_2,e_3, \ldots , e_n \}$
+- Set builder notation
+    - Every element, of a superset, that satisfies some condition
+    - $\{ var \space superset? | condition \}$
+    - **Ex:** $\{ x \in Z | x \lt 7 \} \equiv \{ \ldots ,4,5,6 \}$
 
 ## 2. Logical Operators
 
 ### Common Logical Operators
 | Notation              | Alternate Notation    | Name          | Pronunciations                | Condition for Truth                               | Equivalent Form                                   |
-|-----------------------|-----------------------|---------------|-------------------------------|---------------------------------------------------|---------------------------------------------------|
+|:---------------------:|-----------------------|---------------|-------------------------------|---------------------------------------------------|---------------------------------------------------|
 | ~p                    | $\neg$                | negation      | *not p*                       | p is false                                        |                                                   |
 | p $\land$ q           | &, AND                | conjunction   | *p and q*, *p but q*          | Both p and q are true                             |                                                   |
 | p $\lor$ q            | OR                    | disjunction   | *p or q*, *p unless q*        | p or q are true                                   |                                                   |
@@ -106,11 +111,11 @@
 
 ### Transformations of $p \rightarrow q$
 | Name              | Form                  |
-|-------------------|-----------------------|
-| Negation          | p $\land$ ~q          |
-| Contrapositive    | ~q $\rightarrow$ ~p   |
-| Converse          | q $\rightarrow$ p     |
-| Inverse           | ~p $\rightarrow$ ~q   |
+|:-----------------:|-----------------------|
+| negation          | p $\land$ ~q          |
+| contrapositive    | ~q $\rightarrow$ ~p   |
+| converse          | q $\rightarrow$ p     |
+| inverse           | ~p $\rightarrow$ ~q   |
 
 - The above transformations, aside from the negation, may or may not be true if the original conditional is true
 
@@ -125,7 +130,7 @@
 
 ### Types of statements
 | Type          | Claim                                     | Example                                                   |
-|---------------|-------------------------------------------|-----------------------------------------------------------|
+|:-------------:|-------------------------------------------|-----------------------------------------------------------|
 | universal     | property is true for every element        | *Every person in this class is a USF student*             |
 | existential   | property is true for at least one element | *Some person in this class is not a USF student*          |
 | conditional   | consequent is true if antecedent is true  | *If a person is in this class, they are a USF student*    |
