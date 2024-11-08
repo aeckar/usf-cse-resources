@@ -4,7 +4,7 @@
 
 **Disclaimer:** This is a guide *not* a solution.
 Different approaches to problems you may face in this project are outlined below,
-but not concrete solutions are not. 
+but not concrete solutions are not.
 This is not the *only* way to look at this project, and you are encouraged to explore alternatives.
 
 ## Preliminary
@@ -32,7 +32,7 @@ The end goal of this program is to take a string of text from a file and convert
 
 All of these will be printed to an output file, not the console. Both the input file and the output file will be passed as **command line arguments**. The maximum length of the input file is 10,000 characters. There are no capital letters and the only non-alphabetical characters will be whitespace (`' '` and `'\n'`) and periods (`'.'`).
 
-<u>**Example:**</u>
+**Example:**
 
 #### Command line: 
 `./a.out file.in file.out`
