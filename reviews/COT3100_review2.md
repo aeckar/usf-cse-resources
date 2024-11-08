@@ -9,6 +9,23 @@
 <!-- To render correctly, inline tEx blocks must not have characters directly after them    -->
 <!-- There is no way to insert single tilde (~) in GFM tEx                                  -->
 
+## Preliminary - Exam Topics
+
+1. Determine a set resulting from an expression involving multiple sets, then determine the cardinality of the set
+2. Determine disjointness among given some sets
+3. Identify regions of a Venn diagram corresponding to given set expressions and determine a relationship
+4. Determine the complement of a set resulting from a set expression involving intervals of real numbers
+5. Determine the result of a union/intersection of an indexed family of sets
+6. Determine whether a given collection of sets form a partition of a given set
+7. Determine whether some statements concerning sets are generally true or false
+8. Given a relation, determine if it's an equivalence relation, possibly determining the number of equivalence classes and class sizes
+9. Determine a cardinality involving Cartesian products of sets
+10. Determine a cardinality involving an n-ary relation on a given Cartesian product
+11. Determine which properties some given relations have
+12. Perform repeated squaring, giving the squares and the final result
+13. *(Bonus Question)* Mathematical induction
+14. *(Bonus Question)* Prove or disprove whether or not a given relation is an equivalence relation
+
 ## 1. Set Logic
 
 - The following can be used in place of identities in formal logic
@@ -89,7 +106,15 @@
 | Definition of set difference  | A - B = { x \| x $\in$ A $\land$ x $\notin$ B }                   | $x \in A - B \leftrightarrow x \in A \land x \notin B$            |
 | Definition of set equality    | $A = B \leftrightarrow A \subseteq B \land B \subseteq A$         |                                                                   |
 
-## 2. Relations over Sets
+## 2. Indexed Families of Sets
+
+- An *indexed family of sets* is the application of an operator over all elements in a range
+    - Similar to summation notation
+
+TODO practice
+TODO how to know # of equivalence classes, codomain elements grouped by?
+
+## 3. Relations over Sets
 - A *relation* is a subset of the cartesian product of two sets
     - Each pair of elements satisfies some condition (if true, a *relationship*)
     - First set is domain, second is codomain
@@ -135,7 +160,12 @@
 >
 >$\checkmark$
 
-## 3. Modular Arithmetic
+## 4. Modular Arithmetic
 
-- a^m = (a mod n)^m mod n
-- 
+- Rooted in identity $a^m = (a \space mod \space n)^m \space mod \space n$
+- Apply identity multiple times through *repeated squaring*
+
+>**Example:** Find ___ through repeated squaring.
+>
+>
+>

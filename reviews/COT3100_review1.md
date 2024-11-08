@@ -29,6 +29,30 @@
 
 **:* typically comes after $\exists$, and *|* typically comes after $\forall$
 
+## Preliminary - Exam Topics
+
+
+TODO format
+
+1. Identify the name of some given argument forms by name if valid. You do not need to remember the names of invalid forms, but you at least need to recognize their invalidity.
+Determine whether some given sentences should be considered statements. Similar to examples we talked about early on.
+Complete a truth table. You should have complete command of truth table evaluations so as to make no errors. Check your work to be sure.
+Identify statements logically equivalent to a given statement. It may be helpful to translate any statements into a convenient symbolic form for quicker identification and checking of your work.
+Given a conditional statement, identify how other statements relate to that conditional, e.g. converse, inverse, contrapositve. Evaluate the truth values of said statements based on some given information.
+Find an equivalent form of an expression using a limited set of operators using the algebra of logical statement forms, stating any equivalences used. For a very easy example, if I asked you to write an equivalent expression for 
+ using only 
+ or 
+, you could as the first and only step, say this is equivalent to 
+ (justified as the Equivalent Disjunction), which can be your final answer since it satisfies the requirements of the problem.
+Similar to 6. but the equivalence is given, and your goal is to prove the equivalence as a sequence of steps using the algebra of logical statement forms. If desperate, a truth table will be allowed for partial credit.
+Determine the validity/invalidity of a given argument form using a truth table. Once again, you should have complete command of truth tables and evaluations. Make sure that you know how to identify critical rows and to not make the common mistake of considering the conclusion when identifying critical rows. You only consider the conclusion after identifying critical rows, to determine validity/invalidity.
+Determine the validity/invalidity of some arguments, identifying the forms used by name. Once again, you do not have to remember names for invalid forms--just be able to recognize their invalidity.
+Fill in the missing pieces of a logical deduction. Review the reading glasses example.
+Actually perform a logical deduction from start to finish.
+A multiply quantified statement form is given. Determine its truth value based on some given information.
+A knights/knaves problem. You do not have to present a formal deduction, just identify scenarios (an assignment of type to each native) which are logically consistent. Similar to the attendance quiz question.
+Negate a multiply quantified statement, similar to what we did Monday with the limit example. Expect that a conditional predicate will be involved similarly as in that example.
+
 ## 1. Introduction to Set Theory
 
 - A *set* is some collection collection of elements
