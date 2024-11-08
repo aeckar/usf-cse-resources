@@ -181,6 +181,7 @@
 - *RISC-V* is a free and open-source instruction set architecture (ISA)
     - Specification defines
     - We will use RV32I, a dialect of RISC-V
+- Relies heavily on comments, denoted by `#`, to derive meaning from code
 - Recall registers are a small, extremely fast units of memory
     - Store 32-bit values
     - 32 in total
@@ -307,6 +308,14 @@
 | `sh rs2, imm(rs1)`    | Saves lowest 2 bytes (16 bits) of `rs2` to the address `rs1 + imm`    |
 | `sw rs2, imm(rs1)`    | Saves 4 bytes (32 bytes) of `rs2` to the address `rs1 + imm`          |
 
+- Cannot use subscripting for array iteration, use pointers and `lw`, `sw` (and related) instead
+- Without saving address:
+    1. Load address of element, with offset, into register,`add rd, {head}, {offset}` 
+    2. Load the element using the same register, `lw rd, (rd)`
+- While saving address:
+    1. Load the address of the element, with offset, into a register, `add rd1, {head}, {offset}`
+    2. Load the element into another register using the first, `lw rd2, (rd1)`
+
 ---
 
 ### U-Type Instructions - Long Immediates
@@ -328,8 +337,8 @@
 >**Example:** Initialize the registers `t0` and `t1` with values `0xABCDE265` and `0xABCDE965`, respectively.
 >
 >```assembly
->lui  t0, 0xABCDE       # upper 20 bits
->addi t0, t0, 0x265     # lower 12 bits
+>lui  t0, 0xABCDE       # upper 20 bits (5 hex digits)
+>addi t0, t0, 0x265     # lower 12 bits (3 hex digits)
 >
 >lui  t1, 0xABCDE       # upper 20 bits
 >addi t1, t1, -0x69B    # lower 12 bits, as signed since number is over 7FF (convert to binary first)
