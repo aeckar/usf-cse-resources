@@ -46,7 +46,7 @@
 - Recall order-of-operations for sets is undefined
 - Cartesian product can be found using a table
 
->**Example:** Perform the Cartesian product $\{1,2,3\} \times \{x,y,z\}$.
+>**Example:** Perform the Cartesian product $\{x,y,z\} \times \{1,2,3\}$.
 >
 >| *y* \ *x*    | 1     | 2     | 3     |
 >|:------------:|:-----:|:-----:|:-----:|
