@@ -78,6 +78,7 @@
 
 - To double-check identities, draw a Venn diagram inside of the universal set, $\textbf{U}$
 - Sets are *mutually disjoint* if all are disjoint from all others
+- 
     - $A \cap B \cap C \cap ... \equiv \emptyset$
 - The *cardinality* of a set is its size
     - $|A|=$ # of elements in $A$
@@ -85,11 +86,14 @@
     - That are mutually disjoint
     - Whose union is the original set
 
->**Example:** List two possible partitions of $\{1,2,3,4,5\}$.
->
->$\{\{1,2\},\{3,5\},\{4\}\}$<br>
->$\{\{2\},\{1\},\{3,4,5\}\} \checkmark$ 
+>**Example:** List two possible partitions of \( \{1,2,3,4,5\} \).
 
+\[
+\{\{1,2\},\{3,5\},\{4\}\}
+\]
+\[
+\{\{2\},\{1\},\{3,4,5\}\}\checkmark$
+\]
 - Power set, $\mathcal{P}(A)$, is set of all subsets of $A$
     - $\mathcal{P}(\emptyset) = \{ \emptyset \}$
     - $|\mathcal{P}(A)| = 2^{|A|}$
