@@ -1,0 +1,75 @@
+Identity Law,p ∧ t = p
+p ∨ c = p
+Universal Bound Law,c ∧ x = c
+t ∨ x = t
+Idempotency,x ∧ x = x
+x ∨ x = x
+Inverse Property,x ∧ ~x = c
+x ∨ ~x = t
+Commutativity,x ∧ y = y ∧ x
+x ∨ y = y ∨ x
+Associativity,(x ∧ y ) ∧ z = x ∧ (y ∧ z)
+(x ∨ y) ∨ z = x ∨ (y ∨ z)
+Distributive Property,x ∨ (y ∧ z) = (x ∨ y) ∧ (x ∨ z)
+x ∧ (y ∨ z) = (x ∧ y) ∨ (x ∧ z)
+Absorption,x ∧ (x ∨ y) = x
+x ∨ (x ∧ y) = x
+DeMorgan's Law,~(x ∧ y) = ~x ∨ ~y
+~(x ∨ y) = ~x ∧ ~y
+Double Negative Law,~(~x) = x
+negation,p ∧ ~q
+contrapositive,~q → ~p
+converse,q → p
+inverse,~p → ~q
+modus ponens,p → q
+p
+∴ q
+converse error,p → q
+q
+∴ p
+modus tollens,p → q
+~q
+∴ ~p
+inverse error,p → q
+~p
+∴ ~q
+elimination,p ∨ q
+~q
+∴ p
+false exclusion,p ∨ q
+p
+∴ ~q
+generalization,p
+∴ p ∨ q
+hasty generalization,p ∨ q
+∴ p
+specialization,p ∧ q
+∴ p
+specialization fallacy,p
+∴ p ∧ q
+conjunction,p
+q
+∴ p ∧ q
+transitivity,p → q
+q → r
+∴ p → r
+division into cases,p ∨ q
+p → r
+q → r
+∴ r
+contradiction,~p → c
+∴ p
+modus ponens (rule of inference),∀x, P(x) → Q(x)
+P(a)
+∴ Q(a)
+modus tollens (rule of inference),∀x, P(x) → Q(x)
+~Q(a)
+∴ ~P(a)
+transitivity (rule of inference),∀x, P(x) → Q(x)
+∀x, Q(x) → R(x)
+∴ ∀x, P(x) → R(x)
+mathematical induction*
+
+*not tested on Exam 1,P(1)
+∀k ∈ Z⁺, P(k) → P(k + 1)
+∴ ∀n ∈ Z⁺, P(n)

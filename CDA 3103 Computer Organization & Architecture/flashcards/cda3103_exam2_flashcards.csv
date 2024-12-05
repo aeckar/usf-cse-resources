@@ -1,0 +1,64 @@
+saved registers (s0-s11),used to hold variables
+temporary registers (t0-t7),used to hold intermediate values during a larger computation
+load instruction,transfers data from memory to a register
+store instruction,transfers data from a register to memory
+byte-addressable memory,each data byte has unique address
+word-addressable memory,each 32-bit data word has a unique address
+4 bytes,how many bytes in a 32 bit word
+little-endian,byte numbers start at the little (least significant) end
+big-endian,byte numbers start at the big (most significant) end
+leaf function,-a function that does not call another function
+-no need to save ra
+non-leaf function,a function that calls another function
+compiler,output is assembly files
+assembler,reads a single assembly language source file and produces a binary object file and bookkeeping information that helps combine several object files into a program
+linker,combines a collection of object and library files into an executable file
+loader,brings the executable file into memory and starts execution
+assembler directive,an operation that tells the assembler how to translate a program but does not produce machine instructions (i.e. .text)
+global labels,-also called external label
+-externally visible symbols
+-can be referenced from other object files
+-exported functions, global variables
+-examples: main
+local labels,-internally visible only symbols (not visible outside the file)
+-only used within this object file
+-private functions, local variables
+-example: label "string1" and "string2"
+a0,In the RISC-V calling convention, the `a0` register is specifically reserved for holding function return values. When a function completes its execution, the result is placed in this register for the calling function to access.
+Stack pointer,This is a crucial register in many architectures, including RISC-V. It keeps track of the top of the stack, a region of memory used for storing temporary data. The stack grows downwards, meaning as more data is pushed onto the stack, the stack pointer moves to lower memory addresses.
+Text Segment,In the memory layout of a program, the text segment (or code segment) contains the executable instructions. This is where the actual binary code of the program resides.
+Side Effects,When a function is called, it might make changes that are not part of its primary purpose. These unintended changes, such as overwriting registers or modifying global variables, are referred to as side effects.
+ABI (Application Binary Interface),An ABI defines the rules for binary compatibility between different software components. It specifies details like data types, sizes, and alignment, ensuring that software components compiled separately can work together.
+Call Function,This is the process by which one function invokes another for execution. Once the called function completes its tasks, control is returned to the calling function.
+Caller,This refers to the function that initiates or makes a call to another function.
+Procedure Call and Return,This encompasses the entire process of a function being called, executing its tasks, and then returning control back to the function that called it.
+Stack,The stack is a region of memory used for temporarily storing data, especially during function calls. It operates on a last-in-first-out (LIFO) principle, meaning the last item pushed onto the stack is the first one popped off.
+Stack Frame,When a function is called, a section of the stack is allocated for its local variables, return address, and other necessary data. This section is referred to as a stack frame.
+B-Type Instructions,These are branch instructions in the RISC-V architecture. They are used for making decisions and directing the flow of execution based on certain conditions.
+Unconditional Branching (j),This type of branching allows the program to jump to a new instruction address without checking any condition. It's a direct jump, and execution continues from the new address.
+I-Type Instructions,In the RISC-V architecture, I-type instructions involve immediate values. These instructions can work with 12-bit constants directly embedded in the instruction.
+Data Transfer Instructions,These are specific instructions that move data between the CPU's registers and the system's memory.
+R-type Instructions,These instructions in RISC-V involve operations between two source registers and store the result in a destination register.
+AND Instruction,This is a fundamental operation in digital logic and computing. The AND instruction in RISC-V performs a bitwise AND operation between two binary values.
+Half Adder,This digital circuit is designed to add two single binary digits. It produces a sum and a carry-out, which are the results of the addition.
+Logic Gates,These are the building blocks of digital circuits. Logic gates take in binary inputs and produce outputs based on logical operations like AND, OR, NOT, etc. They are fundamental in the design and operation of digital systems.
+The Von Neumann Model consists of,- a memory, containing instructions and data
+- a processing unit, for performing arithmetic and logical operations
+- a control unit, for interpreting instructions
+A three way hardware system consists of,a central processing unit (CPU) with a control unit, an arithmetic logic unit (ALU), registers (small storage areas), a main memory system, and an I/O system
+The ________ is the agreed-upon interface between all the software that runs on the machine and the hardware that executes it. It allows you to talk to the machine.,Instruction Set Architecture (ISA)
+Kilobyte,2^10
+Megabyte,2^20
+Gigabyte,2^30
+Terabyte,2^40
+Millisecond,2^-10
+Microsecond,2^-20
+Nanosecond,2^-30
+Picosecond,2^-40
+RS (Reset-Set) Flip-Flop,A bistable multivibrator with two stable states. It has two inputs, R (reset) and S (set). Setting R to 1 and S to 0 resets the flip-flop, while setting S to 1 and R to 0 sets it. If both inputs are 0, the last state is retained. Both inputs being 1 is usually considered an invalid or forbidden state.
+D (Data or Delay) Flip-Flop,Acts as a delay. It has a single data input, D, and a clock input. On a clock edge (usually the rising edge), the output takes the value of the D input.
+JK Flip-Flop,A refinement of the RS flip-flop. It has two inputs, J and K. When J = 1 and K = 0, it sets; when J = 0 and K = 1, it resets; when both J and K are 1, it toggles the output.
+T (Toggle) Flip-Flop,Essentially a JK flip-flop with J and K tied together as a single input, T. When T is 1, the output toggles with every clock pulse.
+Master-Slave Flip-Flop,Uses two flip-flops (one master and one slave) to avoid the invalid or race condition in the RS flip-flop. The master flip-flop is controlled by the clock pulse, and the slave flip-flop is controlled by the complement of the clock pulse.
+Edge-Triggered Flip-Flop,Changes state only on the edge of the clock pulse (either rising or falling), not while the clock is high or low.
+SR Latch,A basic storage element built using two cross-coupled NOR or NAND gates. It's similar to the RS flip-flop but without a clock input.

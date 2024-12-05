@@ -1,0 +1,22 @@
+Commutative Law,A ∩ B = B ∩ A
+A ∪ B = B ∪ A
+Associative Law,(A ∩ B) ∩ C = A ∩ (B ∩ C)
+(A ∪ B) ∪ C = A ∪ (B ∪ C)
+Distributive Law,A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)
+A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)
+Identity Law,A ∩ U = A
+A ∪ ∅ = A
+Negation Law,A ∪ Aᶜ = U
+A ∩ Aᶜ = ∅
+Double Complement Law,(Aᶜ)ᶜ = A
+Idempotent Law,A ∩ A = A
+A ∪ A = A
+Universal Set Law,A ∪ U = U
+De Morgan's Law,(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ
+(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ
+Absorption Law,A ∪ (A ∩ B) = A
+A ∩ (A ∪ B) = A
+Empty Set Law,A ∩ ∅ = ∅
+Set Difference Law,A - B = A ∪ Bᶜ
+Symmetric Difference Law,A ∆ B = (A - B) ∪ (B - A)
+Reflexive Law,A ⊆ A
