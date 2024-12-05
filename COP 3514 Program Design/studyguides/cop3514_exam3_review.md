@@ -856,13 +856,7 @@ int main(void) {
 }
 ```
 
-
-## 10. Multi-File Programs
- Modularity
-• Header Files
-• Dividing a Program into Multiple Files
-
-### ***i.* Program Modularity**
+## 10. Software Engineering Principles
 
 - Programs can be viewed as a collection of modules
 - A *module* is a collection of services, each of which provides a certain, useful functionality
@@ -900,28 +894,25 @@ int main(void) {
 ```
 
 - Modules, interfaces, and implementations are abstract concepts without direct counterparts in the C language
-### ***ii.* Header Files**
-
-- 
-
-- Header 
-
-
-interface, services in implementation
-
+- Code *abstraction* is the creation of simple interfaces to complex program logic
+    - Enables the use of an implementation without having to know how much of how it works
+    - **Ex:** C itself abstracts away much of assembly
 - Goals of code abstraction
     - Hiding complex details from user
     - Creating simple, high-level user interfaces
     - Facilitating software maintenance
+- In this sense, software *maintenance* is the continuous improvement and debugging of software over time
+- It is recommended to split programs into modules for the following reasons
+    - **Abstraction:** Only the interface is visible to other modules
+    - **Reusability:** Modules requiring the same services can share the same module dependency
+    - **Maintainability:** Changes to one module should not affect another
+- *Cohesion* refers to how closely related the components of a module are to each other
+    - *"Do they serve a similar purpose?"*
+- *Coupling* is the degree of interdependence between two or more modules
+    - *"How important is this module to the implementation of the other?"*
+- Modules in a well-designed program should be *highly cohesive* and have *low coupling*
 
-- Advantages of dividing program into modules
-    - Abstraction
-    - Reusability
-    - Maintainability
-- Modules in a well-designed program should be
-    - High cohesion and low coupling
-
-## 11. Object Files & Linking
+## 12. Object Files & Linking
 
 - Conversion from source code to executable
     1. Each `.c` source file compiled to `.s` assembly code
@@ -1029,11 +1020,12 @@ gcc main.o fun.o    # Output final executable
 
 - *Makefiles* are files containing sequences of commands used to build a program
     - On Unix, processed using the `make` command
+- One per directory, named `Makefile` or `makefile`
 - Makefiles automate the build process by
     - Deciding which parts of a program need to be recompiled
     - Recognizing file dependencies
     - Listing what commands need to be executed
-- Procedures in a makefile are called *groups*, each of which is in the form shown below
+- Procedures in a makefile are grouped into *rules*, each of which is in the form shown below
 
 ```txt
 <target>: <file dependencies>
@@ -1042,11 +1034,14 @@ gcc main.o fun.o    # Output final executable
     <...>
 ```
 
-- The *target* is the name of the group, which can be run explicitly using `make <target>`
+- The *target* is the name of the rule, which can be run explicitly using `make <target>`
+- All other lines in a rule are the *commands* to be executed
+    - Only done so if one of its dependent files is changed
+    - **Important:** Each command must be indented using a TAB character, *not* 4 spaces
 
 ```bash
-booltest: booltest.o boolean.o
-    gcc -o booltest booltest.o boolean.o
+booltest: booltest.o boolean.o  # If these two files do not change, it is unnecessary to invoke this target again
+    gcc -o booltest booltest.o boolean.o    # Commands run on invocation
 
 booltest.o: booltest.c boolean.h
     gcc -c booltest.c
@@ -1055,23 +1050,13 @@ boolean.o: boolean.c boolean.h
     gcc -c boolean.c
 ```
 
-groups in makefile known as a *rule*
+- To run the first target, simply run `make`
+    - Order of all other rules is arbitrary
+- To run a specific target, run `make <target>`
 
-
-first line in each rule gives target file, followed by the files on which it depends
-second line is *command* to be executed if target should need to be rebuilt b/c of change in one of its dependent files
-    tab not spaces
-
-Makefile or makefile
-only one per directory
-make <target>, or make to make first target; except for first rule order of others is arbitrary
-
-clean:
-rm booltest booltest.o boolean.o
-invoke by make clean
-
-
-
-
-
-+ ... function pointers, 
+```bash
+cat Makefile
+>clean:
+>    rm booltest booltest.o boolean.o
+make clean
+```

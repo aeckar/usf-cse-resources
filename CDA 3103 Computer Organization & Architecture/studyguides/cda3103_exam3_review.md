@@ -193,12 +193,14 @@ however what is described is just what is typically found in a computer.
 >Similarly, this logarithm can be found by knowing that $2^\textbf{5} = 32$.
 
 #### **Equation 5.** Size of Tag
->**Given:** esf<br>
+>**Given:** $P$, $I$, and $O$ are the size of the physical address, index, and offset, in bits respectively<br>
 >**Given:** $T$ is the portion of the physical address reserved for the tag, in bits
 >
 >$$
 >T = P - I - O = \text{\# of tag bits}
 >$$
+>
+>**Example:** If 
 
 >**Example:**
 >
@@ -225,6 +227,14 @@ however what is described is just what is typically found in a computer.
 >        └─────┘
 >```
 
+#### **Equation 6.** Hit Rate
+>**Given:** esf<br>
+>**Given:** $T$ is the portion of the physical address reserved for the tag, in bits
+>
+>$$
+>T = P - I - O = \text{\# of tag bits}
+>$$
+
 - If given a memory address in decimal or hexadecimal, convert it to binary to derive the individual components, as designated by the above equations
 
 ## 4. Associative Caches
@@ -239,11 +249,11 @@ check # no of sets
 set index = # blocks / # sets
 
 ```txt
-┌──────────┬────────────────────────┐
-|  tag, T  |       offset, O        |
-└──────────┴────────────────────────┘
-└─────────────────┬─────────────────┘
-         Physical address, P
+┌──────────┬────────────────────────────┐
+|  tag, T  | set index, I_s | offset, O |
+└──────────┴────────────────────────────┘
+└──────────────────┬────────────────────┘
+          Physical address, P
 ```
 2-way
 4-way
@@ -255,6 +265,19 @@ DMC is 0-way
 >
 >
 
+#### **Equation 6.** Size of Set Index
+>**Given:** $b_c$ is the number of blocks in cache memory (see *Equation 2*)<br>
+>**Given:** $I$ is the portion of the physical address reserved for the set index, in bits<br>
+>**Given:** $s$ is number of sets in cache
+>
+>$$
+>I_s = \log_2{\frac{b_c}{s}} = \text{\# of set index bits}
+>$$
+>
+>**Example:** The set index represents the position of a set in cache.
+>If there are 64 cache blocks, $b_c$, and 8 sets, $s$ , they are addressable by $\log_2{\frac{64}{8}} = 2$ bits.
+>Additionally, from this we can conclude that there are $64 / 8 = 8$ blocks per set.
+
 ### ***iii.* Replacement Policies**
 
 - Since in associative cache, MM blocks are are not assigned to any particular cache block, multiple ways of replacing data if cache is full
@@ -263,6 +286,7 @@ DMC is 0-way
     - On overwrite, is *evicted*
 - *Random replacement* dictates that a random block will be evicted
 - *First-in-first-out* (FIFO) dictates that the block last cached will be evicted
+    - *"First come, first serve"*
 - *Least-recently-used* (LRU) dictates that the block that has not been used the longest will be evicted
     - Requires that a table be implemented to keep track of usage history for every block
     - Less performant than other policies
@@ -282,6 +306,30 @@ check every single block if tag equals tag of memory block
 ```
 
  m blocks, m comparators
+
+SA - 2 sets/2cmp, 4 sets/4 cmp, 8 sets/8 cmp
+DMC - 1 set (cmp tag to 1 thing)
+FA - 1 set PER block
+SA - per set
+
+- Write policies
+    !write through
+        required: valid bit
+        always latest data
+        every time, update that with new piece of data
+        not fully utilizing cache
+        every time storing something to cache, update main-memory
+
+2way set associative - each cache block can hold 2 pieces of data at same time 2 ways of storing that data
+
+    !write back
+        required: valid bit, modified bit (in cache, too) -- tells if piece of data was modified at some point
+        takes less time
+        data is not always up to date in MM
+        uses more memory (metadata abt modification)
+        only updates when replaced
+
+
 
 >**Example:**
 >

@@ -406,36 +406,23 @@
     - `section .text` contains instructions and labels in the form `{id}:`
 - `.global {label}`/`.globl {label}` makes symbols (functions & labels) accessible from other binaries
 
-#### **Figure 29.** Constant Data Types
+#### **Figure 29.** Common Constant Data Types
 | Type      | Description   | Form                  |
 |:----------|:--------------|:----------------------|
 | `.word`   | integer       | `{constant}`          |
 | `.asciz`  | ASCII string  | `"{string contents}"` |
 
-- Stack grows towards $-\infty$
-- Functions defined by a label of their name, followed by a colon
+- The above data types are used in the `.data` section to define constants
 
-#### **Figure 30.** The Return Process
 ```assembly
-func1:
-    addi sp, sp, -4     # make space on stack for return address (4 bytes = 32-bit address)
-    sw   ra, (sp)       # push return address to stack
-    jal  func2          # call branch function
-    ...
-
-func2:
-    ...
-    lw   ra, (sp)       # restore return address from stack
-    addi sp, sp, 4      # deallocate stack space
-    jr   ra             # return to caller
+section .data
+    message:    .asciz "Hello, class!"
+    class_size: .word  137
 ```
 
-- Call `jr ra` to return to the function whose address is in `ra`
-    - Necessary, even for `void` functions in C
-- *Leaf* functions do not call other functions
-    - No need to save return address
+- Functions defined by a label of their name, followed by a colon
 
->**Example 5.** Convert the following C program to RISC-V.
+>**Example 5.** Convert the following C function to RISC-V.
 >```c
 >void selectionSort(int arr[], int n) {
 >    for (int i = 0; i < n - 1; i++) {
@@ -499,3 +486,65 @@ func2:
 >```
 >
 > $\checkmark$
+
+- Stack grows towards $-\infty$
+    - Position of top of stack kept in stack pointer, `sp`
+- For every value pushed to the stack, `sp` decremented by size of data type
+    - For integer `.word`s, use 4 bytes
+- Once memory is no longer needed, pop by incrementing `sp` by size of data type
+    - **Important:** This must be done in last-in-first-out (LIFO) order
+    - Last one pushed to stack is next one popped, **always** 
+- Allocation of memory from stack can be done for multiple values at a time
+    - Take care to ensure proper deallocation
+
+#### **Figure 30.** Usage of the Stack
+```assembly
+addi sp, sp, -12    # Add three words(4 bytes each) to stack
+sw   t0, 0(sp)	    # Store t0 in sp[0]..sp[3]
+sw   t1, 4(sp)	    # Store t1 in sp[4]..sp[7]
+sw   t2, 8(sp)	    # Store t2 in sp[8]..sp[11]
+
+# ...
+
+lw   t0, 0(sp)	    # Load from sp[0]..sp[3] into t0
+lw   t1, 4(sp)	    # Load from sp[4]..sp[7] into t1
+lw   t2, 8(sp)	    # Load from sp[8]..sp[11] into t2
+addi sp, sp, 12     # Deallocate stack memory
+```
+
+- Functions calling other functions by label must use `jal`
+- The function being called is the *callee*
+- Call `jr ra` to return to the function whose address is in `ra`
+    - Necessary, even for `void` functions in C
+- *Leaf* functions do not call other functions
+    - No need to save return address
+
+#### **Figure 31.** The Return Process
+```assembly
+func1:
+    addi sp, sp, -4     # make space on stack for return address (4 bytes = 32-bit address)
+    sw   ra, (sp)       # push return address to stack
+    jal  func2          # call branch function
+    ...
+
+func2:
+    ...
+    lw   ra, (sp)       # restore return address from stack
+    addi sp, sp, 4      # deallocate stack space
+    jr   ra             # return to caller
+```
+
+- Caller-saved registers
+    - Callee is permitted to return with these registers holding different values than they had when the function was called
+- Callee-saved registers
+    - Callee must, by contract, ensure that these registers hold the same values as they did when the function was called
+
+>**Example 6:** Convert the following C code to RISC-V.
+> TODO EXAMPLE FROM HOMEWORK
+>```c
+>
+>```
+>
+>```assembly
+>
+>```
