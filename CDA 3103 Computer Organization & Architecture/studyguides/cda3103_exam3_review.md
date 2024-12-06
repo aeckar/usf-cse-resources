@@ -9,13 +9,7 @@
 
 **Notice:** This exam is cumulative. Please refer to the previous two study guides for more info.
 
-## 1. More on Program Organization in RISC-V
-
-- *Caller* calls other function, awaits return
-- *Callee* is function doing work, is called
-- Shared registers
-
-## 2. Introduction to Memory
+## 1. Introduction to Memory
 
 **Notice:** The exact configuration of memory differs between machines,
 however what is described is just what is typically found in a computer.
@@ -95,7 +89,7 @@ however what is described is just what is typically found in a computer.
     - **Application:** Entire block is copied on hit
     - **Optimization:** Traversing arrays element-by-element
 
-## 3. Direct-Mapped Cache
+## 2. Direct-Mapped Cache
 
 #### **Figure 2.** Important Units of Measurement
 | Unit      | Notation  | Amount    | Binary power, $u$ |
@@ -237,7 +231,7 @@ however what is described is just what is typically found in a computer.
 
 - If given a memory address in decimal or hexadecimal, convert it to binary to derive the individual components, as designated by the above equations
 
-## 4. Associative Caches
+## 3. Associative Caches
 
 ### ***i.* Fully-Associative Cache**
 
@@ -320,6 +314,8 @@ SA - per set
         not fully utilizing cache
         every time storing something to cache, update main-memory
 
+- {A~1~, A~2~,$...$, A~3~}
+
 2way set associative - each cache block can hold 2 pieces of data at same time 2 ways of storing that data
 
     !write back
@@ -329,13 +325,11 @@ SA - per set
         uses more memory (metadata abt modification)
         only updates when replaced
 
-
-
 >**Example:**
 >
 >
 
-## 3. Virtual Memory
+## 4. Virtual Memory
 
 TODO
 

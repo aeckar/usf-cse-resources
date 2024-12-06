@@ -98,7 +98,7 @@
 
 ### ***iv.* The Extended Euclidean Algorithm** 
 
-- The *Euclidean Algorithm* efsegfeskofkgsogops
+- The *Euclidean Algorithm* TODO
 
 ## 2. Combinatorics
 
