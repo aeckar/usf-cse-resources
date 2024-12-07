@@ -59,7 +59,7 @@
                         <li>For independent events: P(A ∩ B) = P(A) * P(B)</li>
                         <li>P(A|B) = <sup>P(A ∩ B)</sup> &frasl; <sub>P(B)</sub> (Conditional probability)</li>
                     </ul>
-                <li>For repeated trials or success/failur problems:</li>
+                <li>For repeated trials or success/failure problems:</li>
                     <ul>
                         <li>Binomial Formula: P(X = k) = (<sub>n</sub>C<sub>k</sub>) * p<sup>k</sup> * (1 - p)<sup>n - k</sup></li>
                         <li>Complement rule for "at least one" or similar cases.</li>
@@ -151,7 +151,7 @@
 
 <h5>Step-by-Step</h5>
     <ol>
-    <li>Undestand the Problem:</li>
+    <li>Understand the Problem:</li>
         <ul>
             <li>"At least one 6" = P(at least one 6) = 1 - P(no 6s).</li>
         </ul>
