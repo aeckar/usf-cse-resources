@@ -6,7 +6,7 @@
 ├┼┤
 └┴┘
 ╴╵
-═║	
+═║
 -->
 
 <p style="text-align:center">
