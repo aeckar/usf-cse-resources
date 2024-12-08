@@ -324,6 +324,8 @@ however what is described is just what is typically found in a computer.
           physical address, P
 ```
 
+- For a FA cache, $O$ is equivalent to what would normally be the $B$ field in an address from a direct-mapped cache 
+
 #### **Equation 6.** Size of Tag for Fully-Associative Cache
 >**Given:** $P$ and $O$ are the size of the physical address, and offset, in bits respectively<br>
 >**Given:** $T$ is the portion of the physical address reserved for the tag, in bits
