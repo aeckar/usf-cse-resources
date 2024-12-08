@@ -291,6 +291,9 @@ however what is described is just what is typically found in a computer.
 >11 - 2 - 5 = 4 \text{ bits for tag } \checkmark
 >$$
 
+- Performance of DMC suffers when block at given index is repeatedly overwritten
+    - Known as *thrashing*
+
 ## 3. Associative Caches
 
 ### ***i.* Fully-Associative Cache**
@@ -451,31 +454,40 @@ Blocks cached, in order: 5, 2, 4, 3
     - A result of cached data being a *copy* of data in main memory
 - *Write-back* policy states that any modifications made to cached data at any point should be copied back to MM
     - Very expensive
+- With write-back, data in cache is always up-to-date
 
 ```txt
-
+             MM
+ ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───
+... | 2 | 9 | 6 | 1 | 8 | ...       ... | 2 | 9 | 6 | 2 | 8 | ... ←─┐
+ ───┴───┴───┴───┴───┴───┴───         ───┴───┴───┴───┴───┴───┴───    |
+                  ⇑ +1        ┌──┘╲                                 |
+            Cache ║           └──┐╱                                 ├─ Memories updated simultaneously
+ ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───    |
+... | 2 | 9 | 6 | 1 | 8 | ...       ... | 2 | 9 | 6 | 2 | 8 | ... ←─┘
+ ───┴───┴───┴───┴───┴───┴───         ───┴───┴───┴───┴───┴───┴───
+                  ⇑ +1
 ```
 
-- *Write-through*
+- *Write-through* updates cached data only when being overwritten
+    - Solves performance issues of write-back
+- Write-through requires every block in cache to be assigned a *modified bit*
+    - Similar to valid bit, is `1` if cache has been modified and needs to be copied later, otherwise `0`
+- On overwrite, modified bit is reset
 
 ```txt
-
+                      MM
+          ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───
+         ... | 2 | 7 | 6 | 1 | 8 | ...       ... | 2 | 7 | 6 | 1 | 8 | ... ←─┐
+          ───┴───┴───┴───┴───┴───┴───         ───┴───┴───┴───┴───┴───┴───    |
+                                       ┌──┘╲                                 |
+                     Cache             └──┐╱                                 ├─       Memories differ
+Modified:      0   1   0   0   1                   0   1   0   1   1         |  (Blocks synced on overwrite)
+          ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───    |
+         ... | 2 | 9 | 6 | 1 | 8 | ...       ... | 2 | 9 | 6 | 2 | 8 | ... ←─┘
+          ───┴───┴───┴───┴───┴───┴───         ───┴───┴───┴───┴───┴───┴───
+                           ⇑ +1                           
 ```
-
-- Write policies
-    !write through
-        required: valid bit
-        always latest data
-        every time, update that with new piece of data
-        not fully utilizing cache
-        every time storing something to cache, update main-memory
-
-    !write back
-        required: valid bit, modified bit (in cache, too) -- tells if piece of data was modified at some point
-        takes less time
-        data is not always up to date in MM
-        uses more memory (metadata abt modification)
-        only updates when replaced
 
 ## 4. Virtual Memory
 
