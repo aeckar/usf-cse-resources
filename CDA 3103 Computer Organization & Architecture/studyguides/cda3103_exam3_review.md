@@ -1,5 +1,14 @@
 # CDA 3103 Computer Organization & Architecture - Final Exam Review
 
+<!-- Box-Drawing Characters
+─│
+┌┬┐
+├┼┤
+└┴┘
+╴╵
+═║	
+-->
+
 <p style="text-align:center">
     <a href="../cda3103_textbook.pdf">textbook</a> |
     <a href="https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94">recitations</a> |
@@ -16,6 +25,7 @@ however what is described is just what is typically found in a computer.
 
 #### ***i.* Types of Memory**
 
+- *Registers* are the fastest & smallest form of memory
 - Two kinds of main memory (MM)
     - Read-only memory (ROM)
         - Does not need to be refreshed
@@ -26,34 +36,37 @@ however what is described is just what is typically found in a computer.
 - Static RAM (SRAM)
     - More complex, faster than DRAM
     - Closer to CPU
+- *Cache memory* loads data from MM
+    - Typically SRAM
+    - Storage here reduces average memory access time
+    - Kept small to reduce search times
 - Dynamic RAM (DRAM)
     - Simpler, slower than SRAM
     - Further from CPU
 - DRAM uses capacitors, which leak charge and need "refreshing"
-- *Disk memory* is HDD, SSD, etc.
-    - Larger, slower than MM
 - *Main memory* loads data from disk
     - Typically DRAM
-- *Cache memory* loads data from MM
-    - Typically SRAM
-    - Storage here reduces average memory access time
-- Cache kept small to reduce search times
-    - Data accessed sequentially
-- The *memory bus* connects microprocessor to MM
-    - Microprocessor contains L1, L2 caches and registers
-- The *I/O bus* connects MM to disk
+- Anything below main memory in the hierarchy is *secondary memory*
+    - Permanent storage
+    - Disk, flash drives, magnetic tape, etc.
+- *Disk memory* is HDD, SSD, etc.
+    - Larger, slower than MM
+
 
 #### **Figure 2.** The Typical Memory Hierarchy
 <p style="text-align:center">
     <img src="../images/cda3103_memory_hierarchy.png" alt="The typical memory hierarchy">
 </p>
 
-- Memory hierarchy (closest to CPU to farthest from CPU)
+- Memory hierarchy (closest to CPU to farthest from CPU/fastest to slowest)
     1. Registers
     2. Cache memory (typically SRAM)
     3. Main memory (typically DRAM)
     5. Disk
 - If data not found at certain level, load from lower level
+- The *memory bus* connects microprocessor to MM
+    - Microprocessor contains L1, L2 caches and registers
+- The *I/O bus* connects MM to disk
 
 #### **Figure 3.** Memory Terminology
 | Term          | Definition                                                |
@@ -142,7 +155,7 @@ however what is described is just what is typically found in a computer.
 >**Given:** $P$ is the size of a physical address, in bits
 >
 >$$
->P = \log_2{n_m} + u = \text{total \# of address bits}
+>P = \log_2{n_m} + u = \text{total no. of address bits}
 >$$
 >
 >**Example:** If the size of main memory is 2 KB, $\log_2{2} + 10 = 1 + 10$ makes **11** bits in a physical address.
@@ -164,7 +177,7 @@ however what is described is just what is typically found in a computer.
 >**Given:** $I$ is the portion of the physical address reserved for the index, in bits
 >
 >$$
->I = \log_2{b_c} = \text{\# of index bits}
+>I = \log_2{b_c} = \text{no. of index bits}
 >$$
 >
 >Or in other words, if there are $2^k$ cache blocks, there are $k$ index bits.
@@ -178,7 +191,7 @@ however what is described is just what is typically found in a computer.
 >**Given:** $O$ is the portion of the physical address reserved for the offset, in bits
 >
 >$$
->O = \log_2{(2^{u_b}n)} = \text{\# of offset bits}
+>O = \log_2{(2^{u_b}n)} = \text{no. of offset bits}
 >$$
 >
 >Or in other words, if there are $2^k$ bytes in a block, there are $k$ offset bits.
@@ -191,7 +204,7 @@ however what is described is just what is typically found in a computer.
 >**Given:** $T$ is the portion of the physical address reserved for the tag, in bits
 >
 >$$
->T = P - I - O = \text{\# of tag bits}
+>T = P - I - O = \text{no. of tag bits}
 >$$
 >
 >**Example:** If 
@@ -314,8 +327,6 @@ SA - per set
         not fully utilizing cache
         every time storing something to cache, update main-memory
 
-- {A~1~, A~2~,$...$, A~3~}
-
 2way set associative - each cache block can hold 2 pieces of data at same time 2 ways of storing that data
 
     !write back
@@ -341,3 +352,71 @@ FA
 no need to index
 
 TAG OfFset
+
+------------
+
+there is a page table for every active process (program, thread, etc)
+
+virtual memory exists because it is easier for programmers and users to use
+
+n-way = n blocks in each set
+
+! each set is the row in the diagram that was on the slides
+
+----------
+virtual memory (VM) holds more data than physical memory (PM)
+
+page frames: PM
+pages: holding frames VM
+
+fragmentation: memory becomes unusable
+    internal:
+    external:
+
+page fault: requesting page that is not loaded
+
+TLB -> table lookup buffer
+    special cache
+    maps virtual address to physical address (VA -> PA)
+    result: we have a lot of space, a lot faster
+
+VM steps:
+    1. get page # from VA -> use TLB
+    2. find the frames
+    3. check if its valid
+        if VB is 1, good; if 0, page fault--retrieve from disk
+
+
+
+>**Example:** Given the virtual address 11010100
+>
+>Because there are 4 rows, each frame is addressable by $4 = 2^2 \rightarrow 2$ bits.
+>From the address,
+>
+>```txt
+>Page #  Frame   VB
+>       ┌─────┬─────┐
+>   0   |  1  |  1  |
+>       ├─────┼─────┤
+>   1   |  -  |  0  |
+>       ├─────┼─────┤
+>   2   |  -  |  0  |
+>       ├─────┼─────┤
+>   3   |  0  |  1  |
+>       └─────┴─────┘
+>```
+>
+
+
+VA: | PAGE | OFFSET |
+PA: | FRAME | OFFSET |  -- frame from table , rest is same
+OFFSETS ARE THE SAME, FRAME #  SMALLER THAN PAGE #
+if 2^3 pages, first 3 bits are page #
+
+
+─│
+┌┬┐
+├┼┤
+└┴┘
+╴╵
+═║	
