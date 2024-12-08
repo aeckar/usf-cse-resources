@@ -350,7 +350,7 @@ however what is described is just what is typically found in a computer.
 >**Given:** $s$ is number of sets in cache
 >
 >$$
->I_s = \log_2{\frac{b_c}{s}} = \text{\# of set index bits}
+>I_s = \log_2{\frac{b_c}{s}} = \text{no. of set index bits}
 >$$
 >
 >---
@@ -476,7 +476,7 @@ Blocks cached, in order: 5, 2, 4, 3
     - Similar to valid bit, is `1` if cache has been modified and needs to be copied later, otherwise `0`
 - On overwrite, modified bit is reset
 
-#### **Figure 10.** Modification Usin Write-Through
+#### **Figure 10.** Modification Using Write-Through
 ```txt
                       MM
           ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───
