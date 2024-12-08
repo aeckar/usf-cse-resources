@@ -784,6 +784,7 @@ struct node {
 ```
 
 - Operations on doubly-linked lists is the same as singly-linked, except `prev` must be updated on insertion/deletion
+    - Wherever `next` is reassigned, the node being pointed to by `next` must have its `prev` point to the node holding that `next`
 
 ## 9. Function Pointers
 

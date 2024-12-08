@@ -18,6 +18,22 @@
 
 **Notice:** This exam is cumulative. Please refer to the previous two study guides for more info.
 
+#### Common Abbreviations
+| Abbreviation  | Meaning                       |
+|:--------------|:------------------------------|
+| ROM           | read-only memory              |
+| RAM           | random-access memory          |
+| DMC           | direct-mapped cache           |
+| VB            | valid bit                     |
+| MM            | main memory                   |
+| FA            | fully-associative             |
+| SA            | set-associative               |
+| PM            | physical memory               |
+| VM            | virtual memory                |
+| PA            | physical address              |
+| VA            | virtual address               |
+| TLB           | translation lookaside buffer  |
+
 ## 1. Introduction to Memory
 
 **Notice:** The exact configuration of memory differs between machines,
@@ -119,6 +135,34 @@ however what is described is just what is typically found in a computer.
         - $C$ is size of cache
     - Multiple MM blocks can map to the same cache block
         - If different tag is found, cache block is overwritten
+
+>**Example 1.** In the following diagram
+>- Block 0 maps to block $0 \space mod \space 4 = 0$
+>- Block 2 maps to block $2 \space mod \space 4 = 2$
+>- Block 5 maps to block $5 \space mod \space 4 = 1$
+>- Block 7 maps to block $7 \space mod \space 4 = 3$
+>
+> ```txt
+>  Cache         MM
+>┌─────┐      ┌─────┐
+>|  0  | <─── |  0  |
+>├─────┤      ├─────┤
+>|  1  | <─┐  |  1  |
+>├─────┤   │  ├─────┤
+>|  2  | <─┼─ |  2  |
+>├─────┤   │  ├─────┤
+>|  3  | <┐│  |  3  |
+>└─────┘  ││  ├─────┤
+>          ││  |  4  |
+>          ││  ├─────┤
+>          │└─ |  5  |
+>          │   ├─────┤
+>          │   |  6  |
+>          │   ├─────┤
+>          └── |  7  |
+>              └─────┘
+>```
+
 - Memory address composed of:
     - **Block address:** *Which block?*
     - **Offset:** *Which byte in the block?*
@@ -129,7 +173,7 @@ however what is described is just what is typically found in a computer.
 - For each block in cache, there is a *valid bit* that denotes whether the block has been populated with data since startup
     - If `0`, contains no useable data
     - If `1`, data was cached at that block previously
-- The valid bit is part of the **cache**, not the physical address
+- The valid bit (VB) is part of the **cache**, not the physical address
 
 #### **Figure 3.** Possibility Table for Direct-Mapped Cache
 | Valid Bit | Tag       | Result    |
@@ -209,49 +253,20 @@ however what is described is just what is typically found in a computer.
 >
 >**Example:** If 
 
->**Example:** In the following diagram
->- Block 0 maps to block $0 \space mod \space 4 = 0$
->- Block 2 maps to block $2 \space mod \space 4 = 2$
->- Block 5 maps to block $5 \space mod \space 4 = 1$
->- Block 7 maps to block $7 \space mod \space 4 = 3$
->
-> ```txt
->  Cache         MM
->┌─────┐      ┌─────┐
->|  0  | <─── |  0  |
->├─────┤      ├─────┤
->|  1  | <─┐  |  1  |
->├─────┤   │  ├─────┤
->|  2  | <─┼─ |  2  |
->├─────┤   │  ├─────┤
->|  3  | <┐│  |  3  |
->└─────┘  ││  ├─────┤
->          ││  |  4  |
->          ││  ├─────┤
->          │└─ |  5  |
->          │   ├─────┤
->          │   |  6  |
->          │   ├─────┤
->          └── |  7  |
->              └─────┘
->```
-
-─│
-┌┬┐
-├┼┤
-└┴┘
-╴╵
-═║	
-
-#### **Equation 6.** Hit Rate
->**Given:** esf<br>
->**Given:** $T$ is the portion of the physical address reserved for the tag, in bits
->
->$$
->T = P - I - O = \text{\# of tag bits}
->$$
-
 - If given a memory address in decimal or hexadecimal, convert it to binary to derive the individual components, as designated by the above equations
+
+>**Example 2.** Consider a small direct-mapped cache with 32 blocks.
+>- Cache is initially empty. Block size = 16 bytes
+>- The following memory addresses are referenced, in order: `0x3E8`, `0x3EC`, `0X3F0`, `0x9F4`, `0x9F8`, `0x9FC`
+>Map each address to its cache block, and determine whether it represents a hit or a miss.
+>
+>Because the cache contains 32 blocks, each block is addressable by $32 = 2^5 \rightarrow 5$ bits.
+>For each address, this will be our block index.
+>
+>VB
+>
+>
+>
 
 ## 3. Associative Caches
 
@@ -269,14 +284,15 @@ set index = # blocks / # sets
 |  tag, T  | set index, I_s | offset, O |
 └──────────┴────────────────────────────┘
 └──────────────────┬────────────────────┘
-          Physical address, P
+          physical address, P
 ```
 2-way
 4-way
 8-way
 
-FA is 1-way
-DMC is 0-way
+- A set-associative cache is $n$-way if each set contains $n$ blocks
+    - Typically a power of 2 to make calculations easier
+
 >**Example:**
 >
 >
@@ -318,7 +334,7 @@ check every single block if tag equals tag of memory block
 |  tag, T  |       offset, O        |
 └──────────┴────────────────────────┘
 └─────────────────┬─────────────────┘
-         Physical address, P
+         physical address, P
 ```
 
  m blocks, m comparators
@@ -384,6 +400,7 @@ fragmentation: memory becomes unusable
 
 page fault: requesting page that is not loaded
 
+- The *translation lookaside buffer* (TLB)
 TLB -> table lookup buffer
     special cache
     maps virtual address to physical address (VA -> PA)
@@ -397,7 +414,7 @@ VM steps:
 
 
 
->**Example:** Given the virtual address 11010100
+>**Example .** Use the page table to convert the virtual address 11010100 to a physical address
 >
 >Because there are 4 rows, each frame is addressable by $4 = 2^2 \rightarrow 2$ bits.
 >From the address,
@@ -416,16 +433,24 @@ VM steps:
 >```
 >
 
+```txt
+┌────────────┬────────────────────────┐
+|    page    |        offset          |
+└────────────┴────────────────────────┘
+└─────────────────┬───────────────────┘
+           virtual address
 
-VA: | PAGE | OFFSET |
-PA: | FRAME | OFFSET |  -- frame from table , rest is same
-OFFSETS ARE THE SAME, FRAME #  SMALLER THAN PAGE #
+     ┌───────┬────────────────────────┐
+     | frame |        offset          | ← same # of bits
+     └───────┴────────────────────────┘
+     └───────────────┬────────────────┘
+             physical address
+```
+
+- Memory divided into equal-length frames and pages
+
+- The frame is derived from the page table, contained by the row at index *page*
+
+- Frame number is smaller than page number, as there are more pages than page frames
+    - Page size = frame size, and since virtual memory is larger, it has more pages
 if 2^3 pages, first 3 bits are page #
-
-
-─│
-┌┬┐
-├┼┤
-└┴┘
-╴╵
-═║	
