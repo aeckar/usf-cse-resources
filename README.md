@@ -40,3 +40,4 @@ Any contributions towards their completion would be greatly appreciated.
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
 - j1bb1e - Fix typos, information for COP 3514 projects
+- thewalkingbiped - COT 3100 review for logical forms & equivalences

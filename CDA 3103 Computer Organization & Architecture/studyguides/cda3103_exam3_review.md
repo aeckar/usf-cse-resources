@@ -12,8 +12,8 @@
 <p style="text-align:center">
     <a href="../cda3103_textbook.pdf">textbook</a> |
     <a href="https://www.youtube.com/playlist?list=PLjrUT4yHnh3JxMGJmUCBEZklpVlTJZS94">recitations</a> |
-    <a href="TODO">flashcards</a> |
-    <a href="TODO">quizlet</a>
+    <a href="../flashcards/cda3103_exam3_flashcards.csv">flashcards</a> |
+    <a href="https://quizlet.com/977960577/cda-3103-the-memory-hierarchy-flash-cards">quizlet</a>
 </p>
 
 **Notice:** This exam is cumulative. Please refer to the previous two study guides for more info.
