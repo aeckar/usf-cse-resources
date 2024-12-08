@@ -60,6 +60,7 @@ however what is described is just what is typically found in a computer.
         - Stores permanent, semi-permanent data
         - Data persists after shutdown
     - Random-access memory (RAM)
+        - *Volatile*—data is erased is erased on shutdown
         - SRAM and DRAM
 - Static RAM (SRAM)
     - More complex, faster than DRAM
@@ -592,14 +593,22 @@ Physical: |     |     |     |     |
 - Fragmentation is the loss of usable memory due to mismanagement of how memory is allocated
 - *Internal fragmentation* occurs when
 
-FIGURE
+#### **Figure 15.** Internal Fragmentation
+```txt
+
+```
 
 - *External fragmentation* occurs when
 
-FIGURE
+#### **Figure 16.** External Fragmentation
+```txt
 
-- *Compaction* is the process of 
+```
 
+- *Compaction* is the process of reallocating memory to reduce fragmentation
+    - Memory blocks become closer together, hence *compact*
+
+<!--
 ## 5. Performance & Pipelining
 
 ### i. Benchmarking Memory Access
@@ -682,3 +691,4 @@ parallel execution time      k + n - 1
     t is total time
 - break down task into k subtasks
     -
+-->
