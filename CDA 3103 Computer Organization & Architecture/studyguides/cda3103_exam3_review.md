@@ -5,7 +5,7 @@
 ┌┬┐
 ├┼┤
 └┴┘
-╴╵
+╴╷
 ═║
 -->
 
@@ -33,6 +33,18 @@
 | PA            | physical address              |
 | VA            | virtual address               |
 | TLB           | translation lookaside buffer  |
+| PF            | page fault                    |
+| AT            | access time                   |
+
+#### Overview of Equations
+| Name                              | Scenario                  | Formula                                                                                                                       | Unit                  |
+|:----------------------------------|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------|:---------------------:|
+| effective access time (EAT)       | virtual memory, no TLB    | $2(1 - \text{PF rate}) \cdot \text{MM access rate} + \text{PF rate} \cdot \text{PF penalty}$                                  | ns                    |
+| average access time (AAT)         | virtual memory with TLB   | $\text{hit rate} \cdot (\text{TLB AT} + \text{memory access time}) + \text{miss rate} \cdot (\text{TLB AT} + \text{PF time})$ | ns                    |
+| average memory access time (AMAT) | cache memory              | $\text{hit rate} \cdot \text{hit time} + (1 - \text{hit rate}) \cdot \text{miss penalty}$                                     | ns                    |
+| serial execution time             | pipelining                |$\text{steps} \cdot \text{subtasks} \cdot \text{total time}$                                                                   | ns                    |
+| parallel execution time           | pipelining                |$(\text{steps} + \text{subtasks} - 1) \cdot \text{total time}$                                                                 | ns                    |
+| speedup                           | pipelining                |$\frac{\text{steps} \cdot \text{subtasks}}{\text{steps} + \text{subtasks} - 1}$                                                | <small>*none*</small> |
 
 ## 1. Introduction to Memory
 
@@ -122,10 +134,11 @@ however what is described is just what is typically found in a computer.
 #### **Figure 2.** Important Units of Measurement
 | Unit      | Notation  | Amount    | Binary power, $u$ |
 |:----------|:---------:|:---------:|:-----------------:|
-| bytes     | B         | $2^0$     | 0                 |
-| kilobytes | KB        | $2^{10}$  | 10                |
-| megabytes | MB        | $2^{20}$  | 20                |
-| gigabytes | GB        | $2^{30}$  | 30                |
+| byte      | B         | $2^0$     | 0                 |
+| kilobyte  | KB        | $2^{10}$  | 10                |
+| megabyte  | MB        | $2^{20}$  | 20                |
+| gigabyte  | GB        | $2^{30}$  | 30                |
+| terabyte  | TB        | $2^{40}$  | 40                |
 
 <small>\**All units assumed to be in binary*</small>
 
@@ -366,6 +379,9 @@ however what is described is just what is typically found in a computer.
 
 - SA caches implemented using comparators, which determines whether access is a hit 
     - One comparator per set
+- FA cache is special case of SA cache with a single set containing $n$ blocks
+- DMC is special case of SA cache where each set contains 1 block
+    - Every block indexed belongs to its own set
 
 ### ***iii.* Replacement Policies**
 
@@ -498,74 +514,78 @@ Modified:      0   1   0   0   1                   0   1   0   1   1         |  
 - *Virtual memory* is a digital system to extend main memory from the perspective of the operating system
     - Memory is not physically expanded
     - Makes memory addressing easier for programmers and end users
-- Every active process creates a *page table*
+    - Uses portion of disk as Memory
+- Memory divided into equal-length frames and pages
 
-#### **Figure 11.** ewgwe
+#### **Figure 11.** Virtual & Physical Memory
+```txt
+          ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+Virtual:  |     |     |     |     |     |     |     | (virtual memory is far larger)
+          └─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+             ↑
+         same size
+             ↓
+          ┌─────┬─────┬─────┬─────┐
+Physical: |     |     |     |     |
+          └─────┴─────┴─────┴─────┘
+```
+
+#### **Figure 12.** Virtual & Physical Memory Addresses
 ```txt
 ┌────────────┬────────────────────────┐
-|    page    |        offset          |
+|  page, P   |        offset, O       |
 └────────────┴────────────────────────┘
 └─────────────────┬───────────────────┘
            virtual address
 
-     ┌───────┬────────────────────────┐
-     | frame |        offset          | ← same # of bits
-     └───────┴────────────────────────┘
-     └───────────────┬────────────────┘
-             physical address
+  ┌──────────┬────────────────────────┐
+  | frame, F |        offset, O       | ← offset has same # of bits
+  └──────────┴────────────────────────┘
+  └─────────────────┬─────────────────┘
+            physical address
 ```
 
-- 
+- Every active process creates a *page table*, mapping its virtual addresses to their physical addresses
+    - Maps pages to their frame, if one has been assigned
+    - For each page frame, denotes whether the data is valid or not using VB
 
-page frames: PM
-pages: holding frames VM
+#### **Figure 13.** The Typical Page Table
+<p style="text-align:center">
+    <img src="../images/cda3103_page_table.png">
+</p>
 
-- A *page fault* occurs when the requested page has not yet been loaded from MM
+- *Paging* is when a virtual page is copied from disk into page frame in main memory
 - The *translation lookaside buffer* (TLB) caches virtual-to-physical address conversions
     - Increases performance of page frame lookup
 
-- Memory divided into equal-length frames and pages
-
 - The frame is derived from the page table, contained by the row at index *page*
-
 - Frame number is smaller than page number, as there are more pages than page frames
     - Page size same as frame size, and since virtual memory is larger, it has more pages
 
 #### **Equation 7.** Page (Frame) Index
->**Given:**<br>
->**Given:**
+>**Given:** $n_p$ and $n_f$ are the number of pages in virtual memory and page frames in main memory, respectively<br>
+>**Given:** $P$ and $F$ are the page and associated page frame index, respectively 
 >
 >$$
->
+>P = \log_2{n_p} = \text{no. of bits for page index in virt. address}\newline
+>F = \log_2{n_f} = \text{no. of bits for frame index in phys. address}
 >$$
 >
->---
->
->**Example:**
->
->$$
->
->$$
+>where $n_f$ comes from how many page frames exist in the page table (are not *"-"*).
 
-CHECK IN THE MORNING
-#### **Equation 8.** Effective Access Time
->**Given:** $r_H$ and <br>
->**Given:** $T$ is the effective access time (EAT), in nanoseconds
->
->$$
->r_Ht_H + (1 - r_H)t_M\newline
->
->$$
-
+- A *page fault* occurs when the requested page has not yet been loaded into MM from disk
+    - Represented by *"-"* in the page table
 - Memory lookup process:
     1. Look up page frame index, using TLB if possible
     2. Check if valid bit in page table is `1`—if not, retrieve page from disk (page fault)
     3. With the page frame, check if block is in cache—if not, retrieve from main memory (miss)
 
-#### **Figure 13.** Combined Memory Lookup Process
+#### **Figure 14.** Combined Memory Lookup Process
 <p style="text-align:center">
     <img src="../images/cda3103_memory_lookup.png">
 </p>
+
+<small>\**This diagram does not need to be memorized*</small>
 
 ### ***ii.* Fragmentation**
 
@@ -580,7 +600,85 @@ FIGURE
 
 - *Compaction* is the process of 
 
-## 5. Pipelining
+## 5. Performance & Pipelining
 
-WATCH ROBERT
-- 
+### i. Benchmarking Memory Access
+
+- **
+#### **Equation 8.** Effective Access Time
+>**Given:** $r_H$ and <br>
+>**Given:** $T$ is the effective access time (EAT), in nanoseconds
+>
+>$$
+>r_Ht_H + (1 - r_H)t_M\newline
+>
+>$$
+
+### ii. Pipelining
+
+- *Sequential scheduling* is running of tasks in order
+- Tasks can be divided into smaller *subtasks*, whose count is $n$, according to the steps needing to be taken
+
+#### **Figure 16.** Sequential Task Scheduling
+```txt
+          1 ns                            19 ns   
+Time:     │<─────────────────────────────────>│
+
+Stages:   ╷ 1 ╷ 2 ╷ 3 ╷ 4 ╷ 5 ╷ 6 ╷ 7 ╷ 8 ╷ 9 ╷
+          ╷   ╷   ╷   ╷   ╷   ╷   ╷   ╷   ╷   ╷
+          ┌───┬───┬───┬───┬───┬───┬───┬───┬───┐
+Subtasks: │ 1 │ 2 │ 3 │ 1 │ 2 │ 3 │ 1 │ 2 │ 3 │ 
+          └───┴───┴───┴───┴───┴───┴───┴───┴───┘
+          └─────┬─────╨─────┬─────╨─────┬─────┘
+Tasks:          1           2           3
+```
+
+- The *serial* is the time to complete one task
+
+#### Equation . Serial Execution Time
+
+- *Pipelining* is running of tasks semi-simultaneously so that some subtasks are run parallel to other subtasks
+
+#### **Figure 17.** Task Pipelining
+```txt
+          1 ns            10 ns
+Time:     │<─────────────────>│
+
+Stages:   ╷ 1 ╷ 2 ╷ 3 ╷ 4 ╷ 5 ╷
+          ╷   ╷   ╷   ╷   ╷   ╷   
+          ┌───┬───┬───┐   ╷   ╷   
+          │ 1 │ 2 │ 3 │   ╷   ╷   
+          └───┼───┼───┼───┐   ╷   
+Subtasks:     │ 1 │ 2 │ 3 │   ╷
+              └───┼───┼───┼───┬
+                  │ 1 │ 2 │ 3 │
+                  └───┴───┴───┘       
+          └─────┬─────┘
+                1
+              └─────┬────┘
+Tasks:               2 
+                  └─────┬─────┘
+                        3
+```
+
+- In the above figure, time is saved by performing multiple subtasks at once, between tasks
+    - The performance gain is called the *speedup*
+
+
+#### Equation 
+
+#### Equation Speedup
+- speedup is benefit, time saved (unitless)
+
+speedup = 
+serial execution time        nk
+----------------------- =  ------
+parallel execution time      k + n - 1
+
+
+(k + n - 1)t = total pipelining (ns)
+    k is stages (steps) count
+    n is subtasks count
+    t is total time
+- break down task into k subtasks
+    -

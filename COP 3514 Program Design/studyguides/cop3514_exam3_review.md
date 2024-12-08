@@ -106,6 +106,11 @@ fclose(my_file);    // Important! Prevent resource leak
 ```
 
 - `fprintf` and `fscanf` work like their console counterparts
+- **Important:** Like `scanf`, using the `%s` format specifier with `fscanf` stops reading characters into the supplied array
+when a whitespace character is found
+    - The new string is null-terminated
+- **Important:** `fputs` stops reading prematurely if a newline is found
+    - The newline is not stored in the char array
 - **Important:** If `fputs` reads a newline (`'\n'`) character, it stops reading into the array
     - The newline character is *not* stored in the string
 
@@ -848,6 +853,7 @@ main:
 
 - A *function pointer* resolves the address of the function in question
     - Can be obtained by using the name of the function directly
+    - Follows the form `<return> (*<id>) (<args>)`
 - A common use-case for function pointers is the `qsort` function, defined in the standard header file `stdlib.h`
     - Implements the **q**uick**sort** sorting algorithm
 

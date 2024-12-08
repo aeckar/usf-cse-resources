@@ -23,6 +23,7 @@
         "bltu",
         "bockner",
         "booltest",
+        "callees",
         "ciphertext",
         "Combinational",
         "cout",
@@ -89,6 +90,8 @@
         "uick",
         "UPDATEINNER",
         "UPDATEOUTER",
+        "virt",
+        "Wurly",
         "XNOR",
         "xori"
     ]

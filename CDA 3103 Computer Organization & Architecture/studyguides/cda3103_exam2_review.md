@@ -219,10 +219,9 @@
 | `x18`-`x27`   | `s2`-`s11`        | Saved registers                   | Storing temporaries between function calls                        | Callee    |
 | `x28`-`x31`   | `t3`-`t6`         | Temporaries                       | Local variables before other function calls                       | Caller    |
 
-- *Caller-saved* registers must be saved/restored by the calling function to be preserved
-    - By contract, values contained in these registers may be discarded by branch functions
-- *Callee-saved* registers must be saved/restored by the function being called to be preserved
-    - By contract, values stored in these registers is shared between functions
+- Caller-saved registers are preserved by callers so that the callee can potentially modify them
+- Callee-saved registers are restored by callees on their return so that the caller can treat them as if they had never changed
+    - Especially important for saved, `s`, registers
 
 ## 6. The RISC-V Instruction Set
 

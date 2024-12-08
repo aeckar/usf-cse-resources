@@ -35,6 +35,7 @@ Any contributions towards their completion would be greatly appreciated.
 |:----------------|:-------------------------------------------------------------------------------------------------|
 | Angel Eckardt   | Repository maintainer and primary author/editor                                                  |
 | Tony Baker      | Author of EGN 3443 reviews 1 and 2                                                               |
+| Curly Wurly     | Creator of Figure 13 in **CDA 3103** review 3                                                    |
 | Cicada          | Fixed typo in **COP 3514** project 4, task 1; images and information for **CDA 3103** review 2   |
 | Clay5701        | Images and information for **CDA 3103** review                                                   |
 | j1bb1e          | Fix typos, information for **COP 3514** projects                                                 |
