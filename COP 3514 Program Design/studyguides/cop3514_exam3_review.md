@@ -57,13 +57,16 @@ printf("%s", to_mike->name);    // Output: Michael
 - The standard header file `stdio.h` provides functions to read from/write to files
 
 #### **Figure 1.** Common `stdio.h` Functions for File I/O
-| Function                          | Purpose                                                   | Modes                 |
-|:----------------------------------|:----------------------------------------------------------|:----------------------|
-| `fprintf(FILE *, char *, ...)`    | Writes one or more values according to the format string  | `w` `a`               |
-| `fscanf(FILE *, char *, ...)`     | Reads one or more values according to the format string   | `r`                   |
-| `fputc(int, FILE *)`              | Writes a single character                                 | `w` `a`               |
-| `fgetc(FILE *)`                   | Reads a single character                                  | `r`                   |
-| `fclose(FILE *)`                  | Gives control of a file back to the operating system      | <small>*n/a*</small>  |
+| Function                              | Purpose                                                                   | Modes                 |
+|:--------------------------------------|:--------------------------------------------------------------------------|:----------------------|
+| `fprintf(FILE *, char *, ...)`        | Writes one or more values according to the format string                  | `w` `a`               |
+| `fscanf(FILE *, char *, ...)`         | Reads one or more values according to the format string                   | `r`                   |
+| `fputc(int, FILE *)`                  | Writes a single character                                                 | `w` `a`               |
+| `fgetc(FILE *)`                       | Reads a single character                                                  | `r`                   |
+| `fputs(char *, FILE *)`               | Writes the string to the file, not including the null character (`'\0'`)  | `w` `a`               |
+| `fputs(char *, int count, FILE *)`    | Reads at most `count - 1` characters from the file into the string        | `r`                   |
+| `feof(FILE *)`                        | Returns true if at the end of the given file                              | <small>*all*</small>  |
+| `fclose(FILE *)`                      | Gives control of a file back to the operating system                      | <small>*n/a*</small>  |
 
 - *Mode strings* passed to `fopen` to denote how a file will be used
 
@@ -89,7 +92,36 @@ fclose(file);   // All files opened must be closed to prevent resource leak
 // File contents: 69
 ```
 
+- `-1`, as returned by `fgetc`, represents the end of the file, `EOF`
+
+```c
+// File contents: Hello!\nWorld!
+
+FILE *my_file = fopen("./my/file.md", "r");
+int c;
+while ((c = fgetc(my_file)) != -1) {    // Read all characters from file
+    printf("%c", c);
+}   // Output: Hello!\nWorld!
+fclose(my_file);    // Important! Prevent resource leak
+```
+
 - `fprintf` and `fscanf` work like their console counterparts
+- **Important:** If `fputs` reads a newline (`'\n'`) character, it stops reading into the array
+    - The newline character is *not* stored in the string
+
+```c
+// File contents: Hello\nWorld!
+
+#define MAX_LINE_LENGTH 100
+
+FILE *source = fopen("main.c", "r");
+char line[MAX_LINE_LENGTH];
+while (!feof()) {
+    fgets(line, MAX_LINE_LENGTH, source);   // Overwrite characters in array for each line
+    printf("%s... ", line);
+}   // Output: Hello... World!...
+fclose(source);
+```
 
 ## 3. Dynamic Memory Allocation
 
