@@ -209,30 +209,39 @@ however what is described is just what is typically found in a computer.
 >
 >**Example:** If 
 
->**Example:**
->
->
+>**Example:** In the following diagram
+>- Block 0 maps to block $0 \space mod \space 4 = 0$
+>- Block 2 maps to block $2 \space mod \space 4 = 2$
+>- Block 5 maps to block $5 \space mod \space 4 = 1$
+>- Block 7 maps to block $7 \space mod \space 4 = 3$
 >
 > ```txt
->Cache 
->┌─────┐ ┌─────┐
->|  0  | |  0  |
->├─────┤ ├─────┤
->|  1  | |  1  |
->├─────┤ ├─────┤
->|  2  | |  2  |
->├─────┤ ├─────┤
->|  3  | |  3  |
->└─────┘ ├─────┤
->        |  4  |
->        ├─────┤
->        |  5  |
->        ├─────┤
->        |  6  |
->        ├─────┤
->        |  7  |
->        └─────┘
+>  Cache         MM
+>┌─────┐      ┌─────┐
+>|  0  | <─── |  0  |
+>├─────┤      ├─────┤
+>|  1  | <─┐  |  1  |
+>├─────┤   │  ├─────┤
+>|  2  | <─┼─ |  2  |
+>├─────┤   │  ├─────┤
+>|  3  | <┐│  |  3  |
+>└─────┘  ││  ├─────┤
+>          ││  |  4  |
+>          ││  ├─────┤
+>          │└─ |  5  |
+>          │   ├─────┤
+>          │   |  6  |
+>          │   ├─────┤
+>          └── |  7  |
+>              └─────┘
 >```
+
+─│
+┌┬┐
+├┼┤
+└┴┘
+╴╵
+═║	
 
 #### **Equation 6.** Hit Rate
 >**Given:** esf<br>
