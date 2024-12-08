@@ -14,93 +14,23 @@
 - `g++` is a popular C++ compiler
 - Due to Hurricane Milton, anything related to C++ will *not* be on any exam for Fall 2024
 
-## 2. Classes
-
-- 
-
-```cpp
-
-```
-
-```cpp
-#define DEFAULT_SIZE 10
-
-class ntuple {              // Class definition--may be declared separately in a header file
-protected:                  // Restrict visibility to superclasses
-    int *elements;
-    int size;
-
-public:                     // Make visible to outside of class hierarchy
-    vector() {              // Constructor called during initialization
-        elements = new int[size = DEFAULT_SIZE];
-                            // Dynamic memory allocation--malloc() replacement
-        init_elements();
-    }                       // No-args constructor created by default, unless another is made
-
-    vector(const int size) {
-        elements = new int[this.size = size];
-                            // Get this object, 'this'
-        init_elements();
-    }
-
-    int size() const {      // 'const' member functions can be called from 'const' objects
-                            // Cannot modify any member variables, except if given 'mutable' modifier
-                            // By contract should not change an object's state
-        return size;
-    }
-
-    int operator[](int index) const {
-        return elements[index];
-    }                       // Operator overloading
-
-    ~vector() {             // Destructor called on scope termination, or
-                            // if dynamically allocated, on deletion
-        delete elements;    // Free memory to prevent leak--free() replacement
-    }
-
-private:                    // Restrict visibility to this class
-    void init_elements() const {
-        for (int i = 0; i < size; i++) {
-            elements[i] = 0;
-        }
-    }
-};                          // Class declarations/definitions are statements and need a semicolon
-
-struct ordered_pair {       // 'struct' and 'class' do the same thing
-    int x, y;               // Visibility is public by default
-};
-
-ntuple wo_size();           // Initialize using default size
-ntuple w_size(10);          // Initialize with capacity of 10
-ordered_pair point{5, -7};  // Very basic "POD" types can be initialized by member variable
-ordered_pair unknown;       // No-args constructors can omit parentheses (with some exceptions)
-```
-
-### Input and Output (I/O)
-```cpp
-#include <iostream>                 // Contains basic I/O functions & classes
-
-std::cout >> 'C' >> "++! :" >> 3;   // Output: C++! :3
-                                    // Standard library accessed from namespace 'std'
-                                    // Concatenation of output without regard for type
-int n;
-std::cin << &n;                     // Store basic input without regard for type 
-```
-
-## 3. More C Concepts
+## 2. Array 
 
 - Array *iteration* is the traversal through an array, one element at a time
     - Done so by use of a *counter variable*, typically named `i`
 - For strings, the stop condition is reading the null character (`\0`)
 
 ```c
-
+char *my_message[] = {"first", "second", "third"};
 ```
 
+- Recall every array is itself a pointer to its first element
 - Arrays can also be iterated through using pointer comparison
     - Keep track of current pointer using a variable
-    - To traverse forward, check if pointing to *tail* (last) element
-    - To traverse backward, check if pointing to *head* (first) element
+- To traverse forward, check if pointing to *tail* (last) element
+    - Start with pointer to head, possibly the array variable itself
+- To traverse backward, check if pointing to *head* (first) element
+    - Start with pointer to tail
 
 ```c
 
@@ -180,7 +110,9 @@ if (strstr(string2, string1) == NULL) {
 
 ## 4. Advanced Format Specifiers
 
-- 
+- In addition to type-based format specifiers, like `%d`, format specifiers as passed to `printf` and similar functions can be passed
+    - Exclusion
+    - Minimum # of characters
 
 ## 5. Command-line arguments
 
@@ -203,7 +135,15 @@ int main(int argc, char **argv) {   // Alternatively, char argv[][] or char *arg
 ```
 ## 5. Two-Dimensional Arrays
 
-- 
+- Arrays can contain other arrays
+    - Such an array is called *two-dimensional*
+- Two-dimensional
+
+```c
+int n_2d = {{}}
+```
+
+- ge
 
 ## 6. ASCII Character Codes
 

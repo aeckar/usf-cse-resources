@@ -456,6 +456,7 @@ Blocks cached, in order: 5, 2, 4, 3
     - Very expensive
 - With write-back, data in cache is always up-to-date
 
+#### **Figure 9.** Modification Using Write-Back
 ```txt
              MM
  ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───
@@ -475,6 +476,7 @@ Blocks cached, in order: 5, 2, 4, 3
     - Similar to valid bit, is `1` if cache has been modified and needs to be copied later, otherwise `0`
 - On overwrite, modified bit is reset
 
+#### **Figure 10.** Modification Usin Write-Through
 ```txt
                       MM
           ───┬───┬───┬───┬───┬───┬───         ───┬───┬───┬───┬───┬───┬───
@@ -491,74 +493,14 @@ Modified:      0   1   0   0   1                   0   1   0   1   1         |  
 
 ## 4. Virtual Memory
 
-### ***i.* Paging**
+### ***i.* Introduction**
 
-- More capacity without adding more memory
+- *Virtual memory* is a digital system to extend main memory from the perspective of the operating system
+    - Memory is not physically expanded
+    - Makes memory addressing easier for programmers and end users
+- Every active process creates a *page table*
 
-FA
-
-no need to index
-
-TAG OfFset
-
-------------
-
-there is a page table for every active process (program, thread, etc)
-
-virtual memory exists because it is easier for programmers and users to use
-
-n-way = n blocks in each set
-
-! each set is the row in the diagram that was on the slides
-
-----------
-virtual memory (VM) holds more data than physical memory (PM)
-
-page frames: PM
-pages: holding frames VM
-
-fragmentation: memory becomes unusable
-    internal:
-    external:
-
-page fault: requesting page that is not loaded
-
-- The *translation lookaside buffer* (TLB)
-TLB -> table lookup buffer
-    special cache
-    maps virtual address to physical address (VA -> PA)
-    result: we have a lot of space, a lot faster
-
-VM steps:
-    1. get page # from VA -> use TLB
-    2. find the frames
-    3. check if its valid
-        if VB is 1, good; if 0, page fault--retrieve from disk
-
-### ***ii.* Fragmentation**
-## 5. Pipelining
-
-- 
-
->**Example .** Use the page table to convert the virtual address 11010100 to a physical address
->
->Because there are 4 rows, each frame is addressable by $4 = 2^2 \rightarrow 2$ bits.
->From the address,
->
->```txt
->Page #  Frame   VB
->       ┌─────┬─────┐
->   0   |  1  |  1  |
->       ├─────┼─────┤
->   1   |  -  |  0  |
->       ├─────┼─────┤
->   2   |  -  |  0  |
->       ├─────┼─────┤
->   3   |  0  |  1  |
->       └─────┴─────┘
->```
->
-
+#### **Figure 11.** ewgwe
 ```txt
 ┌────────────┬────────────────────────┐
 |    page    |        offset          |
@@ -573,10 +515,72 @@ VM steps:
              physical address
 ```
 
+- 
+
+page frames: PM
+pages: holding frames VM
+
+- A *page fault* occurs when the requested page has not yet been loaded from MM
+- The *translation lookaside buffer* (TLB) caches virtual-to-physical address conversions
+    - Increases performance of page frame lookup
+
 - Memory divided into equal-length frames and pages
 
 - The frame is derived from the page table, contained by the row at index *page*
 
 - Frame number is smaller than page number, as there are more pages than page frames
-    - Page size = frame size, and since virtual memory is larger, it has more pages
-if 2^3 pages, first 3 bits are page #
+    - Page size same as frame size, and since virtual memory is larger, it has more pages
+
+#### **Equation 7.** Page (Frame) Index
+>**Given:**<br>
+>**Given:**
+>
+>$$
+>
+>$$
+>
+>---
+>
+>**Example:**
+>
+>$$
+>
+>$$
+
+CHECK IN THE MORNING
+#### **Equation 8.** Effective Access Time
+>**Given:** $r_H$ and <br>
+>**Given:** $T$ is the effective access time (EAT), in nanoseconds
+>
+>$$
+>r_Ht_H + (1 - r_H)t_M\newline
+>
+>$$
+
+- Memory lookup process:
+    1. Look up page frame index, using TLB if possible
+    2. Check if valid bit in page table is `1`—if not, retrieve page from disk (page fault)
+    3. With the page frame, check if block is in cache—if not, retrieve from main memory (miss)
+
+#### **Figure 13.** Combined Memory Lookup Process
+<p style="text-align:center">
+    <img src="../images/cda3103_memory_lookup.png">
+</p>
+
+### ***ii.* Fragmentation**
+
+- Fragmentation is the loss of usable memory due to mismanagement of how memory is allocated
+- *Internal fragmentation* occurs when
+
+FIGURE
+
+- *External fragmentation* occurs when
+
+FIGURE
+
+- *Compaction* is the process of 
+
+## 5. Pipelining
+
+WATCH ROBERT
+- 

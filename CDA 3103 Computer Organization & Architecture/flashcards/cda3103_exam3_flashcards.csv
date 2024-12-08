@@ -1,0 +1,87 @@
+Read-Only Memory (ROM),Stores permanent data that persists after shutdown
+Random-Access Memory (RAM),Stores temporary data is cleared after shutdown
+Static RAM (SRAM),Faster, but smaller type of RAM
+Dynamic RAM (DRAM),Slower, but larger type of RAM
+refresh,Application of electricity to prevent capacitors in DRAM from leaking
+Disk memory,Stores large amounts of data that persists after shutdown
+Cache memory,Memory type that loads data from main memory
+Main memory,Memory type that loads data from disk
+register,Smallest, but fastest unit of memory
+hit,Requested data resides on same level of memory
+miss,Requested data does not reside on same level of memory
+hit rate,Percent of requested data found in a given level of memory
+miss rate,Percent of requested data not found on given level of memory
+hit time,Time required to access requested data
+miss penalty,Time spent processing a miss
+temporal locality,Keep recently accessed data closer to CPU
+spatial locality,Move contiguous blocks of data at a time
+direct-mapped cache (DMC),Every block in main memory is assigned a specific block in cache
+set-associative (SA) cache,Every block in main memory is assigned a specific set in cache
+fully-associative (FA) cache,Blocks in main memory are stored in the next available block in cache
+virtual memory,A digital representation of memory much larger than physical memory.
+What is the benefit of virtual memory?,It makes it easier for programmers and users to address memory.
+page,Fixed-size sections of virtual memory that map to page frames in physical memory
+page frame,Fixed-size sections of physical memory that are the counterpart to pages in virtual memory
+effective access time (EAT),the average time to access a block of memory
+internal fragmentation,fragmentation that occurs when a block allocates more memory than is needed to be held
+external fragmentation,fragmentation that occurs when small amounts of memory are deallocated over a wide area
+The tag field of a main memory address is used to determine:
+
+a. if the cache entry is valid
+b. if the cache entry is the desired block
+c. if the memory address is valid
+d. none of the above,b
+"Locality of reference" refers to:
+
+a. clustering of memory references
+b. programs always referencing data in RAM
+c. data always being in cache
+d. the requirement that forces us to use a large amount of expensive memory,a
+Which of the following types of memory needs to be refreshed periodically to maintain its data?
+
+a. DRAM
+b. SRAM
+c. ROM
+d. all of the above,a
+Which of the following types of memory has the longest (slowest) access time?
+
+a. cache memory
+b. secondary memory
+c. main memory
+d. registers,b
+Which of the following types of memory has the shortest (fastest) access time?
+
+a. main memory
+b. cache memory
+c. registers
+d. secondary memory,c
+The main memory in a desktop personal computer is made of:
+
+a. cache
+b. ROM
+c. RAM
+d. none of the above,c
+The average time required to reach a memory storage location and retrieve its contents is called:
+
+a. hit time
+b. effective access time
+c. response time
+d. latency,b
+A major advantage of direct mapped cache is its simplicity and ease of implementation. The main disadvantage of direct mapped cache is:
+
+a. its performance is degraded if two or more blocks that map to the same location are used alternately
+b. it has a greater access time than any other method
+c. it is more expensive than fully associative and set associative mapping
+d. it does not allow the cache to store the tag that corresponds to the block currently residing in that cache location,a
+What characteristic of RAM makes it unsuitable for permanent storage?
+
+a. too slow
+b. volatile
+c. not reliable
+d. all of the above,b
+The approach of using a combination of memory types to provide the best performance at the best cost is called:
+
+a. solid state memory
+b. caching
+c. offline memory
+d. hierarchical memory,d

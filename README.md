@@ -8,18 +8,11 @@ and practice questions.
 These materials are not intended to replace independent study, but to complement it
 by ensuring that all information is covered and understood.
 
-As of December 2024, this repository contains materials covering:
-
-- EGN 3443, Probability & Statistics for Engineers
-- COP 3514, Program Design
-- CDA 3103, Computer Organization & Architecture
-- COT 3100, Intro to Discrete Structures
-
 The following materials are incomplete.
 Any contributions towards their completion would be greatly appreciated.
 
-- Significant portions of [COT 3100 Exam 2 review](./COT%203100%20Intro%20to%20Discrete%20Structures/studyguides/cot3100_exam2_review.md)
-- [COT 3100 Final Exam review](./COT%203100%20Intro%20to%20Discrete%20Structures/studyguides/cot3100_exam3_review.md)
+- [COT 3100 Exam 2 review](./COT%203100%20Intro%20to%20Discrete%20Structures/studyguides/cot3100_exam2_review.md)
+- [COT 3100 Exam 3 review](./COT%203100%20Intro%20to%20Discrete%20Structures/studyguides/cot3100_exam3_review.md)
 
 [Using CSV files with Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content)<br>
 [Using CSV files with Anki](https://superuser.com/questions/698902/can-i-create-an-anki-deck-from-a-csv-file)
@@ -47,5 +40,3 @@ Any contributions towards their completion would be greatly appreciated.
 - Tony Baker: Author of EGN 3443 reviews 1 and 2
 - Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
 - j1bb1e - Fix typos, information for COP 3514 projects
-
-TODO must pass linting script !
