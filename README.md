@@ -31,14 +31,15 @@ Any contributions towards their completion would be greatly appreciated.
 2. Student assignments that could be passed off as one's own are prohibited
 
 ### Contributors
-
-- Angel Eckardt: Repository owner and primary author/editor
-- Agus Niccolini: Fixed typo in COP 3514 project 4, task 1; images and information for CDA 3103 review 2
-- Clay5701: Images and information for CDA 3103 review
-- Maren0000: Information on RISC-V for CDA 3103 review 2
-- riryiskool: Information and tables for CDA 3103 and COT 3100 reviews 1, section 2
-- Tony Baker: Author of EGN 3443 reviews 1 and 2
-- Jooroth18: Flashcards for CDA 3103 reviews 1 and 2
-- j1bb1e - Fix typos, information for COP 3514 projects
-- thewalkingbiped - COT 3100 review for logical forms & equivalences
-- Silverfox - COT 3100 reviews for probability & counting
+|                 |                                                                                                  |
+|:----------------|:-------------------------------------------------------------------------------------------------|
+| Angel Eckardt   | Repository maintainer and primary author/editor                                                  |
+| Tony Baker      | Author of EGN 3443 reviews 1 and 2                                                               |
+| Cicada          | Fixed typo in **COP 3514** project 4, task 1; images and information for **CDA 3103** review 2   |
+| Clay5701        | Images and information for **CDA 3103** review                                                   |
+| j1bb1e          | Fix typos, information for **COP 3514** projects                                                 |
+| Jooroth18       | Flashcards for **CDA 3103** reviews 1 and 2                                                      |
+| Maren0000       | Information on RISC-V for **CDA 3103** review 2                                                  |
+| riryiskool      | Information and tables for **CDA 3103** and COT 3100 reviews 1, section 2                        |
+| Silverfox       | **COT 3100** reviews for probability & counting                                                  |
+| thewalkingbiped | **COT 3100** review for logical forms & equivalences                                             |
