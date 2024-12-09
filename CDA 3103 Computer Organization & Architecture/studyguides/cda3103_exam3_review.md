@@ -385,6 +385,7 @@ however what is described is just what is typically found in a computer.
 - FA cache is special case of SA cache with a single set containing $n$ blocks
 - DMC is special case of SA cache where each set contains 1 block
     - Every block indexed belongs to its own set
+- The offset fields for DMC, SA, and FA are <ins>identical</ins>
 
 ### ***iii.* Replacement Policies**
 
@@ -564,6 +565,7 @@ Physical: |     |     |     |     |
 - The frame is derived from the page table, contained by the row at index *page*
 - Frame number is smaller than page number, as there are more pages than page frames
     - Page size same as frame size, and since virtual memory is larger, it has more pages
+- For every row in the page table that the page is assigned a frame, the valid bit is `1`
 
 #### **Equation 7.** Page (Frame) Index
 >**Given:** $n_p$ and $n_f$ are the number of pages in virtual memory and page frames in main memory, respectively<br>
