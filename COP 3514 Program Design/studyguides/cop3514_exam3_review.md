@@ -66,6 +66,7 @@ printf("%s", to_mike->name);    // Output: Michael
 | `fputs(char *, FILE *)`               | Writes the string to the file, not including the null character (`'\0'`)  | `w` `a`               |
 | `fgets(char *, int count, FILE *)`    | Reads at most `count - 1` characters from the file into the string        | `r`                   |
 | `feof(FILE *)`                        | Returns true if at the end of the given file, otherwise returns false     | <small>*all*</small>  |
+| `ferror(FILE *)`			| Returns true if there was an error opening, reading, or writing a file    | <small>*all*</small>  |
 | `fclose(FILE *)`                      | Gives control of a file back to the operating system                      | <small>*n/a*</small>  |
 
 - *Mode strings* passed to `fopen` to denote how a file will be used
