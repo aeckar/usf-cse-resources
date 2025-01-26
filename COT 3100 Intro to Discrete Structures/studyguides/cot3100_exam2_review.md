@@ -53,7 +53,7 @@
 
 | Name                          | Form                                  |
 |-------------------------------|---------------------------------------|
-| Double Complement Law         | $(A^C)^C$ = C                         |
+| Double Complement Law         | $(A^C)^C$ = A                         |
 | Set Difference Law            | A - B = A $\cup$ $B^C$                |
 | Symmetric Difference Law      | A $\Delta$ B = (A - B) $\cup$ (B - A) |
 | Reflexive Law                 | A $\subseteq$ A                       |
