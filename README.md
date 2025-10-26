@@ -1,3 +1,7 @@
+**Status:** Due to a chronic repetitive strain injury, I am no longer able to work on this project. However, additions are still welcome.
+
+---
+
 A repository of exam review sheets and other resources compiled by students at the University of South Florida
 in the Computer Science and Computer Engineering programs.
 
