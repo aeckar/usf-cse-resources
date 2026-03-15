@@ -1,4 +1,4 @@
-**Status:** Due to a chronic repetitive strain injury, I am no longer able to work on this project. However, additions are still welcome.
+**Status:** Project is discontinued. However, additions are still welcome.
 
 ---
 
